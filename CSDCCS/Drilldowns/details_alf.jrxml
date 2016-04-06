@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.1.0.final using JasperReports Library version 6.1.0  -->
+<!-- 2015-10-28T10:50:15 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="details_alf" pageWidth="585" pageHeight="752" whenNoDataType="NoDataSection" columnWidth="585" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="87357a13-f89d-4b1c-b229-402646d40cf1">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="CSCFN TRIL"/>
+	<property name="ireport.jasperserver.url" value="https://rapports.franco-nord.ca/trilliumReports/"/>
+	<property name="ireport.jasperserver.user" value="superuser|CSCFN"/>
+	<property name="ireport.jasperserver.report.resource" value="/organizations/organization_1/Ressources_CSCFN/Drilldowns/Rox/details_alf_files/main_jrxml"/>
+	<property name="ireport.jasperserver.reportUnit" value="/organizations/organization_1/Ressources_CSCFN/Drilldowns/Rox/details_alf"/>
+	<style name="Everything else">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E8E8E8"/>
+		</conditionalStyle>
+	</style>
+	<style name="Table_TH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#A3A3A3"/>
+			<topPen lineWidth="0.5" lineColor="#A3A3A3"/>
+			<leftPen lineWidth="0.5" lineColor="#A3A3A3"/>
+			<bottomPen lineWidth="0.5" lineColor="#A3A3A3"/>
+			<rightPen lineWidth="0.5" lineColor="#A3A3A3"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#A3A3A3"/>
+			<topPen lineWidth="0.5" lineColor="#A3A3A3"/>
+			<leftPen lineWidth="0.5" lineColor="#A3A3A3"/>
+			<bottomPen lineWidth="0.5" lineColor="#A3A3A3"/>
+			<rightPen lineWidth="0.5" lineColor="#A3A3A3"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#A3A3A3"/>
+			<topPen lineWidth="0.5" lineColor="#A3A3A3"/>
+			<leftPen lineWidth="0.5" lineColor="#A3A3A3"/>
+			<bottomPen lineWidth="0.5" lineColor="#A3A3A3"/>
+			<rightPen lineWidth="0.5" lineColor="#A3A3A3"/>
+		</box>
+	</style>
+	<subDataset name="Dataset1" uuid="b3881eb4-c29b-481e-b338-f94e7f218742">
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="CSCFN TRIL"/>
+		<parameter name="ACCOUNT_ID" class="java.lang.String"/>
+		<queryString>
+			<![CDATA[select distinct full_name from fs_fsl_programs, fs_student_fsl_programs fsfp
+where fsfp.person_id =  1
+and other_fsl_instruction = fsl_instruction_code]]>
+		</queryString>
+		<field name="FULL_NAME" class="java.lang.String"/>
+	</subDataset>
+	<parameter name="ACCOUNT_ID" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select full_name, sap.school_code, regexp_replace(sap.school_year, '(\w{4})(\w{4})', '\1-\2') school_year, alf_pana_code, date_en_vigueur, 
+       case when besoins = 1 then 'Très grand besoin'
+            when besoins = 2 then 'Grand besoin'
+            when besoins = 3 then 'Besoin modéré'
+            when besoins = 4 then 'Besoin léger'
+            else 'N/A' end as "Niveau de besoin",
+      
+       case when programme_matiere = 1 then 'ALF' 
+            when programme_matiere = 2 then 'Français'
+            else 'N/A' end as "Programme", 
+            
+       case when mesure_dappui = 1 then 'Appui intensif' 
+            when mesure_dappui = 2 then 'Appui occasionnel'
+            when mesure_dappui = 3 then 'Appui soutenu' 
+            when mesure_dappui = 4 then 'Appui ponctuel'
+            else 'N/A' end as "Appui",
+       
+       case when type_de_regroupement = 1 then 'Classe ALF'
+            when type_de_regroupement = 4 then 'Classe ordinaire'
+            when type_de_regroupement = 6 then 'Autre'
+            else 'N/A' end as "Regroupement",
+       
+      autre_regroupement,
+       
+      first_moi as "Minutes",
+            
+      case when autre_matiere_mesure = 2 then 'Appui soutenu'
+           when autre_matiere_mesure = 3 then 'Appui occasionnel'
+           when autre_matiere_mesure = 4 then 'Appui ponctuel'
+           else 'N/A' end as "Autre mesure",
+      
+      case when autre_matiere_minutes = 1 then '30-149'
+           when autre_matiere_minutes = 2 then '150-300'
+           else 'N/A' end as "Autre minutes"
+            
+from trill02.student_alf_pana sap, fs_student_fsl_programs fsfp, fs_fsl_programs ffp
+
+where sap.person_id =  $P{ACCOUNT_ID} 
+and sap.person_id = fsfp.person_id
+and sap.date_en_vigueur = fsfp.start_date
+and sap.school_code = fsfp.school_code
+and sap.school_year = fsfp.school_year
+and ffp.fsl_instruction_code = fsfp.other_fsl_instruction
+and language = 'F'
+and active_flag_10 = 1]]>
+	</queryString>
+	<field name="FULL_NAME" class="java.lang.String"/>
+	<field name="SCHOOL_CODE" class="java.lang.String"/>
+	<field name="SCHOOL_YEAR" class="java.lang.String"/>
+	<field name="ALF_PANA_CODE" class="java.lang.String"/>
+	<field name="DATE_EN_VIGUEUR" class="java.sql.Timestamp"/>
+	<field name="Niveau de besoin" class="java.lang.String"/>
+	<field name="Programme" class="java.lang.String"/>
+	<field name="Appui" class="java.lang.String"/>
+	<field name="Regroupement" class="java.lang.String"/>
+	<field name="AUTRE_REGROUPEMENT" class="java.lang.String"/>
+	<field name="Minutes" class="java.math.BigDecimal"/>
+	<field name="Autre mesure" class="java.lang.String"/>
+	<field name="Autre minutes" class="java.lang.String"/>
+	<variable name="progname_sub" class="java.lang.String">
+		<variableExpression><![CDATA[$F{FULL_NAME} == null ? "0" : "1"]]></variableExpression>
+	</variable>
+	<group name="Group2">
+		<groupExpression><![CDATA[$F{FULL_NAME}]]></groupExpression>
+		<groupHeader>
+			<band height="30">
+				<textField>
+					<reportElement mode="Opaque" x="0" y="0" width="585" height="30" forecolor="#FFFFFF" backcolor="#149966" uuid="3aabdc13-510b-41e3-8290-68f22a740bb5"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{FULL_NAME}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="Group1">
+		<groupExpression><![CDATA[$F{SCHOOL_YEAR}]]></groupExpression>
+		<groupHeader>
+			<band height="30">
+				<textField isStretchWithOverflow="true" pattern="">
+					<reportElement style="Everything else" stretchType="RelativeToTallestObject" mode="Opaque" x="0" y="0" width="585" height="30" forecolor="#FFFFFF" backcolor="#9BCCB8" uuid="da86d781-8ef2-42a1-a5b6-a4820b0b3e1f"/>
+					<box padding="3">
+						<topPen lineWidth="0.1" lineColor="#A3A3A3"/>
+						<leftPen lineWidth="0.1" lineColor="#A3A3A3"/>
+						<bottomPen lineWidth="0.1" lineColor="#A3A3A3"/>
+						<rightPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="9" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{SCHOOL_YEAR}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="37" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="10" width="530" height="20" uuid="13c22a70-4355-4ff9-9e9c-2d47ae97e033"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Détail des programmes ALS: ALF et PANA de l'élève]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Transparent" x="0" y="0" width="50" height="30" forecolor="#000000" backcolor="#FFFFFF" uuid="3bb14b5a-8c44-4651-bbcf-1bf5040544ae"/>
+				<box padding="3">
+					<topPen lineWidth="0.1"/>
+					<leftPen lineWidth="0.1"/>
+					<bottomPen lineWidth="0.1"/>
+					<rightPen lineWidth="0.1"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[École]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="50" y="0" width="80" height="30" forecolor="#000000" backcolor="#FFFFFF" uuid="df0c4cf1-042b-4c45-ac91-59b170e21e76"/>
+				<box padding="3">
+					<topPen lineWidth="0.1"/>
+					<leftPen lineWidth="0.1"/>
+					<bottomPen lineWidth="0.1"/>
+					<rightPen lineWidth="0.1"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Date en vigueur]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="130" y="0" width="60" height="30" forecolor="#000000" backcolor="#FFFFFF" uuid="a7646fe1-95e9-46e7-b370-29f5da51cf5c"/>
+				<box padding="3">
+					<topPen lineWidth="0.1"/>
+					<leftPen lineWidth="0.1"/>
+					<bottomPen lineWidth="0.1"/>
+					<rightPen lineWidth="0.1"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Niveau de besoin]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="190" y="0" width="60" height="30" forecolor="#000000" backcolor="#FFFFFF" uuid="e6fd1140-21e5-4774-b286-d3768a26a9b0"/>
+				<box padding="3">
+					<topPen lineWidth="0.1"/>
+					<leftPen lineWidth="0.1"/>
+					<bottomPen lineWidth="0.1"/>
+					<rightPen lineWidth="0.1"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Programme]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="250" y="0" width="80" height="30" forecolor="#000000" backcolor="#FFFFFF" uuid="05e90143-7861-42ce-a919-9d30d35cfd15"/>
+				<box padding="3">
+					<topPen lineWidth="0.1"/>
+					<leftPen lineWidth="0.1"/>
+					<bottomPen lineWidth="0.1"/>
+					<rightPen lineWidth="0.1"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Niveau d'appui]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="330" y="0" width="80" height="30" forecolor="#000000" backcolor="#FFFFFF" uuid="f759a6b9-81f4-4fc0-bc0f-59b5fdc7e8fb"/>
+				<box padding="3">
+					<topPen lineWidth="0.1"/>
+					<leftPen lineWidth="0.1"/>
+					<bottomPen lineWidth="0.1"/>
+					<rightPen lineWidth="0.1"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Regroupement]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="410" y="0" width="50" height="30" forecolor="#000000" backcolor="#FFFFFF" uuid="24c7c320-6a1d-40c0-890d-d9072882462e"/>
+				<box padding="3">
+					<topPen lineWidth="0.1"/>
+					<leftPen lineWidth="0.1"/>
+					<bottomPen lineWidth="0.1"/>
+					<rightPen lineWidth="0.1"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Minutes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="460" y="0" width="80" height="30" forecolor="#000000" backcolor="#FFFFFF" uuid="c7cf0a21-592a-448c-a6c6-5b1ee45031e2"/>
+				<box padding="3">
+					<topPen lineWidth="0.1"/>
+					<leftPen lineWidth="0.1"/>
+					<bottomPen lineWidth="0.1"/>
+					<rightPen lineWidth="0.1"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Autre mesure]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="540" y="0" width="45" height="30" forecolor="#000000" backcolor="#FFFFFF" uuid="4f1349ca-3403-4295-aeb3-6c57956ad0ee"/>
+				<box padding="3">
+					<topPen lineWidth="0.1"/>
+					<leftPen lineWidth="0.1"/>
+					<bottomPen lineWidth="0.1"/>
+					<rightPen lineWidth="0.1"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Autre minutes]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Everything else" stretchType="RelativeToTallestObject" x="0" y="0" width="50" height="30" uuid="b150b3ff-385c-44c6-9ceb-3150e7c2a138"/>
+				<box padding="3">
+					<topPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.1" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SCHOOL_CODE}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="dd MMMM yyyy" isBlankWhenNull="true">
+				<reportElement style="Everything else" stretchType="RelativeToTallestObject" x="50" y="0" width="80" height="30" uuid="8f0cc30f-6dbc-42a8-888a-4cb3a3dcfe94"/>
+				<box padding="3">
+					<topPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.1" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DATE_EN_VIGUEUR}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Everything else" stretchType="RelativeToTallestObject" x="130" y="0" width="60" height="30" uuid="a3bbddc4-823a-4df4-b334-80ff6307c05d"/>
+				<box padding="3">
+					<topPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.1" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Niveau de besoin}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Everything else" stretchType="RelativeToTallestObject" x="190" y="0" width="60" height="30" uuid="4879653d-0097-4338-9b0d-538adffeae87"/>
+				<box padding="3">
+					<topPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.1" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Programme}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Everything else" stretchType="RelativeToTallestObject" x="250" y="0" width="80" height="30" uuid="ad0d7e7c-3de9-4e17-b744-8afa46534d62"/>
+				<box padding="3">
+					<topPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.1" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Appui}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Everything else" stretchType="RelativeToTallestObject" x="330" y="0" width="80" height="30" uuid="6a1ba0cf-3c78-48f4-8546-4046f4e3b72f"/>
+				<box padding="3">
+					<topPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.1" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Regroupement}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Everything else" stretchType="RelativeToTallestObject" x="410" y="0" width="50" height="30" uuid="9c63cedc-9854-4ec6-9592-92ea89d5568d">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<box padding="3">
+					<topPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.1" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Minutes}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Everything else" stretchType="RelativeToTallestObject" x="330" y="0" width="80" height="30" uuid="20c8e561-5b28-4c1c-a4d5-14d8ffbfb172"/>
+				<box padding="3">
+					<topPen lineWidth="0.0" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.0" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.0" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.0" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{AUTRE_REGROUPEMENT}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Everything else" stretchType="RelativeToTallestObject" x="460" y="0" width="80" height="30" uuid="ea7bf44d-3796-4dc3-b17f-11c47d4a3209"/>
+				<box padding="3">
+					<topPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.1" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Autre mesure}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Everything else" stretchType="RelativeToTallestObject" x="540" y="0" width="45" height="30" uuid="c222810c-7789-48ec-b3b5-4179d688524a">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<box padding="3">
+					<topPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.1" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Autre minutes}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<noData>
+		<band height="59">
+			<textField isStretchWithOverflow="true">
+				<reportElement x="60" y="0" width="470" height="59" uuid="6082a963-2e8d-4b1c-82ab-233418700fca"/>
+				<box padding="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Aucun détail au sujet du programme \"ALS, ALF, PANA\" n'a été enregistré pour cet élève."]]></textFieldExpression>
+			</textField>
+		</band>
+	</noData>
+</jasperReport>

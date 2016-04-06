@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.1.0.final using JasperReports Library version 6.1.0  -->
+<!-- 2016-04-06T09:08:17 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="resultats_OQRE" pageWidth="600" pageHeight="752" columnWidth="600" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="5c40502b-fd34-4660-ac4f-3c12765e90a3">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="CSCFN TRIL"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<style name="Everything else">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E8E8E8"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="ACCOUNT_ID" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select pkg_profile_élève.oqre_get_cote_rwm('3', 'r', $P{ACCOUNT_ID}  ) as r3,
+       pkg_profile_élève.oqre_get_cote_rwm('3', 'w', $P{ACCOUNT_ID}  ) as w3,
+       pkg_profile_élève.oqre_get_cote_rwm('3', 'm', $P{ACCOUNT_ID}  ) as m3,
+       pkg_profile_élève.oqre_get_cote_rwm('6', 'r', $P{ACCOUNT_ID}  ) as r6,
+       pkg_profile_élève.oqre_get_cote_rwm('6', 'w', $P{ACCOUNT_ID}  ) as w6,
+       pkg_profile_élève.oqre_get_cote_rwm('6', 'm', $P{ACCOUNT_ID}  ) as m6,
+       pkg_profile_élève.oqre_get_cote_TPCM($P{ACCOUNT_ID}  ) as tpcm,
+       pkg_profile_élève.oqre_get_cote_TPCL($P{ACCOUNT_ID}  ) as tpcl
+from dual]]>
+	</queryString>
+	<field name="R3" class="java.lang.String"/>
+	<field name="W3" class="java.lang.String"/>
+	<field name="M3" class="java.lang.String"/>
+	<field name="R6" class="java.lang.String"/>
+	<field name="W6" class="java.lang.String"/>
+	<field name="M6" class="java.lang.String"/>
+	<field name="TPCM" class="java.lang.String"/>
+	<field name="TPCL" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="45" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<staticText>
+				<reportElement x="0" y="7" width="350" height="30" uuid="c2d627d2-74cc-4c8c-87f9-e95cc62d3c7c">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="19" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Résultats OQRE 3/6, TPM, TPCL]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="170">
+			<staticText>
+				<reportElement x="370" y="30" width="229" height="30" uuid="c7bd83a3-1c89-4bb2-9a91-90cb8da7d720"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TPCL]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
+				<reportElement stretchType="RelativeToTallestObject" x="370" y="60" width="229" height="100" uuid="abea2d6a-25b5-44e3-bc01-5a977387de3f"/>
+				<box padding="10">
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font fontName="Tahoma" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA["1 - L'élève a réussi le test." + "<br/>" +
+"2 - L'élève n'a pas réussi le test." + "<br/>" +
+"3 - L'élève était absent(e)." + "<br/>" +
+"4 - L'élève admissible antérieurement remplit la condition en suivant le CCLESO." + "<br/>" +
+"5 - L'élève a bénéficié d'un report; l'élève participera à la prochaine administration du test. " + "<br/>" +
+"6 - L'élève a bénéficié d'une exemption pour cette administration du TPCL." + "<br/>" +
+"10 - Les résultats de l'élève sont retenus par l'OQRE. Pour de plus amples renseignements, veuillez communiquer avec la directrice ou le directeur de l'école."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="30" width="160" height="30" uuid="c4d0f5d9-2959-4542-86e5-7b732efd4582"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[OQRE 3 et 6]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
+				<reportElement stretchType="RelativeToTallestObject" x="160" y="60" width="210" height="100" uuid="460d3f2c-1a2b-49a7-aaec-328f8cda2442"/>
+				<box padding="7">
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font fontName="Tahoma" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA["0 - Inférieur au niveau 1" + "<br/>" +
+"1 - niveau 1" + "<br/>" +
+"2 - niveau 2" + "<br/>" +
+"3 - niveau 3" + "<br/>" +
+"4 - niveau 4" + "<br/>" +
+"P - Test non terminé (aucune donnée)" + "<br/>" +
+"B - Résultats en cours de révision" + "<br/>" +
+"V - Vulgaire, obscène ou sinon les cahiers soumis ne peuvent pas être notés" + "<br/>" +
+"W/R - Résultats retenus"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="160" y="30" width="210" height="30" uuid="14c3434e-0dd5-4b54-88c6-4a0d51ad9d78"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TPM]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="60" width="160" height="100" uuid="b09c3f12-47e2-41a9-93fd-311b941e867c"/>
+				<box padding="7">
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font fontName="Tahoma" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA["0 - manque d'indices du niveau 1" + "<br/>" +
+"1 - niveau 1" + "<br/>" +
+"2 - niveau 2" + "<br/>" +
+"3 - niveau 3" + "<br/>" +
+"4 - niveau 4" + "<br/>" +
+"P - aucune donnée" + "<br/>" +
+"B - Résultats en cours de révision" + "<br/>" +
+"Q - s. o." + "<br/>" +
+"W/R - Résultats retenus" + "<br/>" +
+"X - exemption"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="599" height="30" uuid="ce98a7f9-4a31-4575-b781-4ea5d489067a"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Légende]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="75" height="30" forecolor="#FFFFFF" backcolor="#149966" uuid="9e1cd835-1dd7-4587-abe0-67b68fab2630">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<box padding="5">
+					<topPen lineWidth="0.5" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.5" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.5" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.5" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Lecture 3e]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="75" y="0" width="75" height="30" forecolor="#FFFFFF" backcolor="#149966" uuid="d7a3b0fb-51fa-4a9f-9d31-f5f37b27262f">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<box padding="5">
+					<topPen lineWidth="0.5" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.5" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.5" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.5" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Écriture 3e]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="150" y="0" width="75" height="30" forecolor="#FFFFFF" backcolor="#149966" uuid="ec3882ee-e858-4d2d-872b-617a952bbecf"/>
+				<box padding="5">
+					<topPen lineWidth="0.5" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.5" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.5" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.5" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Math 3e]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="225" y="0" width="75" height="30" forecolor="#FFFFFF" backcolor="#149966" uuid="4e083d12-b74c-42cf-9fc3-a199102b8e17"/>
+				<box padding="5">
+					<topPen lineWidth="0.5" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.5" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.5" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.5" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Lecture 6e]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="300" y="0" width="75" height="30" forecolor="#FFFFFF" backcolor="#149966" uuid="b1667aac-986d-4452-ba45-be002dc59630"/>
+				<box padding="5">
+					<topPen lineWidth="0.5" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.5" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.5" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.5" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Écriture 6e]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="375" y="0" width="75" height="30" forecolor="#FFFFFF" backcolor="#149966" uuid="9067f397-f931-4809-8181-a52070cad022"/>
+				<box padding="5">
+					<topPen lineWidth="0.5" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.5" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.5" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.5" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Math 6e]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="450" y="0" width="75" height="30" forecolor="#FFFFFF" backcolor="#149966" uuid="ed0e36a5-7cb9-4f5d-a3f5-58d2256a1eda"/>
+				<box padding="5">
+					<topPen lineWidth="0.5" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.5" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.5" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.5" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[TPM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="525" y="0" width="75" height="30" forecolor="#FFFFFF" backcolor="#149966" uuid="e9c34cb3-2b33-41d7-a734-dfeeab205867"/>
+				<box padding="5">
+					<topPen lineWidth="0.5" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.5" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.5" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.5" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[TPCL]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="75" height="30" uuid="e919364b-c5e7-4641-9bf6-b2c1be100b8c"/>
+				<box>
+					<topPen lineWidth="0.5" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.5" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.5" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.5" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{R3}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="75" y="0" width="75" height="30" uuid="816dcacf-d734-4613-b69d-8d232bcc00e7">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.5" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.5" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.5" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{W3}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="150" y="0" width="75" height="30" uuid="f1bac0cb-8545-46d6-afc7-58435b3a01ea"/>
+				<box>
+					<topPen lineWidth="0.5" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.5" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.5" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.5" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{M3}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="225" y="0" width="75" height="30" uuid="eb52a8b5-cfe2-43ae-ac53-15a11be22c2b"/>
+				<box>
+					<topPen lineWidth="0.5" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.5" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.5" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.5" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{R6}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="300" y="0" width="75" height="30" uuid="421ee203-7877-4bba-b053-91edd085ec8c"/>
+				<box>
+					<topPen lineWidth="0.5" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.5" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.5" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.5" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{W6}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="375" y="0" width="75" height="30" uuid="83bf4d83-30e4-449b-b36f-8e6c5c996e96"/>
+				<box>
+					<topPen lineWidth="0.5" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.5" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.5" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.5" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{M6}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="450" y="0" width="75" height="30" uuid="a0101371-7a48-4af0-8911-5a39c8a32031"/>
+				<box>
+					<topPen lineWidth="0.5" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.5" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.5" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.5" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TPCM}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="525" y="0" width="75" height="30" uuid="63edd30d-9291-4878-8c46-2b4eb96f7527"/>
+				<box>
+					<topPen lineWidth="0.5" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.5" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.5" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.5" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TPCL}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

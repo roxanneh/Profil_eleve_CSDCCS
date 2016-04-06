@@ -1,0 +1,2229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.1.0.final using JasperReports Library version 6.1.0  -->
+<!-- 2015-12-02T10:16:03 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rndmt_cycle_prep" pageWidth="576" pageHeight="802" columnWidth="576" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="62debd10-66bc-4e44-941f-c87ef28c56d9">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="CSCFN TRIL"/>
+	<style name="Everything else">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E8E8E8"/>
+		</conditionalStyle>
+	</style>
+	<style name="DPS1_P1" mode="Opaque">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{DPS1_P1}.equals("D")]]></conditionExpression>
+			<style mode="Opaque" forecolor="#EB1D1A" backcolor="#000000"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{DPS1_P1}.equals("C")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E05A58"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{DPS1_P1}.equals("B")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FFFF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{DPS1_P1}.equals("NE")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#808080"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E8E8E8"/>
+		</conditionalStyle>
+	</style>
+	<style name="DPS1_P2" mode="Opaque">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{DPS1_P2}.equals("D")]]></conditionExpression>
+			<style mode="Opaque" forecolor="#EB1D1A" backcolor="#000000"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{DPS1_P2}.equals("C")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E05A58"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{DPS1_P2}.equals("B")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FFFF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{DPS1_P2}.equals("NE")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#808080"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E8E8E8"/>
+		</conditionalStyle>
+	</style>
+	<style name="DPS2_P1" mode="Opaque">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{DPS2_P1}.equals("D")]]></conditionExpression>
+			<style mode="Opaque" forecolor="#EB1D1A" backcolor="#000000"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{DPS2_P1}.equals("C")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E05A58"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{DPS2_P1}.equals("B")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FFFF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{DPS2_P1}.equals("NE")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#808080"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E8E8E8"/>
+		</conditionalStyle>
+	</style>
+	<style name="DPS2_P2" mode="Opaque">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{DPS2_P2}.equals("D")]]></conditionExpression>
+			<style mode="Opaque" forecolor="#EB1D1A" backcolor="#000000"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{DPS2_P2}.equals("C")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E05A58"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{DPS2_P2}.equals("B")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FFFF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{DPS2_P2}.equals("NE")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#808080"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E8E8E8"/>
+		</conditionalStyle>
+	</style>
+	<style name="DPS3_P1" mode="Opaque">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{DPS3_P1}.equals("D")]]></conditionExpression>
+			<style mode="Opaque" forecolor="#EB1D1A" backcolor="#000000"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{DPS3_P1}.equals("C")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E05A58"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{DPS3_P1}.equals("B")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FFFF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{DPS3_P1}.equals("NE")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#808080"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E8E8E8"/>
+		</conditionalStyle>
+	</style>
+	<style name="DPS3_P2" mode="Opaque">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{DPS3_P2}.equals("D")]]></conditionExpression>
+			<style mode="Opaque" forecolor="#EB1D1A" backcolor="#000000"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{DPS3_P2}.equals("C")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E05A58"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{DPS3_P2}.equals("B")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FFFF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{DPS3_P2}.equals("NE")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#808080"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E8E8E8"/>
+		</conditionalStyle>
+	</style>
+	<style name="FR1_P1" mode="Opaque">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{FR1_P1}.equals("D")]]></conditionExpression>
+			<style mode="Opaque" forecolor="#EB1D1A" backcolor="#000000"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{FR1_P1}.equals("C")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E05A58"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{FR1_P1}.equals("B")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FFFF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{FR1_P1}.equals("NE")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#808080"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E8E8E8"/>
+		</conditionalStyle>
+	</style>
+	<style name="FR1_P2" mode="Opaque">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{FR1_P2}.equals("D")]]></conditionExpression>
+			<style mode="Opaque" forecolor="#EB1D1A" backcolor="#000000"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{FR1_P2}.equals("C")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E05A58"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{FR1_P2}.equals("B")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FFFF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{FR1_P2}.equals("NE")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#808080"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E8E8E8"/>
+		</conditionalStyle>
+	</style>
+	<style name="FR2_P1" mode="Opaque">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{FR2_P1}.equals("D")]]></conditionExpression>
+			<style mode="Opaque" forecolor="#EB1D1A" backcolor="#000000"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{FR2_P1}.equals("C")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E05A58"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{FR2_P1}.equals("B")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FFFF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{FR2_P1}.equals("NE")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#808080"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E8E8E8"/>
+		</conditionalStyle>
+	</style>
+	<style name="FR2_P2" mode="Opaque">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{FR2_P2}.equals("D")]]></conditionExpression>
+			<style mode="Opaque" forecolor="#EB1D1A" backcolor="#000000"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{FR2_P2}.equals("C")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E05A58"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{FR2_P2}.equals("B")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FFFF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{FR2_P2}.equals("NE")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#808080"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E8E8E8"/>
+		</conditionalStyle>
+	</style>
+	<style name="FR3_P1" mode="Opaque">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{FR3_P1}.equals("D")]]></conditionExpression>
+			<style mode="Opaque" forecolor="#EB1D1A" backcolor="#000000"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{FR3_P1}.equals("C")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E05A58"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{FR3_P1}.equals("B")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FFFF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{FR3_P1}.equals("NE")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#808080"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E8E8E8"/>
+		</conditionalStyle>
+	</style>
+	<style name="FR3_P2" mode="Opaque">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{FR3_P2}.equals("D")]]></conditionExpression>
+			<style mode="Opaque" forecolor="#EB1D1A" backcolor="#000000"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{FR3_P2}.equals("C")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E05A58"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{FR3_P2}.equals("B")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FFFF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{FR3_P2}.equals("NE")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#808080"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E8E8E8"/>
+		</conditionalStyle>
+	</style>
+	<style name="FR4_P1" mode="Opaque">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{FR4_P1}.equals("D")]]></conditionExpression>
+			<style mode="Opaque" forecolor="#EB1D1A" backcolor="#000000"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{FR4_P1}.equals("C")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E05A58"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{FR4_P1}.equals("B")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FFFF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{FR4_P1}.equals("NE")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#808080"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E8E8E8"/>
+		</conditionalStyle>
+	</style>
+	<style name="FR4_P2" mode="Opaque">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{FR4_P2}.equals("D")]]></conditionExpression>
+			<style mode="Opaque" forecolor="#EB1D1A" backcolor="#000000"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{FR4_P2}.equals("C")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E05A58"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{FR4_P2}.equals("B")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FFFF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{FR4_P2}.equals("NE")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#808080"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E8E8E8"/>
+		</conditionalStyle>
+	</style>
+	<style name="FR5_P1" mode="Opaque">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{FR5_P1}.equals("D")]]></conditionExpression>
+			<style mode="Opaque" forecolor="#EB1D1A" backcolor="#000000"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{FR5_P1}.equals("C")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E05A58"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{FR5_P1}.equals("B")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FFFF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{FR5_P1}.equals("NE")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#808080"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E8E8E8"/>
+		</conditionalStyle>
+	</style>
+	<style name="FR5_P2" mode="Opaque">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{FR5_P2}.equals("D")]]></conditionExpression>
+			<style mode="Opaque" forecolor="#EB1D1A" backcolor="#000000"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{FR5_P2}.equals("C")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E05A58"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{FR5_P2}.equals("B")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FFFF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{FR5_P2}.equals("NE")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#808080"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E8E8E8"/>
+		</conditionalStyle>
+	</style>
+	<style name="FR6_P1" mode="Opaque">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{FR6_P1}.equals("D")]]></conditionExpression>
+			<style mode="Opaque" forecolor="#EB1D1A" backcolor="#000000"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{FR6_P1}.equals("C")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E05A58"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{FR6_P1}.equals("B")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FFFF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{FR6_P1}.equals("NE")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#808080"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E8E8E8"/>
+		</conditionalStyle>
+	</style>
+	<style name="FR6_P2" mode="Opaque">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{FR6_P2}.equals("D")]]></conditionExpression>
+			<style mode="Opaque" forecolor="#EB1D1A" backcolor="#000000"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{FR6_P2}.equals("C")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E05A58"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{FR6_P2}.equals("B")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FFFF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{FR6_P2}.equals("NE")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#808080"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E8E8E8"/>
+		</conditionalStyle>
+	</style>
+	<style name="FR7_P1" mode="Opaque">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{FR7_P1}.equals("D")]]></conditionExpression>
+			<style mode="Opaque" forecolor="#EB1D1A" backcolor="#000000"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{FR7_P1}.equals("C")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E05A58"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{FR7_P1}.equals("B")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FFFF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{FR7_P1}.equals("NE")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#808080"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E8E8E8"/>
+		</conditionalStyle>
+	</style>
+	<style name="FR7_P2" mode="Opaque">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{FR7_P2}.equals("D")]]></conditionExpression>
+			<style mode="Opaque" forecolor="#EB1D1A" backcolor="#000000"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{FR7_P2}.equals("C")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E05A58"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{FR7_P2}.equals("B")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FFFF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{FR7_P2}.equals("NE")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#808080"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E8E8E8"/>
+		</conditionalStyle>
+	</style>
+	<style name="MAT1_P1" mode="Opaque">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MAT1_P1}.equals("D")]]></conditionExpression>
+			<style mode="Opaque" forecolor="#EB1D1A" backcolor="#000000"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MAT1_P1}.equals("C")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E05A58"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MAT1_P1}.equals("B")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FFFF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MAT1_P1}.equals("NE")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#808080"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E8E8E8"/>
+		</conditionalStyle>
+	</style>
+	<style name="MAT1_P2" mode="Opaque">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MAT1_P2}.equals("D")]]></conditionExpression>
+			<style mode="Opaque" forecolor="#EB1D1A" backcolor="#000000"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MAT1_P2}.equals("C")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E05A58"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MAT1_P2}.equals("B")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FFFF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MAT1_P2}.equals("NE")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#808080"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E8E8E8"/>
+		</conditionalStyle>
+	</style>
+	<style name="MAT2_P1" mode="Opaque">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MAT2_P1}.equals("D")]]></conditionExpression>
+			<style mode="Opaque" forecolor="#EB1D1A" backcolor="#000000"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MAT2_P1}.equals("C")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E05A58"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MAT2_P1}.equals("B")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FFFF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MAT2_P1}.equals("NE")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#808080"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E8E8E8"/>
+		</conditionalStyle>
+	</style>
+	<style name="MAT2_P2" mode="Opaque">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MAT2_P2}.equals("D")]]></conditionExpression>
+			<style mode="Opaque" forecolor="#EB1D1A" backcolor="#000000"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MAT2_P2}.equals("C")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E05A58"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MAT2_P2}.equals("B")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FFFF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MAT2_P2}.equals("NE")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#808080"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E8E8E8"/>
+		</conditionalStyle>
+	</style>
+	<style name="MAT3_P1" mode="Opaque">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MAT3_P1}.equals("D")]]></conditionExpression>
+			<style mode="Opaque" forecolor="#EB1D1A" backcolor="#000000"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MAT3_P1}.equals("C")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E05A58"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MAT3_P1}.equals("B")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FFFF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MAT3_P1}.equals("NE")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#808080"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E8E8E8"/>
+		</conditionalStyle>
+	</style>
+	<style name="MAT3_P2" mode="Opaque">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MAT3_P2}.equals("D")]]></conditionExpression>
+			<style mode="Opaque" forecolor="#EB1D1A" backcolor="#000000"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MAT3_P2}.equals("C")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E05A58"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MAT3_P2}.equals("B")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FFFF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MAT3_P2}.equals("NE")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#808080"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E8E8E8"/>
+		</conditionalStyle>
+	</style>
+	<style name="MAT4_P1" mode="Opaque">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MAT4_P1}.equals("D")]]></conditionExpression>
+			<style mode="Opaque" forecolor="#EB1D1A" backcolor="#000000"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MAT4_P1}.equals("C")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E05A58"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MAT4_P1}.equals("B")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FFFF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MAT4_P1}.equals("NE")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#808080"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E8E8E8"/>
+		</conditionalStyle>
+	</style>
+	<style name="MAT4_P2" mode="Opaque">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MAT4_P2}.equals("D")]]></conditionExpression>
+			<style mode="Opaque" forecolor="#EB1D1A" backcolor="#000000"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MAT4_P2}.equals("C")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E05A58"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MAT4_P2}.equals("B")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FFFF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MAT4_P2}.equals("NE")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#808080"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E8E8E8"/>
+		</conditionalStyle>
+	</style>
+	<style name="MAT5_P1" mode="Opaque">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MAT5_P1}.equals("D")]]></conditionExpression>
+			<style mode="Opaque" forecolor="#EB1D1A" backcolor="#000000"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MAT5_P1}.equals("C")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E05A58"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MAT5_P1}.equals("B")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FFFF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MAT5_P1}.equals("NE")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#808080"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E8E8E8"/>
+		</conditionalStyle>
+	</style>
+	<style name="MAT5_P2" mode="Opaque">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MAT5_P2}.equals("D")]]></conditionExpression>
+			<style mode="Opaque" forecolor="#EB1D1A" backcolor="#000000"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MAT5_P2}.equals("C")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E05A58"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MAT5_P2}.equals("B")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FFFF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MAT5_P2}.equals("NE")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#808080"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E8E8E8"/>
+		</conditionalStyle>
+	</style>
+	<style name="MAT6_P1" mode="Opaque">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MAT6_P1}.equals("D")]]></conditionExpression>
+			<style mode="Opaque" forecolor="#EB1D1A" backcolor="#000000"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MAT6_P1}.equals("C")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E05A58"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MAT6_P1}.equals("B")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FFFF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MAT6_P1}.equals("NE")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#808080"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E8E8E8"/>
+		</conditionalStyle>
+	</style>
+	<style name="MAT6_P2" mode="Opaque">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MAT6_P2}.equals("D")]]></conditionExpression>
+			<style mode="Opaque" forecolor="#EB1D1A" backcolor="#000000"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MAT6_P2}.equals("C")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E05A58"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MAT6_P2}.equals("B")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FFFF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MAT6_P2}.equals("NE")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#808080"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E8E8E8"/>
+		</conditionalStyle>
+	</style>
+	<style name="MAT7_P1" mode="Opaque">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MAT7_P1}.equals("D")]]></conditionExpression>
+			<style mode="Opaque" forecolor="#EB1D1A" backcolor="#000000"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MAT7_P1}.equals("C")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E05A58"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MAT7_P1}.equals("B")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FFFF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MAT7_P1}.equals("NE")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#808080"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E8E8E8"/>
+		</conditionalStyle>
+	</style>
+	<style name="MAT7_P2" mode="Opaque">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MAT7_P2}.equals("D")]]></conditionExpression>
+			<style mode="Opaque" forecolor="#EB1D1A" backcolor="#000000"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MAT7_P2}.equals("C")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E05A58"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MAT7_P2}.equals("B")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FFFF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{MAT7_P2}.equals("NE")]]></conditionExpression>
+			<style mode="Opaque" backcolor="#808080"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E8E8E8"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="ACCOUNT_ID" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT S.SCHOOL_code AS ECOLE, school_year,
+SR.PERSON_ID,
+P.LEGAL_NAME_UPPER AS NOM_ELEVE,
+(CASE SR.GRADE
+    WHEN 'JK' THEN 'M'
+    WHEN 'SK' then 'J'
+END) AS GRADE,
+PKG_RAPPORT_REND_CYCLE_PREP.GET_YTD_ABS(SR.PERSON_ID, SR.SCHOOL_YEAR, sysdate) AS YTD_ABS,
+PKG_RAPPORT_REND_CYCLE_PREP.GET_YTD_LATES(SR.PERSON_ID, SR.SCHOOL_YEAR, sysdate) AS YTD_LATES,
+PKG_RAPPORT_REND_CYCLE_PREP.GET_PROGRAMME(PKG_RAPPORT_REND_CYCLE_PREP.GET_BULLETIN_ID(SR.SCHOOL_YEAR), SR.PERSON_ID, 'ALF') AS ALF,
+PKG_RAPPORT_REND_CYCLE_PREP.GET_PROGRAMME(PKG_RAPPORT_REND_CYCLE_PREP.GET_BULLETIN_ID(SR.SCHOOL_YEAR), SR.PERSON_ID, 'PEI') AS PEI,
+PKG_RAPPORT_REND_CYCLE_PREP.GET_NATIVE_FLAG(SR.PERSON_ID) AS PNMI,
+PKG_RAPPORT_REND_CYCLE_PREP.GET_RESULTAT(PKG_RAPPORT_REND_CYCLE_PREP.GET_BULLETIN_ID(SR.SCHOOL_YEAR), 'I',  9,  9, SR.PERSON_ID) AS DPS1_P1,
+PKG_RAPPORT_REND_CYCLE_PREP.GET_RESULTAT(PKG_RAPPORT_REND_CYCLE_PREP.GET_BULLETIN_ID(SR.SCHOOL_YEAR), 'F',  9,  9, SR.PERSON_ID) AS DPS1_P2,
+PKG_RAPPORT_REND_CYCLE_PREP.GET_RESULTAT(PKG_RAPPORT_REND_CYCLE_PREP.GET_BULLETIN_ID(SR.SCHOOL_YEAR), 'I',  9, 10, SR.PERSON_ID) AS DPS2_P1,
+PKG_RAPPORT_REND_CYCLE_PREP.GET_RESULTAT(PKG_RAPPORT_REND_CYCLE_PREP.GET_BULLETIN_ID(SR.SCHOOL_YEAR), 'F',  9, 10, SR.PERSON_ID) AS DPS2_P2,
+PKG_RAPPORT_REND_CYCLE_PREP.GET_RESULTAT(PKG_RAPPORT_REND_CYCLE_PREP.GET_BULLETIN_ID(SR.SCHOOL_YEAR), 'I',  9, 11, SR.PERSON_ID) AS DPS3_P1,
+PKG_RAPPORT_REND_CYCLE_PREP.GET_RESULTAT(PKG_RAPPORT_REND_CYCLE_PREP.GET_BULLETIN_ID(SR.SCHOOL_YEAR), 'F',  9, 11, SR.PERSON_ID) AS DPS3_P2,
+PKG_RAPPORT_REND_CYCLE_PREP.GET_RESULTAT(PKG_RAPPORT_REND_CYCLE_PREP.GET_BULLETIN_ID(SR.SCHOOL_YEAR), 'I', 13, 15, SR.PERSON_ID) AS FR1_P1,
+PKG_RAPPORT_REND_CYCLE_PREP.GET_RESULTAT(PKG_RAPPORT_REND_CYCLE_PREP.GET_BULLETIN_ID(SR.SCHOOL_YEAR), 'F', 13, 15, SR.PERSON_ID) AS FR1_P2,
+PKG_RAPPORT_REND_CYCLE_PREP.GET_RESULTAT(PKG_RAPPORT_REND_CYCLE_PREP.GET_BULLETIN_ID(SR.SCHOOL_YEAR), 'I', 13, 16, SR.PERSON_ID) AS FR2_P1,
+PKG_RAPPORT_REND_CYCLE_PREP.GET_RESULTAT(PKG_RAPPORT_REND_CYCLE_PREP.GET_BULLETIN_ID(SR.SCHOOL_YEAR), 'F', 13, 16, SR.PERSON_ID) AS FR2_P2,
+PKG_RAPPORT_REND_CYCLE_PREP.GET_RESULTAT(PKG_RAPPORT_REND_CYCLE_PREP.GET_BULLETIN_ID(SR.SCHOOL_YEAR), 'I', 13, 17, SR.PERSON_ID) AS FR3_P1,
+PKG_RAPPORT_REND_CYCLE_PREP.GET_RESULTAT(PKG_RAPPORT_REND_CYCLE_PREP.GET_BULLETIN_ID(SR.SCHOOL_YEAR), 'F', 13, 17, SR.PERSON_ID) AS FR3_P2,
+PKG_RAPPORT_REND_CYCLE_PREP.GET_RESULTAT(PKG_RAPPORT_REND_CYCLE_PREP.GET_BULLETIN_ID(SR.SCHOOL_YEAR), 'I', 13, 18, SR.PERSON_ID) AS FR4_P1,
+PKG_RAPPORT_REND_CYCLE_PREP.GET_RESULTAT(PKG_RAPPORT_REND_CYCLE_PREP.GET_BULLETIN_ID(SR.SCHOOL_YEAR), 'F', 13, 18, SR.PERSON_ID) AS FR4_P2,
+PKG_RAPPORT_REND_CYCLE_PREP.GET_RESULTAT(PKG_RAPPORT_REND_CYCLE_PREP.GET_BULLETIN_ID(SR.SCHOOL_YEAR), 'I', 13, 19, SR.PERSON_ID) AS FR5_P1,
+PKG_RAPPORT_REND_CYCLE_PREP.GET_RESULTAT(PKG_RAPPORT_REND_CYCLE_PREP.GET_BULLETIN_ID(SR.SCHOOL_YEAR), 'F', 13, 19, SR.PERSON_ID) AS FR5_P2,
+PKG_RAPPORT_REND_CYCLE_PREP.GET_RESULTAT(PKG_RAPPORT_REND_CYCLE_PREP.GET_BULLETIN_ID(SR.SCHOOL_YEAR), 'I', 13, 20, SR.PERSON_ID) AS FR6_P1,
+PKG_RAPPORT_REND_CYCLE_PREP.GET_RESULTAT(PKG_RAPPORT_REND_CYCLE_PREP.GET_BULLETIN_ID(SR.SCHOOL_YEAR), 'F', 13, 20, SR.PERSON_ID) AS FR6_P2,
+PKG_RAPPORT_REND_CYCLE_PREP.GET_RESULTAT(PKG_RAPPORT_REND_CYCLE_PREP.GET_BULLETIN_ID(SR.SCHOOL_YEAR), 'I', 13, 21, SR.PERSON_ID) AS FR7_P1,
+PKG_RAPPORT_REND_CYCLE_PREP.GET_RESULTAT(PKG_RAPPORT_REND_CYCLE_PREP.GET_BULLETIN_ID(SR.SCHOOL_YEAR), 'F', 13, 21, SR.PERSON_ID) AS FR7_P2,
+PKG_RAPPORT_REND_CYCLE_PREP.GET_RESULTAT(PKG_RAPPORT_REND_CYCLE_PREP.GET_BULLETIN_ID(SR.SCHOOL_YEAR), 'I', 14, 22, SR.PERSON_ID) AS MAT1_P1,
+PKG_RAPPORT_REND_CYCLE_PREP.GET_RESULTAT(PKG_RAPPORT_REND_CYCLE_PREP.GET_BULLETIN_ID(SR.SCHOOL_YEAR), 'F', 14, 22, SR.PERSON_ID) AS MAT1_P2,
+PKG_RAPPORT_REND_CYCLE_PREP.GET_RESULTAT(PKG_RAPPORT_REND_CYCLE_PREP.GET_BULLETIN_ID(SR.SCHOOL_YEAR), 'I', 14, 23, SR.PERSON_ID) AS MAT2_P1,
+PKG_RAPPORT_REND_CYCLE_PREP.GET_RESULTAT(PKG_RAPPORT_REND_CYCLE_PREP.GET_BULLETIN_ID(SR.SCHOOL_YEAR), 'F', 14, 23, SR.PERSON_ID) AS MAT2_P2,
+PKG_RAPPORT_REND_CYCLE_PREP.GET_RESULTAT(PKG_RAPPORT_REND_CYCLE_PREP.GET_BULLETIN_ID(SR.SCHOOL_YEAR), 'I', 14, 24, SR.PERSON_ID) AS MAT3_P1,
+PKG_RAPPORT_REND_CYCLE_PREP.GET_RESULTAT(PKG_RAPPORT_REND_CYCLE_PREP.GET_BULLETIN_ID(SR.SCHOOL_YEAR), 'F', 14, 24, SR.PERSON_ID) AS MAT3_P2,
+PKG_RAPPORT_REND_CYCLE_PREP.GET_RESULTAT(PKG_RAPPORT_REND_CYCLE_PREP.GET_BULLETIN_ID(SR.SCHOOL_YEAR), 'I', 14, 25, SR.PERSON_ID) AS MAT4_P1,
+PKG_RAPPORT_REND_CYCLE_PREP.GET_RESULTAT(PKG_RAPPORT_REND_CYCLE_PREP.GET_BULLETIN_ID(SR.SCHOOL_YEAR), 'F', 14, 25, SR.PERSON_ID) AS MAT4_P2,
+PKG_RAPPORT_REND_CYCLE_PREP.GET_RESULTAT(PKG_RAPPORT_REND_CYCLE_PREP.GET_BULLETIN_ID(SR.SCHOOL_YEAR), 'I', 14, 26, SR.PERSON_ID) AS MAT5_P1,
+PKG_RAPPORT_REND_CYCLE_PREP.GET_RESULTAT(PKG_RAPPORT_REND_CYCLE_PREP.GET_BULLETIN_ID(SR.SCHOOL_YEAR), 'F', 14, 26, SR.PERSON_ID) AS MAT5_P2,
+PKG_RAPPORT_REND_CYCLE_PREP.GET_RESULTAT(PKG_RAPPORT_REND_CYCLE_PREP.GET_BULLETIN_ID(SR.SCHOOL_YEAR), 'I', 14, 27, SR.PERSON_ID) AS MAT6_P1,
+PKG_RAPPORT_REND_CYCLE_PREP.GET_RESULTAT(PKG_RAPPORT_REND_CYCLE_PREP.GET_BULLETIN_ID(SR.SCHOOL_YEAR), 'F', 14, 27, SR.PERSON_ID) AS MAT6_P2,
+PKG_RAPPORT_REND_CYCLE_PREP.GET_RESULTAT(PKG_RAPPORT_REND_CYCLE_PREP.GET_BULLETIN_ID(SR.SCHOOL_YEAR), 'I', 14, 28, SR.PERSON_ID) AS MAT7_P1,
+PKG_RAPPORT_REND_CYCLE_PREP.GET_RESULTAT(PKG_RAPPORT_REND_CYCLE_PREP.GET_BULLETIN_ID(SR.SCHOOL_YEAR), 'F', 14, 28, SR.PERSON_ID) AS MAT7_P2
+FROM STUDENT_REGISTRATIONS SR
+INNER JOIN PERSONS P
+ON P.PERSON_ID = SR.PERSON_ID
+INNER JOIN SCHOOLS S
+ON S.SCHOOL_CODE = SR.SCHOOL_CODE
+and sr.person_id =  $P{ACCOUNT_ID} 
+AND SR.STATUS_INDICATOR_CODE IN ('Active', 'Inactive')
+AND SR.GRADE IN ('JK','SK')
+AND SR.OSR_FLAG = 'x'
+ORDER BY S.SCHOOL_NAME ASC, GRADE DESC, NOM_ELEVE ASC]]>
+	</queryString>
+	<field name="ECOLE" class="java.lang.String"/>
+	<field name="SCHOOL_YEAR" class="java.lang.String"/>
+	<field name="PERSON_ID" class="java.lang.String"/>
+	<field name="NOM_ELEVE" class="java.lang.String"/>
+	<field name="GRADE" class="java.lang.String"/>
+	<field name="YTD_ABS" class="java.lang.String"/>
+	<field name="YTD_LATES" class="java.lang.String"/>
+	<field name="ALF" class="java.lang.String"/>
+	<field name="PEI" class="java.lang.String"/>
+	<field name="PNMI" class="java.lang.String"/>
+	<field name="DPS1_P1" class="java.lang.String"/>
+	<field name="DPS1_P2" class="java.lang.String"/>
+	<field name="DPS2_P1" class="java.lang.String"/>
+	<field name="DPS2_P2" class="java.lang.String"/>
+	<field name="DPS3_P1" class="java.lang.String"/>
+	<field name="DPS3_P2" class="java.lang.String"/>
+	<field name="FR1_P1" class="java.lang.String"/>
+	<field name="FR1_P2" class="java.lang.String"/>
+	<field name="FR2_P1" class="java.lang.String"/>
+	<field name="FR2_P2" class="java.lang.String"/>
+	<field name="FR3_P1" class="java.lang.String"/>
+	<field name="FR3_P2" class="java.lang.String"/>
+	<field name="FR4_P1" class="java.lang.String"/>
+	<field name="FR4_P2" class="java.lang.String"/>
+	<field name="FR5_P1" class="java.lang.String"/>
+	<field name="FR5_P2" class="java.lang.String"/>
+	<field name="FR6_P1" class="java.lang.String"/>
+	<field name="FR6_P2" class="java.lang.String"/>
+	<field name="FR7_P1" class="java.lang.String"/>
+	<field name="FR7_P2" class="java.lang.String"/>
+	<field name="MAT1_P1" class="java.lang.String"/>
+	<field name="MAT1_P2" class="java.lang.String"/>
+	<field name="MAT2_P1" class="java.lang.String"/>
+	<field name="MAT2_P2" class="java.lang.String"/>
+	<field name="MAT3_P1" class="java.lang.String"/>
+	<field name="MAT3_P2" class="java.lang.String"/>
+	<field name="MAT4_P1" class="java.lang.String"/>
+	<field name="MAT4_P2" class="java.lang.String"/>
+	<field name="MAT5_P1" class="java.lang.String"/>
+	<field name="MAT5_P2" class="java.lang.String"/>
+	<field name="MAT6_P1" class="java.lang.String"/>
+	<field name="MAT6_P2" class="java.lang.String"/>
+	<field name="MAT7_P1" class="java.lang.String"/>
+	<field name="MAT7_P2" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="111" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<staticText>
+				<reportElement x="0" y="10" width="380" height="20" uuid="4925b8f6-69b7-4a17-ada7-7dc7ea8bfae8">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rendement au cycle préparatoire]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="182" y="63" width="186" height="20" uuid="2f112e11-af07-4ba8-ac40-ab2b28ace744">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement markup="html">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<p> FRA1 - J'aime parler en français.</p> </br>" + 
+"<p> FRA2 - J'écoute, je parle et je réagis de façon appropriée.</p> </br>" + 
+"<p> FRA3 - J'utilise des indices et des moyens appropriés pour comprendre l'écrit.</p> </br>" +
+"<p> FRA4 - Je distingue, j'identifie et je manipule les son (phonèmes) à l'oral.</p> </br>" + 
+"<p> FRA5 - J'utilise des indices et des moyens appropriés pour développer des habiletés de lecteur émergent.</p> </br>" + 
+"<p> FRA6 - J'utilise des indices et des moyens appropriés pour communiquer mon message à l'écrit.</p> </br>" + 
+"<p> FRA7 - J'utilise des produits médiatiques et je donne mon appréciation.</p> </br>"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="379" y="63" width="186" height="20" uuid="b0b6b1bd-e270-46fe-a21a-0a3fa5daff34">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement markup="html">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<p> MAT1 - J'utilise des indices et des moyens appropriés pour comprendre la numération et le sens du nombre.</p> </br>" + 
+"<p> MAT2 - Je mesure et compare les objets.</p> </br>" + 
+"<p> MAT3 - Je reconnais les figures planes et solides.</p> </br>" +
+"<p> MAT4 - Je reconnais la position d'un objet dans l'espace.</p> </br>" + 
+"<p> MAT5 - Je reconnais des régularités dans mon environnement et dans des suites non numériques.</p> </br>" + 
+"<p> MAT6 - Je recueille, représente et interprète des données.</p> </br>" +
+"<p> MAT7 - J'utilise les mots justes pour décrire la probabilité.</p> </br>"]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement positionType="FixRelativeToBottom" x="5" y="97" width="562" height="1" uuid="a2800da9-94a8-4072-a5b1-a354adaa83ce"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement positionType="Float" x="7" y="47" width="561" height="1" uuid="67d1e35a-e74f-4ac5-be83-63e81e90254f"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="11" y="63" width="160" height="20" uuid="a4726326-7fa1-41df-b1fd-4ee3ed7aa5a4"/>
+				<textElement markup="html">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<p> DPS1 - Je fais preuve d'autonomie et de confiance en soi.</p> </br>" + 
+"<p> DPS2 - Je reconnais mes caractéristiques et mes préférences.</p> </br>" + 
+"<p> DPS3 - Je collabore et je respecte les autres.</p> </br>"]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="60" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="40" width="45" height="20" uuid="649d4869-020a-49c4-9972-2f51de398237"/>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Année scolaire]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="45" y="40" width="30" height="20" uuid="8d034b14-eed4-405c-930c-5f82221aeb56"/>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[École]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="128" y="40" width="14" height="20" forecolor="#FFFFFF" backcolor="#149966" uuid="60d5dd9f-9200-40ba-9d1c-722b26af1ea7"/>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[É1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="450" y="40" width="14" height="20" forecolor="#FFFFFF" backcolor="#149966" uuid="cd80ae75-2bdd-4c47-bad1-ebaa4f19a301"/>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[É2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="324" y="20" width="28" height="20" uuid="b1eafcae-ce9a-4427-9a57-c408b10454d7">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[FR 6]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="436" y="20" width="28" height="20" uuid="6b2fe57e-f2e9-49a8-a42d-a89cdd47cd97">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[MAT 3]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="184" y="40" width="14" height="20" forecolor="#FFFFFF" backcolor="#149966" uuid="e60a5b90-d91d-4250-be87-144ecb797f5e"/>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[É1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="184" y="0" width="196" height="20" uuid="9a10932a-8dfe-41f5-a312-621413560679">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<box rightPadding="3">
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Français]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="184" y="20" width="28" height="20" uuid="fb1e0958-5ed0-4a0a-b36e-525a89738056">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[FR 1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="534" y="40" width="14" height="20" forecolor="#FFFFFF" backcolor="#149966" uuid="71a31f32-15b2-4732-911e-8e60eecec3b5">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[É2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="394" y="40" width="14" height="20" forecolor="#FFFFFF" backcolor="#149966" uuid="66e15220-7da5-43a3-b8cc-e74aed90062c"/>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[É2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="464" y="20" width="28" height="20" uuid="03249ffa-0f05-4161-a6b8-910c7ea63e17">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[MAT 4]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="212" y="20" width="28" height="20" uuid="b7241b6c-727a-46e9-92b3-1c3256e40728">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[FR 2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="240" y="20" width="28" height="20" uuid="445d8d91-b92f-40be-a8f8-d8a4c14fc69e">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[FR 3]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="156" y="20" width="28" height="20" uuid="df8b345f-4a28-413f-b586-2a3a3dd93415">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[DPS3]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="408" y="40" width="14" height="20" forecolor="#FFFFFF" backcolor="#149966" uuid="61bfd89d-3b0b-45ac-adab-2dc5914763d4"/>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[É1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="156" y="40" width="14" height="20" forecolor="#FFFFFF" backcolor="#149966" uuid="6e40641f-9ad7-4505-8069-4742f96486ad"/>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[É1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="212" y="40" width="14" height="20" forecolor="#FFFFFF" backcolor="#149966" uuid="cb1549d2-e949-4e89-8e49-d6388b6fcc20"/>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[É1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="520" y="20" width="28" height="20" uuid="eb42b249-3239-41a7-b400-1805065585d1">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[MAT 6]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="422" y="40" width="14" height="20" forecolor="#FFFFFF" backcolor="#149966" uuid="7e79d618-d85c-46d2-9029-98ca4516b3e2"/>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[É2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="548" y="20" width="28" height="20" uuid="f0d0c807-43cd-4f9a-8e2e-f09d8645a2c8">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[MAT 7]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="352" y="40" width="14" height="20" forecolor="#FFFFFF" backcolor="#149966" uuid="b08386b2-47d1-4ac8-934f-750c3ea01bee"/>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[É1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="114" y="40" width="14" height="20" forecolor="#FFFFFF" backcolor="#149966" uuid="6ba19a94-f99c-4181-a4e8-bb440e401b5d">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[É2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="128" y="20" width="28" height="20" uuid="4101571a-b72c-48ff-8ed7-a3009f5f5c23">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[DPS2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="380" y="40" width="14" height="20" forecolor="#FFFFFF" backcolor="#149966" uuid="5f43f46a-a2f2-4e26-b716-ded2687ec319"/>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[É1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="282" y="40" width="14" height="20" forecolor="#FFFFFF" backcolor="#149966" uuid="478935a8-d536-44be-a5f9-1b3b44d0f6f3"/>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[É2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="548" y="40" width="14" height="20" forecolor="#FFFFFF" backcolor="#149966" uuid="6210d32b-bb7e-4591-ab00-ba93dd26be66"/>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[É1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="20" width="28" height="20" uuid="910ac116-04f1-492b-8b98-9f191fa83b88">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[MAT 1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="338" y="40" width="14" height="20" forecolor="#FFFFFF" backcolor="#149966" uuid="7d0e38fe-a66a-46f0-b7f9-40caa46bed8a"/>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[É2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="226" y="40" width="14" height="20" forecolor="#FFFFFF" backcolor="#149966" uuid="95519a57-ed01-44ec-b05d-40b75f645650"/>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[É2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="366" y="40" width="14" height="20" forecolor="#FFFFFF" backcolor="#149966" uuid="306c4fc3-4cee-4cbf-bd56-02fbb6fcb511"/>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[É2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="296" y="40" width="14" height="20" forecolor="#FFFFFF" backcolor="#149966" uuid="b8d0e300-d26c-428d-9a75-32de46b3ba32"/>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[É1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="352" y="20" width="28" height="20" uuid="015d4e0e-980d-4a9b-a7a2-e637f30c1b53">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[FR 7]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="464" y="40" width="14" height="20" forecolor="#FFFFFF" backcolor="#149966" uuid="c2092146-9825-4b57-b9b9-eeb0e751a971"/>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[É1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="436" y="40" width="14" height="20" forecolor="#FFFFFF" backcolor="#149966" uuid="a0b6b16d-1c44-42ce-9e15-4f97f48f75c6"/>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[É1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="268" y="40" width="14" height="20" forecolor="#FFFFFF" backcolor="#149966" uuid="cabb1e2a-fd29-4b4b-b939-5baa1b934f96"/>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[É1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="20" width="28" height="20" uuid="f1ab2380-165f-4e68-b1a2-91cbcdf86f3f">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[DPS1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="520" y="40" width="14" height="20" forecolor="#FFFFFF" backcolor="#149966" uuid="69bdc31c-5a8d-4889-bd40-3a8bbf7de7a3"/>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[É1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="492" y="40" width="14" height="20" forecolor="#FFFFFF" backcolor="#149966" uuid="0cbc9433-f876-4e1e-b23b-ebb3ace2d8bc"/>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[É1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="142" y="40" width="14" height="20" forecolor="#FFFFFF" backcolor="#149966" uuid="f63f84ed-11c6-4750-ad25-275ce98a5b4c">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[É2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="562" y="40" width="14" height="20" forecolor="#FFFFFF" backcolor="#149966" uuid="93bf7447-d8a9-4dd5-8b7b-cf4abaff7d17"/>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[É2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="170" y="40" width="14" height="20" forecolor="#FFFFFF" backcolor="#149966" uuid="eda86aaa-b46d-4055-af9f-f334ff410df0"/>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[É2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="310" y="40" width="14" height="20" forecolor="#FFFFFF" backcolor="#149966" uuid="da8e9e14-a94d-44f8-8a12-7239121679a1"/>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[É2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="408" y="20" width="28" height="20" uuid="031e2d07-dfa4-48a3-a27a-916543f714d8">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[MAT 2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="506" y="40" width="14" height="20" forecolor="#FFFFFF" backcolor="#149966" uuid="933f1659-dd80-4b5b-ae90-c15073963e43"/>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[É2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="0" width="196" height="20" uuid="96e84e47-db2f-4194-bdf8-5f636e9eb888">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<box rightPadding="3">
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Mathématique]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="254" y="40" width="14" height="20" forecolor="#FFFFFF" backcolor="#149966" uuid="73101aa1-857d-45f3-b737-0a8b6efc09ba"/>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[É2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="0" width="84" height="20" uuid="413e2aa7-56b1-459e-8d07-06354f174a0d">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<box rightPadding="3">
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Développement personnel et social]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="478" y="40" width="14" height="20" forecolor="#FFFFFF" backcolor="#149966" uuid="969c6b3a-9dec-4f72-b0b4-6c2513503b82"/>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[É2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="268" y="20" width="28" height="20" uuid="2d99e5f9-965d-47d4-9d08-d54d473ba38e">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[FR 4]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="198" y="40" width="14" height="20" forecolor="#FFFFFF" backcolor="#149966" uuid="1bddfb4f-e884-4574-bbdd-413981125ce4"/>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[É2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="240" y="40" width="14" height="20" forecolor="#FFFFFF" backcolor="#149966" uuid="9063b206-ea0f-4a4b-96e3-1754b4a2bfb5"/>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[É1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="296" y="20" width="28" height="20" uuid="55f56061-3700-4272-bdd6-73a797f2761b">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[FR 5]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="324" y="40" width="14" height="20" forecolor="#FFFFFF" backcolor="#149966" uuid="b0a78c75-1d6f-4d5b-89b2-d5271962fbad"/>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[É1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="492" y="20" width="28" height="20" uuid="542954f3-e92c-4f73-a8d9-fd8a5f822c1c">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[MAT 5]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="100" y="40" width="14" height="20" forecolor="#FFFFFF" backcolor="#149966" uuid="3680b12d-465e-462b-8fc4-c7838914c956">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[É1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="75" y="40" width="25" height="20" uuid="e664453b-5e88-4654-a67a-1c7fdbabb374">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Niveau]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="DPS1_P1" x="100" y="0" width="14" height="20" uuid="b926d9fc-eaf1-486e-96a0-8b6736af10d3">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.1" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DPS1_P1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="DPS1_P2" x="114" y="0" width="14" height="20" uuid="7af5ecb8-bee4-4d02-a319-80cdfb085b03"/>
+				<box>
+					<topPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.1" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DPS1_P2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="DPS2_P1" x="128" y="0" width="14" height="20" uuid="69434aca-d80a-4d97-854a-ec9864ad449e"/>
+				<box>
+					<topPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.1" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DPS2_P1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="DPS2_P2" x="142" y="0" width="14" height="20" uuid="b48a006b-862e-404c-b6a9-3ab180267296">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.1" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DPS2_P2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="DPS3_P1" x="156" y="0" width="14" height="20" uuid="6e257c26-cc26-41d6-8865-46406ea7de56"/>
+				<box>
+					<topPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.1" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DPS3_P1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="DPS3_P2" x="170" y="0" width="14" height="20" uuid="5cf03a00-7fca-4c1d-afdd-b3a444c01ea5"/>
+				<box>
+					<topPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.1" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DPS3_P2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="FR1_P1" x="184" y="0" width="14" height="20" uuid="230b7d39-c812-47f7-b248-007091bc69e3"/>
+				<box>
+					<topPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.1" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{FR1_P1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="FR1_P2" x="198" y="0" width="14" height="20" uuid="f7f01b0d-db8c-479c-98f8-14ff08306d01"/>
+				<box>
+					<topPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.1" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{FR1_P2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="FR2_P1" x="212" y="0" width="14" height="20" uuid="19810bad-acac-49ef-baf3-2f97d8dd495c"/>
+				<box>
+					<topPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.1" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{FR2_P1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="FR2_P2" x="226" y="0" width="14" height="20" uuid="2dd314bb-b673-4889-8205-449c97562ecc"/>
+				<box>
+					<topPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.1" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{FR2_P2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="FR3_P1" x="240" y="0" width="14" height="20" uuid="2c15883d-d247-44c2-a456-834f2e47887c"/>
+				<box>
+					<topPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.1" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{FR3_P1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="FR3_P2" x="254" y="0" width="14" height="20" uuid="29f138f1-265e-4d45-82ab-4d483805a036"/>
+				<box>
+					<topPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.1" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{FR3_P2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="FR4_P1" x="268" y="0" width="14" height="20" uuid="548191f8-5a43-46fd-8773-08b0ee7c47b9"/>
+				<box>
+					<topPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.1" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{FR4_P1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="FR4_P2" x="282" y="0" width="14" height="20" uuid="8adccbba-d9a0-4c56-b4d0-8436e32baf6e"/>
+				<box>
+					<topPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.1" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{FR4_P2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="FR5_P1" x="296" y="0" width="14" height="20" uuid="e343d2b0-8e36-4996-ba47-bac9b245688b"/>
+				<box>
+					<topPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.1" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{FR5_P1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="FR5_P2" x="310" y="0" width="14" height="20" uuid="c3ad1cc8-2645-447a-b92d-f93564c8b675"/>
+				<box>
+					<topPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.1" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{FR5_P2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="FR6_P1" x="324" y="0" width="14" height="20" uuid="a7ca8eda-d5fc-4822-b894-732444040c02"/>
+				<box>
+					<topPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.1" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{FR6_P1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="FR6_P2" x="338" y="0" width="14" height="20" uuid="860427cc-e311-4822-a63a-5d2924d780dd">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.1" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{FR6_P2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="FR7_P1" x="352" y="0" width="14" height="20" uuid="f80cbabf-8694-45ab-ae96-a5b50ad509ef"/>
+				<box>
+					<topPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.1" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{FR7_P1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="FR7_P2" x="366" y="0" width="14" height="20" uuid="b0341adf-7922-4a12-9d8e-dcbddccb9436">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.1" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{FR7_P2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="MAT1_P1" x="380" y="0" width="14" height="20" uuid="343fc322-f2bf-450d-914a-5b289cf815ce"/>
+				<box>
+					<topPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.1" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MAT1_P1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="MAT1_P2" x="394" y="0" width="14" height="20" uuid="10053f85-74b1-4d2a-ba70-7aef3d5bcfb6"/>
+				<box>
+					<topPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.1" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MAT1_P2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="MAT2_P1" x="408" y="0" width="14" height="20" uuid="2f9d0a1d-ca8a-4ced-b096-f0fcb98c5845"/>
+				<box>
+					<topPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.1" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MAT2_P1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="MAT2_P2" x="422" y="0" width="14" height="20" uuid="3ec4c06b-1d45-4c2f-9f29-8f4bb39543e7"/>
+				<box>
+					<topPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.1" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MAT2_P2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="MAT3_P1" x="436" y="0" width="14" height="20" uuid="29637290-ad1d-4b53-9e31-bda1428c22c4"/>
+				<box>
+					<topPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.1" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MAT3_P1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="MAT3_P2" x="450" y="0" width="14" height="20" uuid="a355539a-f420-4d8b-aac9-6e61eedbedff"/>
+				<box>
+					<topPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.1" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MAT3_P2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="MAT4_P1" x="464" y="0" width="14" height="20" uuid="d0832d3c-bdb6-4bbd-90f8-83c5ece88194"/>
+				<box>
+					<topPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.1" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MAT4_P1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="MAT4_P2" x="478" y="0" width="14" height="20" uuid="6b0402e9-19da-4496-aa41-241dded3952e"/>
+				<box>
+					<topPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.1" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MAT4_P2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="MAT5_P1" x="492" y="0" width="14" height="20" uuid="04025120-127f-4be4-99cd-9c7c1bf52fa3"/>
+				<box>
+					<topPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.1" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MAT5_P1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="MAT5_P2" x="506" y="0" width="14" height="20" uuid="adf632fb-5a30-43c2-ad77-72dbe2c8ad2e"/>
+				<box>
+					<topPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.1" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MAT5_P2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="MAT6_P1" x="520" y="0" width="14" height="20" uuid="16c53fa0-c94a-4068-bff3-1e837c8ea4f3"/>
+				<box>
+					<topPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.1" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MAT6_P1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="MAT6_P2" x="534" y="0" width="14" height="20" uuid="a79ad633-a7cf-4061-9858-f10b742b2958"/>
+				<box>
+					<topPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.1" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MAT6_P2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="MAT7_P1" x="548" y="0" width="14" height="20" uuid="006b9650-6812-4fae-a511-753423e693fa"/>
+				<box>
+					<topPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.1" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MAT7_P1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="" style="MAT7_P2" x="562" y="0" width="14" height="20" uuid="e2be0d4f-da69-423b-885c-39076dc5ea17"/>
+				<box>
+					<topPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.1" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MAT7_P2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Everything else" x="0" y="0" width="45" height="20" uuid="28344942-bef6-438b-ba44-53c22fd8893b">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.1" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SCHOOL_YEAR}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Everything else" x="45" y="0" width="30" height="20" uuid="e3cbf1da-0f7a-4497-a434-dc22fa4785e3">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.1" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ECOLE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement key="" style="Everything else" x="75" y="0" width="25" height="20" uuid="69016554-be5c-4e44-8e54-858fcef5fe6f">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.1" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{GRADE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

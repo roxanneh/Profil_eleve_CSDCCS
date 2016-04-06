@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.1.0.final using JasperReports Library version 6.1.0  -->
+<!-- 2015-07-24T15:24:29 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="assiduite_sec_drilldown" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="eff168c8-3744-4a29-96f4-837c123ebd8d">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="CSCFN TRIL"/>
+	<property name="ireport.jasperserver.url" value="https://rapports.franco-nord.ca/trilliumReports/"/>
+	<property name="ireport.jasperserver.user" value="superuser|CSCFN"/>
+	<property name="ireport.jasperserver.report.resource" value="/organizations/organization_1/CSCFN/Rox/Tests/assiduite_sec_drilldown_files/main_jrxml"/>
+	<property name="ireport.jasperserver.reportUnit" value="/organizations/organization_1/CSCFN/Rox/Tests/assiduite_sec_drilldown"/>
+	<parameter name="ACCOUNT_ID" class="java.lang.String"/>
+	<parameter name="SCHOOL_YEAR" class="java.lang.String"/>
+	<parameter name="MONTH" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT pa.SCHOOL_CODE, p.preferred_surname, p.preferred_first_name, class_code,
+        to_char(CALENDAR_DATE, 'dd/mon/yyyy') as calendar_date, pa.attendance_from_time, pa.attendance_to_time, 
+       pa.school_period, pa.reason_code, ac.ATTENDANCE_CODE_DESC_F as attendance_code, pa.explanation
+       
+FROM PERIOD_ATTENDANCE pa, attendance_codes ac, persons p
+
+WHERE pa.PERSON_ID =$P{ACCOUNT_ID} 
+and p.person_id = pa.person_id
+AND SCHOOL_CODE IN ('ESF', 'ESA', 'ESE')  --On compte seulement les absences prises durant le séjour élémentaire
+AND UPPER(SCHOOL_PERIOD) NOT IN ('DÎNER', 'DINER', 'ACCEUIL', 'ACC.') --On ne compte pas les absences prises durant le dîner, ou pendant l'acceuil/foyer
+and school_year =  replace($P{SCHOOL_YEAR} , '-')
+and pa.attendance_code = ac.attendance_code
+and pa.class_code is not null
+and pa.attendance_code <> 'L'
+and replace(lower(trim(to_char(calendar_date, 'mon'))), 'é', 'e') =  replace(lower(trim($P{MONTH})), 'é', 'e')
+order by to_date(calendar_date, 'dd/mm/yyyy') desc, school_period asc]]>
+	</queryString>
+	<field name="SCHOOL_CODE" class="java.lang.String"/>
+	<field name="PREFERRED_SURNAME" class="java.lang.String"/>
+	<field name="PREFERRED_FIRST_NAME" class="java.lang.String"/>
+	<field name="CLASS_CODE" class="java.lang.String"/>
+	<field name="CALENDAR_DATE" class="java.lang.String"/>
+	<field name="ATTENDANCE_FROM_TIME" class="java.lang.String"/>
+	<field name="ATTENDANCE_TO_TIME" class="java.lang.String"/>
+	<field name="SCHOOL_PERIOD" class="java.lang.String"/>
+	<field name="REASON_CODE" class="java.lang.String"/>
+	<field name="ATTENDANCE_CODE" class="java.lang.String"/>
+	<field name="EXPLANATION" class="java.lang.String"/>
+	<group name="Group1" keepTogether="true">
+		<groupExpression><![CDATA[$F{CALENDAR_DATE}]]></groupExpression>
+		<groupHeader>
+			<band height="30">
+				<textField>
+					<reportElement mode="Opaque" x="0" y="0" width="555" height="30" forecolor="#FFFFFF" backcolor="#149966" uuid="bf913fce-6e5f-4ffa-94ef-da616a462bfe">
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{CALENDAR_DATE}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="335" height="30" uuid="d667c62f-2a52-4c44-be6e-14c4a0e514b3"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Détail sur l'assiduité - absences au secondaire]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="365" y="0" width="190" height="30" forecolor="#9E9E9E" uuid="91cdb85b-d52c-48c1-94ec-019a56ddadf9"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{PREFERRED_SURNAME}+ ", " + $F{PREFERRED_FIRST_NAME}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="60" height="30" uuid="a646436a-3a60-41fc-ada1-7cc33385ca1a"/>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[École]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="60" y="0" width="60" height="30" uuid="215b589b-fdd5-4a4b-8218-d190241430b4"/>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[Abstent(e) de]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="120" y="0" width="60" height="30" uuid="b2741d55-a757-477b-9b2a-16e3d76913cb"/>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[à]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="180" y="0" width="40" height="30" uuid="c918b1b2-1d30-4c51-ad3e-02b4e3c9e258"/>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[Période]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="295" y="0" width="40" height="30" uuid="ac0c7029-40ed-4cf8-a9c5-242a0e1ae277"/>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[Raison]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="335" y="0" width="40" height="30" uuid="7152c21d-f36b-4e78-9680-991545645428"/>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[Type d'absence]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="220" y="0" width="75" height="30" uuid="f6854b8f-bed3-4ffd-b831-2f6750b5cf08"/>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[Cours]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="375" y="0" width="180" height="30" uuid="ec33b4c0-d5b3-4149-b758-ecc95146b93a"/>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[Expliquation]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="60" height="30" uuid="21347ffe-9887-41e8-8dd3-2484b5ba261c"/>
+				<box>
+					<topPen lineWidth="0.2" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.2" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.2" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.2" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SCHOOL_CODE}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="60" y="0" width="60" height="30" uuid="02a61dba-4143-4062-8e8c-56b1e3882334"/>
+				<box>
+					<topPen lineWidth="0.2" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.2" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.2" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.2" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ATTENDANCE_FROM_TIME}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="120" y="0" width="60" height="30" uuid="2dbc195c-0ef5-415f-8a98-7a06747b9861"/>
+				<box>
+					<topPen lineWidth="0.2" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.2" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.2" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.2" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ATTENDANCE_TO_TIME}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="180" y="0" width="40" height="30" uuid="c502aa96-5e4b-4565-8018-f0a83ceeddd0"/>
+				<box>
+					<topPen lineWidth="0.2" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.2" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.2" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.2" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SCHOOL_PERIOD}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="295" y="0" width="40" height="30" uuid="14de13be-8c1a-4799-8ed0-f67230dd1cf5"/>
+				<box>
+					<topPen lineWidth="0.2" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.2" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.2" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.2" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{REASON_CODE}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="335" y="0" width="40" height="30" uuid="86665cd5-7c26-444c-942f-bee7e84b9544"/>
+				<box>
+					<topPen lineWidth="0.2" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.2" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.2" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.2" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ATTENDANCE_CODE}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="220" y="0" width="75" height="30" uuid="2bc04731-77e9-49e7-a553-e50c46bd7890"/>
+				<box>
+					<topPen lineWidth="0.2" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.2" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.2" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.2" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CLASS_CODE}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="375" y="0" width="180" height="30" uuid="b1542d0e-36a0-4d42-9e3d-8d2d2144a942">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.2" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.2" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.2" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.2" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{EXPLANATION}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

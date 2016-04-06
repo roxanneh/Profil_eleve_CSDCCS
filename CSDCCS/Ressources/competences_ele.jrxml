@@ -1,0 +1,567 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.1.0.final using JasperReports Library version 6.1.0  -->
+<!-- 2015-12-04T12:10:52 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="COMPETANCES" pageWidth="320" pageHeight="802" columnWidth="320" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="a347432e-175b-4753-b578-d19c0bda5c45">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="CSCFN TRIL"/>
+	<style name="Everything else">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E8E8E8"/>
+		</conditionalStyle>
+	</style>
+	<style name="cc" mode="Opaque" isBlankWhenNull="true">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[OR(EXACT("2-", $F{MOY_CC}), EXACT("2", $F{MOY_CC}.toString()), EXACT("2+", $F{MOY_CC}.toString()))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FFFF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[OR(EXACT("1-", $F{MOY_CC}), EXACT("1", $F{MOY_CC}.toString()), EXACT("1+", $F{MOY_CC}.toString()))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#EDA979"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[EXACT("R", $F{MOY_CC})]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E05A58"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E8E8E8"/>
+		</conditionalStyle>
+	</style>
+	<style name="hp" mode="Opaque" isBlankWhenNull="true">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[OR(EXACT("2-", $F{MOY_HP}), EXACT("2", $F{MOY_HP}.toString()), EXACT("2+", $F{MOY_HP}.toString()))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FFFF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[OR(EXACT("1-", $F{MOY_HP}), EXACT("1", $F{MOY_HP}.toString()), EXACT("1+", $F{MOY_HP}.toString()))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#EDA979"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[EXACT("R", $F{MOY_HP})]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E05A58"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E8E8E8"/>
+		</conditionalStyle>
+	</style>
+	<style name="com" mode="Opaque" isBlankWhenNull="true">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[OR(EXACT("2-", $F{MOY_COM}), EXACT("2", $F{MOY_COM}.toString()), EXACT("2+", $F{MOY_COM}.toString()))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FFFF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[OR(EXACT("1-", $F{MOY_COM}), EXACT("1", $F{MOY_COM}.toString()), EXACT("1+", $F{MOY_COM}.toString()))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#EDA979"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[EXACT("R", $F{MOY_COM})]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E05A58"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E8E8E8"/>
+		</conditionalStyle>
+	</style>
+	<style name="ma" mode="Opaque" isBlankWhenNull="true">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[OR(EXACT("2-", $F{MOY_MA}), EXACT("2", $F{MOY_MA}.toString()), EXACT("2+", $F{MOY_MA}.toString()))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FFFF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[OR(EXACT("1-", $F{MOY_MA}), EXACT("1", $F{MOY_MA}.toString()), EXACT("1+", $F{MOY_MA}.toString()))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#EDA979"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[EXACT("R", $F{MOY_MA})]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E05A58"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E8E8E8"/>
+		</conditionalStyle>
+	</style>
+	<style name="CCFR" mode="Opaque" isBlankWhenNull="true">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[OR(EXACT("2-", $F{CC_FR}), EXACT("2", $F{CC_FR}.toString()), EXACT("2+", $F{CC_FR}.toString()))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FFFF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[OR(EXACT("1-", $F{CC_FR}), EXACT("1", $F{CC_FR}.toString()), EXACT("1+", $F{CC_FR}.toString()))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#EDA979"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[EXACT("R", $F{CC_FR})]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E05A58"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E8E8E8"/>
+		</conditionalStyle>
+	</style>
+	<style name="CCMATH" mode="Opaque" isBlankWhenNull="true">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[OR(EXACT("2-", $F{CC_MATH}), EXACT("2", $F{CC_MATH}.toString()), EXACT("2+", $F{CC_MATH}.toString()))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FFFF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[OR(EXACT("1-", $F{CC_MATH}), EXACT("1", $F{CC_MATH}.toString()), EXACT("1+", $F{CC_MATH}.toString()))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#EDA979"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[EXACT("R", $F{CC_MATH})]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E05A58"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E8E8E8"/>
+		</conditionalStyle>
+	</style>
+	<style name="HPFR" mode="Opaque" isBlankWhenNull="true">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[OR(EXACT("2-", $F{HP_FR}), EXACT("2", $F{HP_FR}.toString()), EXACT("2+", $F{HP_FR}.toString()))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FFFF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[OR(EXACT("1-", $F{HP_FR}), EXACT("1", $F{HP_FR}.toString()), EXACT("1+", $F{HP_FR}.toString()))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#EDA979"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[EXACT("R", $F{HP_FR})]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E05A58"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E8E8E8"/>
+		</conditionalStyle>
+	</style>
+	<style name="HPMATH" mode="Opaque" isBlankWhenNull="true">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[OR(EXACT("2-", $F{HP_MATH}), EXACT("2", $F{HP_MATH}.toString()), EXACT("2+", $F{HP_MATH}.toString()))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FFFF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[OR(EXACT("1-", $F{HP_MATH}), EXACT("1", $F{HP_MATH}.toString()), EXACT("1+", $F{HP_MATH}.toString()))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#EDA979"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[EXACT("R", $F{HP_MATH})]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E05A58"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E8E8E8"/>
+		</conditionalStyle>
+	</style>
+	<style name="COMFR" mode="Opaque" isBlankWhenNull="true">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[OR(EXACT("2-", $F{COM_FR}), EXACT("2", $F{COM_FR}.toString()), EXACT("2+", $F{COM_FR}.toString()))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FFFF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[OR(EXACT("1-", $F{COM_FR}), EXACT("1", $F{COM_FR}.toString()), EXACT("1+", $F{COM_FR}.toString()))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#EDA979"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[EXACT("R", $F{COM_FR})]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E05A58"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E8E8E8"/>
+		</conditionalStyle>
+	</style>
+	<style name="COMMATH" mode="Opaque" isBlankWhenNull="true">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[OR(EXACT("2-", $F{COM_MATH}), EXACT("2", $F{COM_MATH}.toString()), EXACT("2+", $F{COM_MATH}.toString()))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FFFF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[OR(EXACT("1-", $F{COM_MATH}), EXACT("1", $F{COM_MATH}.toString()), EXACT("1+", $F{COM_MATH}.toString()))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#EDA979"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[EXACT("R", $F{COM_MATH})]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E05A58"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E8E8E8"/>
+		</conditionalStyle>
+	</style>
+	<style name="MAFR" mode="Opaque" isBlankWhenNull="true">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[OR(EXACT("2-", $F{MA_FR}), EXACT("2", $F{MA_FR}.toString()), EXACT("2+", $F{MA_FR}.toString()))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FFFF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[OR(EXACT("1-", $F{MA_FR}), EXACT("1", $F{MA_FR}.toString()), EXACT("1+", $F{MA_FR}.toString()))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#EDA979"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[EXACT("R", $F{MA_FR})]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E05A58"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E8E8E8"/>
+		</conditionalStyle>
+	</style>
+	<style name="MAMATH" mode="Opaque" isBlankWhenNull="true">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[OR(EXACT("2-", $F{MA_MATH}), EXACT("2", $F{MA_MATH}.toString()), EXACT("2+", $F{MA_MATH}.toString()))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FFFF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[OR(EXACT("1-", $F{MA_MATH}), EXACT("1", $F{MA_MATH}.toString()), EXACT("1+", $F{MA_MATH}.toString()))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#EDA979"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[EXACT("R", $F{MA_MATH})]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E05A58"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E8E8E8"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="ACCOUNT_ID" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[/********Select * from afin de pouvoir mettre les strands en ordre********/
+select * from ((SELECT DISTINCT M_MEMBRE_ID, M_ECOLE, regexp_replace(M_ANNEESCOLAIRE, '(\w{4})(\w{4})', '\1-\2') M_ANNEESCOLAIRE, 
+
+M_PERIODE_REF, GRADE, STRAND_DESCRIPTION_F,
+
+PKG_PROFILE_ÉLÈVE.GET_MOY_COMP_ELE(M_MEMBRE_ID, M_ECOLE, M_ANNEESCOLAIRE, M_PERIODE_REF, M_SUBJECT_CODE, 1, M_STRAND_CODE, GRADE) AS MOY_CC,
+PKG_PROFILE_ÉLÈVE.GET_MOY_COMP_ELE(M_MEMBRE_ID, M_ECOLE, M_ANNEESCOLAIRE, M_PERIODE_REF, M_SUBJECT_CODE, 2, M_STRAND_CODE, GRADE) AS MOY_HP,
+PKG_PROFILE_ÉLÈVE.GET_MOY_COMP_ELE(M_MEMBRE_ID, M_ECOLE, M_ANNEESCOLAIRE, M_PERIODE_REF, M_SUBJECT_CODE, 3, M_STRAND_CODE, GRADE) AS MOY_COM,
+PKG_PROFILE_ÉLÈVE.GET_MOY_COMP_ELE(M_MEMBRE_ID, M_ECOLE, M_ANNEESCOLAIRE, M_PERIODE_REF, M_SUBJECT_CODE, 4, M_STRAND_CODE, GRADE) AS MOY_MA
+
+
+FROM ATELIER.SP_ELEVES_RESULTATS, STUDENT_REGISTRATIONS, STRAND, ATELIER.SP_EVALUATIONS
+
+WHERE M_MEMBRE_ID =  $P{ACCOUNT_ID} 
+AND PERSON_ID = M_MEMBRE_ID
+AND M_ECOLE = SCHOOL_CODE
+AND M_ANNEESCOLAIRE = SCHOOL_YEAR
+AND M_STRAND_CODE = STRAND_CODE
+AND M_STRAND_CODE IN ('001', '002', '003', '013', '015', '020', '021', '022', '023', '024', '')
+AND M_ECOLE NOT IN ('ESA', 'ESF', 'ESE')
+AND SCHOOL_CODE NOT IN ('ESA', 'ESF', 'ESE')
+AND M_A_QUITTE != 'O' 
+
+/****  Ne pas inclure les périodes des rapports qui n'ont pas encore d'évaluations *****/
+AND E_ECOLE = M_ECOLE
+AND E_ANNEESCOLAIRE = M_ANNEESCOLAIRE
+AND E_CLASSE_CODE = M_CLASSE_CODE
+AND E_CODECOURS = M_CODECOURS
+AND E_PERIODE_REF = M_PERIODE_REF
+AND E_SUBJECT_CODE = M_SUBJECT_CODE
+AND E_STRAND_CODE = M_STRAND_CODE
+AND E_STRAND_CODE IN ('001', '002', '003', '013', '015', '020', '021', '022', '023', '024', '')
+)
+
+/*******UNION SUR LA TABLES DES PÉRIODES 'P' POUR LE FRANÇAIS**********/
+union
+
+(select  M_MEMBRE_ID, M_ECOLE, regexp_replace(M_ANNEESCOLAIRE, '(\w{4})(\w{4})', '\1-\2') M_ANNEESCOLAIRE, CASE when M_periode_ref in ('I', 'F') then 'P' end as M_periode_ref, GRADE,
+case when STRAND_DESCRIPTION_F IN ('Communication orale') 
+                                OR STRAND_DESCRIPTION_F IN ('Écriture') 
+                                OR STRAND_DESCRIPTION_F IN ('Lecture') 
+                               THEN 'Français' end as STRAND_DESCRIPTION_F,
+
+PKG_PROFILE_ÉLÈVE.GET_MOY_COMP_ELE_P(M_MEMBRE_ID, M_ECOLE, M_ANNEESCOLAIRE, '009', 1) AS MOY_CC,
+PKG_PROFILE_ÉLÈVE.GET_MOY_COMP_ELE_P(M_MEMBRE_ID, M_ECOLE, M_ANNEESCOLAIRE, '009', 2) AS MOY_HP,
+PKG_PROFILE_ÉLÈVE.GET_MOY_COMP_ELE_P(M_MEMBRE_ID, M_ECOLE, M_ANNEESCOLAIRE, '009', 3) AS MOY_COM,
+PKG_PROFILE_ÉLÈVE.GET_MOY_COMP_ELE_P(M_MEMBRE_ID, M_ECOLE, M_ANNEESCOLAIRE, '009', 4) AS MOY_MA
+
+FROM ATELIER.SP_ELEVES_RESULTATS, STUDENT_REGISTRATIONS, STRAND
+
+WHERE M_MEMBRE_ID = $P{ACCOUNT_ID} 
+AND PERSON_ID = M_MEMBRE_ID
+AND M_ECOLE = SCHOOL_CODE
+AND M_ANNEESCOLAIRE = SCHOOL_YEAR
+AND M_STRAND_CODE = STRAND_CODE
+AND M_STRAND_CODE IN ('001', '002', '003')
+AND M_ECOLE NOT IN ('ESA', 'ESF', 'ESE')
+AND SCHOOL_CODE NOT IN ('ESA', 'ESF', 'ESE')
+AND M_A_QUITTE != 'O' 
+
+/*******UNION SUR LA TABLES DES PÉRIODES 'P' POUR MATHS**********/
+union
+
+select DISTINCT  M_MEMBRE_ID, M_ECOLE, regexp_replace(M_ANNEESCOLAIRE, '(\w{4})(\w{4})', '\1-\2') M_ANNEESCOLAIRE, CASE when M_periode_ref in ('I', 'F') then 'P' end as M_periode_ref, GRADE,
+case when STRAND_DESCRIPTION_F IN (q'[Géométrie et sens de l'espace]') 
+                                OR STRAND_DESCRIPTION_F IN ('Mesure')  
+                                OR STRAND_DESCRIPTION_F IN ('Modélisation et algèbre')
+                                OR STRAND_DESCRIPTION_F IN ('Numération et sens du nombre')
+                                OR STRAND_DESCRIPTION_F IN ('Traitement des données et probabilités')
+                               THEN 'Mathématiques' end as STRAND_DESCRIPTION_F,
+
+PKG_PROFILE_ÉLÈVE.GET_MOY_COMP_ELE_P(M_MEMBRE_ID, M_ECOLE, M_ANNEESCOLAIRE, '9999000000030', 1) AS MOY_CC,
+PKG_PROFILE_ÉLÈVE.GET_MOY_COMP_ELE_P(M_MEMBRE_ID, M_ECOLE, M_ANNEESCOLAIRE, '9999000000030', 2) AS MOY_HP,
+PKG_PROFILE_ÉLÈVE.GET_MOY_COMP_ELE_P(M_MEMBRE_ID, M_ECOLE, M_ANNEESCOLAIRE, '9999000000030', 3) AS MOY_COM,
+PKG_PROFILE_ÉLÈVE.GET_MOY_COMP_ELE_P(M_MEMBRE_ID, M_ECOLE, M_ANNEESCOLAIRE, '9999000000030', 4) AS MOY_MA
+
+FROM ATELIER.SP_ELEVES_RESULTATS, STUDENT_REGISTRATIONS, STRAND
+
+WHERE M_MEMBRE_ID = $P{ACCOUNT_ID} 
+AND PERSON_ID = M_MEMBRE_ID
+AND M_ECOLE = SCHOOL_CODE
+AND M_ANNEESCOLAIRE = SCHOOL_YEAR
+AND M_STRAND_CODE = STRAND_CODE
+AND M_STRAND_CODE IN ('020', '021', '022', '023', '019')
+AND M_ECOLE NOT IN ('ESA', 'ESF', 'ESE')
+AND SCHOOL_CODE NOT IN ('ESA', 'ESF', 'ESE')
+AND M_A_QUITTE != 'O' 
+))
+order by m_anneescolaire desc, case when STRAND_DESCRIPTION_F IN ('Français') then 0
+                        when STRAND_DESCRIPTION_F IN ('Communication orale') then 1
+                                                                    when STRAND_DESCRIPTION_F IN ('Écriture') then 2
+                                                                    when STRAND_DESCRIPTION_F IN ('Lecture') then 3
+                                                                    when STRAND_DESCRIPTION_F IN ('Mathématiques') then 4
+                                                                    when STRAND_DESCRIPTION_F IN (q'[Géométrie et sens de l'espace]') then 5
+                                                                    when STRAND_DESCRIPTION_F IN ('Mesure') then 6
+                                                                    when STRAND_DESCRIPTION_F IN ('Modélisation et algèbre') then 7
+                                                                    when STRAND_DESCRIPTION_F IN ('Numération et sens du nombre') then 8
+                                                                    when STRAND_DESCRIPTION_F IN ('Traitement des données et probabilités') then 9
+                                                                    else 8
+                                                                end asc, M_PERIODE_REF desc]]>
+	</queryString>
+	<field name="M_MEMBRE_ID" class="java.lang.String"/>
+	<field name="M_ECOLE" class="java.lang.String"/>
+	<field name="M_ANNEESCOLAIRE" class="java.lang.String"/>
+	<field name="M_PERIODE_REF" class="java.lang.String"/>
+	<field name="GRADE" class="java.lang.String"/>
+	<field name="STRAND_DESCRIPTION_F" class="java.lang.String"/>
+	<field name="MOY_CC" class="java.lang.String"/>
+	<field name="MOY_HP" class="java.lang.String"/>
+	<field name="MOY_COM" class="java.lang.String"/>
+	<field name="MOY_MA" class="java.lang.String"/>
+	<group name="Group1" keepTogether="true">
+		<groupExpression><![CDATA[$F{M_ANNEESCOLAIRE}]]></groupExpression>
+		<groupHeader>
+			<band height="30">
+				<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
+				<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				<textField>
+					<reportElement key="" mode="Opaque" x="0" y="0" width="320" height="30" forecolor="#FFFFFF" backcolor="#149966" uuid="a6a5eaaa-0b13-4056-bd0b-62840bf9ecdd">
+						<property name="local_mesure_unitheight" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="0.2"/>
+						<leftPen lineWidth="0.2"/>
+						<bottomPen lineWidth="0.2"/>
+						<rightPen lineWidth="0.2"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="10" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{M_ANNEESCOLAIRE}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="60">
+			<staticText>
+				<reportElement x="0" y="10" width="310" height="20" uuid="8a1dc61c-4498-47b8-97ab-7db791ebb6b2"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Moyenne des compétences à l'élémentaire]]></text>
+			</staticText>
+			<textField hyperlinkType="ReportExecution" hyperlinkTarget="Blank">
+				<reportElement x="0" y="30" width="320" height="30" uuid="5d77c197-11ae-4cc7-8e27-cd69c1662dc0"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Cliquez ici pour voir ce tableau en format horizontal."]]></textFieldExpression>
+				<hyperlinkParameter name="_report">
+					<hyperlinkParameterExpression><![CDATA["repo:/Ressources_CSCFN/Drilldowns/Rox/Moyenne_comp_parannee"]]></hyperlinkParameterExpression>
+				</hyperlinkParameter>
+				<hyperlinkParameter name="ACCOUNT_ID">
+					<hyperlinkParameterExpression><![CDATA[$P{ACCOUNT_ID}]]></hyperlinkParameterExpression>
+				</hyperlinkParameter>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="120" y="0" width="50" height="20" uuid="f06003fe-6599-4073-abf2-49e759aaa748"/>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[CC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="220" y="0" width="50" height="20" uuid="399facba-6917-4c1a-98f3-49141d0bbe51"/>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[COM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="90" height="20" uuid="c91faba4-23ca-4ec5-a9cc-2ef07f286298"/>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[Sujet]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="270" y="0" width="50" height="20" uuid="7d36a5bd-051f-44c5-8dad-8c31b022b9ad"/>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[MA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="170" y="0" width="50" height="20" uuid="7db0d27f-a2d0-47ee-bb8c-af75be4cf01e"/>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[HP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="90" y="0" width="30" height="20" uuid="55fe6f9e-3abe-4cdd-984f-02519e0d406d"/>
+				<box padding="2">
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="5"/>
+				</textElement>
+				<text><![CDATA[Période de rapport]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement style="cc" x="120" y="0" width="50" height="20" uuid="732db98a-e86a-473d-9a9e-feb0286af657"/>
+				<box>
+					<topPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.1" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MOY_CC}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="hp" x="170" y="0" width="50" height="20" uuid="8b72319c-e008-4fd8-9d00-d13f636d10fc"/>
+				<box>
+					<topPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.1" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MOY_HP}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="com" x="220" y="0" width="50" height="20" uuid="ca634284-34fd-4db9-a71d-db27d3bae0cb"/>
+				<box>
+					<topPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.1" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MOY_COM}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="ma" x="270" y="0" width="50" height="20" uuid="a71d9bab-7afb-48f7-bb40-c4703b1f118d"/>
+				<box>
+					<topPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.1" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MOY_MA}]]></textFieldExpression>
+			</textField>
+			<textField hyperlinkType="ReportExecution" hyperlinkTarget="Blank">
+				<reportElement style="Everything else" x="0" y="0" width="90" height="20" uuid="3518d7e8-ea91-4110-8f8f-983888acfc4f"/>
+				<box leftPadding="5" rightPadding="5">
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{STRAND_DESCRIPTION_F}]]></textFieldExpression>
+				<hyperlinkParameter name="_report">
+					<hyperlinkParameterExpression><![CDATA["repo:/Ressources_CSCFN/Drilldowns/Rox/competence_drilldown_ele"]]></hyperlinkParameterExpression>
+				</hyperlinkParameter>
+				<hyperlinkParameter name="ACCOUNT_ID">
+					<hyperlinkParameterExpression><![CDATA[$F{M_MEMBRE_ID}]]></hyperlinkParameterExpression>
+				</hyperlinkParameter>
+				<hyperlinkParameter name="STRAND">
+					<hyperlinkParameterExpression><![CDATA[SUBSTITUTE(LOWER($F{STRAND_DESCRIPTION_F}), "é", "e")]]></hyperlinkParameterExpression>
+				</hyperlinkParameter>
+				<hyperlinkParameter name="SCHOOL_YEAR">
+					<hyperlinkParameterExpression><![CDATA[$F{M_ANNEESCOLAIRE}]]></hyperlinkParameterExpression>
+				</hyperlinkParameter>
+			</textField>
+			<textField>
+				<reportElement x="90" y="0" width="30" height="20" uuid="975ca3ec-b9a4-4b72-b278-b30191e8c37c"/>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{M_PERIODE_REF}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.1.0.final using JasperReports Library version 6.1.0  -->
+<!-- 2015-10-02T09:40:58 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="competances_sec" pageWidth="300" pageHeight="802" columnWidth="300" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="540d7451-c853-487a-a9d7-6d01b3671025">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="CSCFN TRIL"/>
+	<style name="Everything else">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E8E8E8"/>
+		</conditionalStyle>
+	</style>
+	<style name="cc" mode="Opaque" isBlankWhenNull="true">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[AND((60.0 <= DOUBLE_VALUE($F{CC}.toString())), (70.0 > DOUBLE_VALUE($F{CC}.toString())))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FFFF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[AND((50.0 <= DOUBLE_VALUE($F{CC}.toString())), (60.0 > DOUBLE_VALUE($F{CC}.toString())))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#EDA979"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[AND((0.0 <= DOUBLE_VALUE($F{CC}.toString())), (49.99 >= DOUBLE_VALUE($F{CC}.toString())))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E05A58"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E8E8E8"/>
+		</conditionalStyle>
+	</style>
+	<style name="hp" mode="Opaque" isBlankWhenNull="true">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[AND((60.0 <= DOUBLE_VALUE($F{HP}.toString())), (70.0 > DOUBLE_VALUE($F{HP}.toString())))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FFFF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[AND((50.0 <= DOUBLE_VALUE($F{HP}.toString())), (60.0 > DOUBLE_VALUE($F{HP}.toString())))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#EDA979"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[AND((0.0 <= DOUBLE_VALUE($F{HP}.toString())), (49.99 >= DOUBLE_VALUE($F{HP}.toString())))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E05A58"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E8E8E8"/>
+		</conditionalStyle>
+	</style>
+	<style name="com" mode="Opaque" isBlankWhenNull="true">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[AND((60.0 <= DOUBLE_VALUE($F{COM}.toString())), (70.0 > DOUBLE_VALUE($F{COM}.toString())))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FFFF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[AND((50.0 <= DOUBLE_VALUE($F{COM}.toString())), (60.0 > DOUBLE_VALUE($F{COM}.toString())))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#EDA979"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[AND((0.0 <= DOUBLE_VALUE($F{COM}.toString())), (49.99 >= DOUBLE_VALUE($F{COM}.toString())))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E05A58"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E8E8E8"/>
+		</conditionalStyle>
+	</style>
+	<style name="ma" mode="Opaque" isBlankWhenNull="true">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[AND((60.0 <= DOUBLE_VALUE($F{MA}.toString())), (70.0 > DOUBLE_VALUE($F{MA}.toString())))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FFFF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[AND((50.0 <= DOUBLE_VALUE($F{MA}.toString())), (60.0 > DOUBLE_VALUE($F{MA}.toString())))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#EDA979"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[AND((0.0 <= DOUBLE_VALUE($F{MA}.toString())), (49.99 >= DOUBLE_VALUE($F{MA}.toString())))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E05A58"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E8E8E8"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="ACCOUNT_ID" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[select E_ECOLE,  regexp_replace(E_ANNEESCOLAIRE, '(\w{4})(\w{4})', '\1-\2') E_ANNEESCOLAIRE, E_CODECOURS || chr(10) || course_title as  E_CODECOURS, SEMESTER, N_MEMBRE_ID,
+PKG_PROFILE_ÉLÈVE.GET_MOY_COMP_SEC(N_MEMBRE_ID, E_ECOLE, E_ANNEESCOLAIRE, E_PERIODE_REF, E_CODECOURS, E_CLASSE_CODE, '1', E_STRAND_CODE) AS CC,
+PKG_PROFILE_ÉLÈVE.GET_MOY_COMP_SEC(N_MEMBRE_ID, E_ECOLE, E_ANNEESCOLAIRE, E_PERIODE_REF, E_CODECOURS, E_CLASSE_CODE, '2', E_STRAND_CODE) AS HP,
+PKG_PROFILE_ÉLÈVE.GET_MOY_COMP_SEC(N_MEMBRE_ID, E_ECOLE, E_ANNEESCOLAIRE, E_PERIODE_REF, E_CODECOURS, E_CLASSE_CODE, '3', E_STRAND_CODE) AS COM,
+PKG_PROFILE_ÉLÈVE.GET_MOY_COMP_SEC(N_MEMBRE_ID, E_ECOLE, E_ANNEESCOLAIRE, E_PERIODE_REF, E_CODECOURS, E_CLASSE_CODE, '4', E_STRAND_CODE) AS MA
+FROM ATELIER.SP_EVALUATIONS, ATELIER.SP_NOTES, SCHOOL_SEMESTERS, course_codes cc
+WHERE N_MEMBRE_ID =   $P{ACCOUNT_ID}
+AND E_ECOLE IN ('ESA', 'ESE', 'ESF')
+AND E_EVALUATION_ID = N_EVALUATION_ID
+AND school_semesters.SCHOOL_CODE = E_ECOLE
+AND school_semesters.SCHOOL_YEAR = E_ANNEESCOLAIRE
+AND E_DATE BETWEEN SEMESTER_START AND SEMESTER_END
+and E_CODECOURS like cc.course_code
+and cc.school_code = E_ECOLE
+and cc.school_year = E_ANNEESCOLAIRE
+GROUP BY E_ECOLE, E_ANNEESCOLAIRE, E_CODECOURS, N_MEMBRE_ID, E_PERIODE_REF, E_CLASSE_CODE, E_STRAND_CODE, SEMESTER,  course_title
+ORDER BY E_ANNEESCOLAIRE DESC, SEMESTER ASC, case when (e_codecours like 'FRA%' 
+                                                                   or e_codecours like 'FLC%'
+                                                                   or e_codecours like 'FFP%'
+                                                                   or e_codecours like 'FFM%'    
+                                                                   or e_codecours like 'FFA%')    then 1
+                                                              when (e_codecours like 'MPM%' 
+                                                                     or e_codecours like 'MFM%' 
+                                                                     or e_codecours like 'MEL%'
+                                                                     or e_codecours like 'MDM%'
+                                                                     or e_codecours like 'MCT%'
+                                                                     or e_codecours like 'MBF%'
+                                                                     or e_codecours like 'MAT%'
+                                                                     or e_codecours like 'MAP%') then 2
+                                                            else 3
+                                                            end]]>
+	</queryString>
+	<field name="E_ECOLE" class="java.lang.String"/>
+	<field name="E_ANNEESCOLAIRE" class="java.lang.String"/>
+	<field name="E_CODECOURS" class="java.lang.String"/>
+	<field name="SEMESTER" class="java.lang.String"/>
+	<field name="N_MEMBRE_ID" class="java.lang.String"/>
+	<field name="CC" class="java.math.BigDecimal"/>
+	<field name="HP" class="java.math.BigDecimal"/>
+	<field name="COM" class="java.math.BigDecimal"/>
+	<field name="MA" class="java.math.BigDecimal"/>
+	<group name="Group1">
+		<groupExpression><![CDATA[$F{E_ANNEESCOLAIRE}]]></groupExpression>
+		<groupHeader>
+			<band height="25">
+				<textField isBlankWhenNull="true">
+					<reportElement mode="Opaque" x="0" y="0" width="300" height="25" forecolor="#FFFFFF" backcolor="#149966" uuid="88726cbf-9948-41e2-a834-87ec48991cd2">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="0.2"/>
+						<leftPen lineWidth="0.2"/>
+						<bottomPen lineWidth="0.2"/>
+						<rightPen lineWidth="0.2"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Tahoma" size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{E_ANNEESCOLAIRE}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="67" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="37" width="110" height="30" uuid="6843df30-aef0-495c-a727-48b092945e15"/>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[Code du cours]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="17" width="300" height="20" uuid="a8dfd190-03ab-40f3-a333-a33d2d32b12a"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Moyenne des compétences au secondaire]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="37" width="30" height="30" uuid="26c2dfa4-b5f9-4aac-af92-80e70435e326"/>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="5"/>
+				</textElement>
+				<text><![CDATA[Semestre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="220" y="37" width="40" height="30" uuid="896abf9c-c7a4-4a9f-8ae4-2d3d42d9fc3c"/>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[COM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="140" y="37" width="40" height="30" uuid="7d42471e-5931-4ef3-9035-4cda9ace44aa"/>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[CC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="260" y="37" width="40" height="30" uuid="7ef8d14e-a3ab-4402-a6a4-e1b0f2083195"/>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[MA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="180" y="37" width="40" height="30" uuid="716f9c97-6c7e-4431-8529-c101bfce8e6a"/>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[HP]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="25" splitType="Stretch">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true" hyperlinkType="ReportExecution" hyperlinkTarget="Blank">
+				<reportElement style="Everything else" x="0" y="0" width="110" height="25" uuid="4235bb17-7693-44fc-8924-8e41947d9b11">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box padding="5">
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{E_CODECOURS}]]></textFieldExpression>
+				<hyperlinkParameter name="_report">
+					<hyperlinkParameterExpression><![CDATA["repo:/Ressources_CSCFN/Drilldowns/Rox/competence_drilldown_sec"]]></hyperlinkParameterExpression>
+				</hyperlinkParameter>
+				<hyperlinkParameter name="ACCOUNT_ID">
+					<hyperlinkParameterExpression><![CDATA[$F{N_MEMBRE_ID}]]></hyperlinkParameterExpression>
+				</hyperlinkParameter>
+				<hyperlinkParameter name="SCHOOL_YEAR">
+					<hyperlinkParameterExpression><![CDATA[$F{E_ANNEESCOLAIRE}]]></hyperlinkParameterExpression>
+				</hyperlinkParameter>
+				<hyperlinkParameter name="COURSE_CODE">
+					<hyperlinkParameterExpression><![CDATA[$F{E_CODECOURS}.substring(0, 6)]]></hyperlinkParameterExpression>
+				</hyperlinkParameter>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="cc" stretchType="RelativeToBandHeight" x="140" y="0" width="40" height="25" uuid="633a9a01-a5d2-4b81-a71d-3fde3bed51cd">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.1" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CC}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="hp" stretchType="RelativeToBandHeight" x="180" y="0" width="40" height="25" uuid="826c89b7-bc77-4b1a-b25a-d6c862f0d668">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.1" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{HP}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="com" stretchType="RelativeToBandHeight" x="220" y="0" width="40" height="25" uuid="02d1dc11-9359-45e6-9405-baaae48761fb">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.1" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{COM}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="" style="ma" stretchType="RelativeToBandHeight" x="260" y="0" width="40" height="25" uuid="8d5f9230-d9b7-4f6a-8e40-6e4e08fb7b16">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<leftPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<bottomPen lineWidth="0.1" lineColor="#A3A3A3"/>
+					<rightPen lineWidth="0.1" lineColor="#A3A3A3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Everything else" stretchType="RelativeToBandHeight" x="110" y="0" width="30" height="25" uuid="850660e8-633b-4555-8f8d-ba99d47052e3"/>
+				<box>
+					<topPen lineWidth="0.2"/>
+					<leftPen lineWidth="0.2"/>
+					<bottomPen lineWidth="0.2"/>
+					<rightPen lineWidth="0.2"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SEMESTER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

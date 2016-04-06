@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.1.0.final using JasperReports Library version 6.1.0  -->
+<!-- 2015-10-30T10:33:39 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="GET_PGC_INFO" pageWidth="574" pageHeight="752" columnWidth="574" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="3e488f48-30a1-4105-b774-2a8baea44abf">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="CSCFN TRIL"/>
+	<parameter name="ACCOUNT_ID" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT PREFERRED_SURNAME || ', ' || PREFERRED_FIRST_NAME as pgc_name, P.person_id, relationship_type_name_f,
+       PKG_PROFILE_ÉLÈVE.GET_ADDRESS(CONTACT_PERSON_ID) AS ADDRESS, 
+       regexp_replace(PKG_PROFILE_ÉLÈVE.get_PERSON_PHONE_HOME (contact_person_id, SYSDATE ), '(\S{8})(\w{4})', '\1-\2') as phone,
+       PKG_PROFILE_ÉLÈVE.get_pgc_address_email (contact_person_id, SYSDATE ) as email, 
+       PKG_PROFILE_ÉLÈVE.GET_MATERNAL_LANG(CONTACT_PERSON_ID) "Langue maternelle" 
+FROM PERSONS P, STUDENT_CONTACTS SC, relationship_types rt
+WHERE P.PERSON_ID = CONTACT_PERSON_ID
+AND STUDENT_PERSON_ID = $P{ACCOUNT_ID}
+AND sysdate BETWEEN SC.START_DATE AND NVL(SC.END_DATE, SYSDATE+1)
+and lower(access_to_records_flag) = 'x'
+and rt.relationship_type_name = sc.relationship_type_name]]>
+	</queryString>
+	<field name="PGC_NAME" class="java.lang.String"/>
+	<field name="PERSON_ID" class="java.lang.String"/>
+	<field name="RELATIONSHIP_TYPE_NAME_F" class="java.lang.String"/>
+	<field name="ADDRESS" class="java.lang.String"/>
+	<field name="PHONE" class="java.lang.String"/>
+	<field name="EMAIL" class="java.lang.String"/>
+	<field name="Langue maternelle" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<summary>
+		<band height="10" splitType="Stretch">
+			<crosstab horizontalPosition="Center">
+				<reportElement x="1" y="0" width="574" height="10" uuid="67d84d51-a28f-420f-9ff8-1774c6bbb015">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<rowGroup name="EMAIL1" width="1">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[1]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents mode="Opaque">
+							<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents>
+							<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+						</cellContents>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<columnGroup name="RELATIONSHIP_TYPE_NAME_F1" height="10">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{RELATIONSHIP_TYPE_NAME_F}]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents mode="Opaque">
+							<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+							<box>
+								<pen lineWidth="0.0"/>
+							</box>
+							<textField>
+								<reportElement x="80" y="0" width="119" height="10" uuid="087645b1-5ef6-4d3e-937b-ada968d62d26">
+									<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+									<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+									<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+								</reportElement>
+								<box>
+									<topPen lineWidth="0.0"/>
+									<leftPen lineWidth="0.0"/>
+									<bottomPen lineWidth="0.0"/>
+									<rightPen lineWidth="0.0"/>
+								</box>
+								<textElement verticalAlignment="Middle">
+									<font fontName="Tahoma" size="6" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{RELATIONSHIP_TYPE_NAME_F1}]]></textFieldExpression>
+							</textField>
+							<staticText>
+								<reportElement x="0" y="0" width="70" height="10" uuid="1ea3f664-a090-4496-be9e-96a732edbd57">
+									<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+									<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+								</reportElement>
+								<box>
+									<topPen lineWidth="0.0"/>
+									<leftPen lineWidth="0.0"/>
+									<bottomPen lineWidth="0.0"/>
+									<rightPen lineWidth="0.0"/>
+								</box>
+								<textElement textAlignment="Right" verticalAlignment="Middle">
+									<font fontName="Tahoma" size="6"/>
+								</textElement>
+								<text><![CDATA[Lien avec l'élève]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents>
+							<staticText>
+								<reportElement x="0" y="0" width="-2147483648" height="-2147483648" uuid="df36e5f3-ba74-41d1-a23d-552c62dc456c"/>
+								<text><![CDATA[Total RELATIONSHIP_TYPE_NAME_F1]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<columnGroup name="PGC_NAME1" height="10">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{PGC_NAME}]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents mode="Opaque">
+							<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+							<textField>
+								<reportElement x="80" y="0" width="119" height="10" uuid="f88b1fc7-ab4b-477c-b80a-e15f320e8213">
+									<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+								</reportElement>
+								<box>
+									<topPen lineWidth="0.0"/>
+									<leftPen lineWidth="0.0"/>
+									<bottomPen lineWidth="0.0"/>
+									<rightPen lineWidth="0.0"/>
+								</box>
+								<textElement verticalAlignment="Middle">
+									<font fontName="Tahoma" size="6" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{PGC_NAME1}]]></textFieldExpression>
+							</textField>
+							<staticText>
+								<reportElement x="0" y="0" width="70" height="10" uuid="b0fb067b-6669-4117-8768-3b8202ddf57c">
+									<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+									<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+								</reportElement>
+								<box>
+									<topPen lineWidth="0.0"/>
+									<leftPen lineWidth="0.0"/>
+									<bottomPen lineWidth="0.0"/>
+									<rightPen lineWidth="0.0"/>
+								</box>
+								<textElement textAlignment="Right" verticalAlignment="Middle">
+									<font fontName="Tahoma" size="6"/>
+								</textElement>
+								<text><![CDATA[Nom du contact]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents>
+							<staticText>
+								<reportElement x="0" y="0" width="-2147483648" height="-2147483648" uuid="19541e2f-b2e4-4ef2-8315-f65e0d169a2b"/>
+								<text><![CDATA[Total PGC_NAME1]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<measure name="ADDRESS_MEASURE1" class="java.lang.String">
+					<measureExpression><![CDATA[$F{ADDRESS}]]></measureExpression>
+				</measure>
+				<measure name="PHONE_MEASURE1" class="java.lang.String">
+					<measureExpression><![CDATA[$F{PHONE}]]></measureExpression>
+				</measure>
+				<measure name="EMAIL_MEASURE1" class="java.lang.String">
+					<measureExpression><![CDATA[$F{EMAIL}]]></measureExpression>
+				</measure>
+				<measure name="Langue maternelle_MEASURE1" class="java.lang.String">
+					<measureExpression><![CDATA[$F{Langue maternelle}]]></measureExpression>
+				</measure>
+				<crosstabCell width="199" height="40">
+					<cellContents mode="Opaque">
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+						<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+							<reportElement x="80" y="30" width="119" height="10" isRemoveLineWhenBlank="true" uuid="8f39f269-d60a-4c7e-a930-ec16bbc7bf25">
+								<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+								<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+							</reportElement>
+							<box>
+								<topPen lineWidth="0.0"/>
+								<leftPen lineWidth="0.0"/>
+								<bottomPen lineWidth="0.0"/>
+								<rightPen lineWidth="0.0"/>
+							</box>
+							<textElement verticalAlignment="Middle">
+								<font fontName="Tahoma" size="6" isBold="true"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{ADDRESS_MEASURE1}]]></textFieldExpression>
+						</textField>
+						<textField isBlankWhenNull="true">
+							<reportElement x="80" y="10" width="119" height="10" isRemoveLineWhenBlank="true" uuid="d3d5baf4-ce2e-4622-acc4-db5ee5d5f945">
+								<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+							</reportElement>
+							<box>
+								<topPen lineWidth="0.0"/>
+								<leftPen lineWidth="0.0"/>
+								<bottomPen lineWidth="0.0"/>
+								<rightPen lineWidth="0.0"/>
+							</box>
+							<textElement verticalAlignment="Middle">
+								<font fontName="Tahoma" size="6" isBold="true"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{PHONE_MEASURE1}]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+							<reportElement x="80" y="20" width="119" height="10" isRemoveLineWhenBlank="true" uuid="55c0c55a-9c74-4e61-8ec4-8c52396eb80f">
+								<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+								<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+							</reportElement>
+							<box>
+								<topPen lineWidth="0.0"/>
+								<leftPen lineWidth="0.0"/>
+								<bottomPen lineWidth="0.0"/>
+								<rightPen lineWidth="0.0"/>
+							</box>
+							<textElement verticalAlignment="Middle">
+								<font fontName="Tahoma" size="6" isBold="true"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{EMAIL_MEASURE1}]]></textFieldExpression>
+						</textField>
+						<textField isBlankWhenNull="true">
+							<reportElement x="80" y="0" width="119" height="10" isRemoveLineWhenBlank="true" uuid="194cc086-e5f8-4416-8ff6-1f6b34713a64">
+								<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+								<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+							</reportElement>
+							<box>
+								<topPen lineWidth="0.0"/>
+								<leftPen lineWidth="0.0"/>
+								<bottomPen lineWidth="0.0"/>
+								<rightPen lineWidth="0.0"/>
+							</box>
+							<textElement verticalAlignment="Middle">
+								<font fontName="Tahoma" size="6" isBold="true"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{Langue maternelle_MEASURE1}]]></textFieldExpression>
+						</textField>
+						<staticText>
+							<reportElement x="0" y="0" width="70" height="10" isRemoveLineWhenBlank="true" uuid="184a2c92-ab4d-4286-a996-1d0213e0bb26">
+								<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+								<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+								<printWhenExpression><![CDATA[$V{Langue maternelle_MEASURE1} != null]]></printWhenExpression>
+							</reportElement>
+							<box>
+								<topPen lineWidth="0.0"/>
+								<leftPen lineWidth="0.0"/>
+								<bottomPen lineWidth="0.0"/>
+								<rightPen lineWidth="0.0"/>
+							</box>
+							<textElement textAlignment="Right" verticalAlignment="Middle">
+								<font fontName="Tahoma" size="6"/>
+							</textElement>
+							<text><![CDATA[Langue maternelle]]></text>
+						</staticText>
+						<staticText>
+							<reportElement x="0" y="10" width="70" height="10" isRemoveLineWhenBlank="true" uuid="878b4ddb-af5c-4d63-9315-3f7649307444">
+								<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+								<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+								<printWhenExpression><![CDATA[$V{PHONE_MEASURE1} != null]]></printWhenExpression>
+							</reportElement>
+							<box>
+								<topPen lineWidth="0.0"/>
+								<leftPen lineWidth="0.0"/>
+								<bottomPen lineWidth="0.0"/>
+								<rightPen lineWidth="0.0"/>
+							</box>
+							<textElement textAlignment="Right" verticalAlignment="Middle">
+								<font fontName="Tahoma" size="6"/>
+							</textElement>
+							<text><![CDATA[No de téléphone - maison]]></text>
+						</staticText>
+						<staticText>
+							<reportElement x="0" y="20" width="70" height="10" isRemoveLineWhenBlank="true" uuid="123af879-fae5-428b-a1aa-de6441240d44">
+								<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+								<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+								<printWhenExpression><![CDATA[$V{EMAIL_MEASURE1} != null]]></printWhenExpression>
+							</reportElement>
+							<box>
+								<topPen lineWidth="0.0"/>
+								<leftPen lineWidth="0.0"/>
+								<bottomPen lineWidth="0.0"/>
+								<rightPen lineWidth="0.0"/>
+							</box>
+							<textElement textAlignment="Right" verticalAlignment="Middle">
+								<font fontName="Tahoma" size="6"/>
+							</textElement>
+							<text><![CDATA[Courriel]]></text>
+						</staticText>
+						<staticText>
+							<reportElement x="0" y="30" width="70" height="10" isRemoveLineWhenBlank="true" uuid="97c37a21-2791-4ab8-bb73-69a8bcc370c7">
+								<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+								<printWhenExpression><![CDATA[$V{ADDRESS_MEASURE1} != null]]></printWhenExpression>
+							</reportElement>
+							<box>
+								<topPen lineWidth="0.0"/>
+								<leftPen lineWidth="0.0"/>
+								<bottomPen lineWidth="0.0"/>
+								<rightPen lineWidth="0.0"/>
+							</box>
+							<textElement textAlignment="Right" verticalAlignment="Middle">
+								<font fontName="Tahoma" size="6"/>
+							</textElement>
+							<text><![CDATA[Adresse]]></text>
+						</staticText>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="60" height="20" columnTotalGroup="RELATIONSHIP_TYPE_NAME_F1">
+					<cellContents mode="Opaque">
+						<textField>
+							<reportElement x="0" y="0" width="60" height="5" uuid="90057868-b7a0-4c6b-9b54-d3ba4c310cb4"/>
+							<textFieldExpression><![CDATA[$V{ADDRESS_MEASURE1}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement x="0" y="5" width="60" height="5" uuid="c7aa6c2b-f39c-45c0-a526-26470569234d"/>
+							<textFieldExpression><![CDATA[$V{PHONE_MEASURE1}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement x="0" y="10" width="60" height="5" uuid="d3ab9035-9520-461a-be54-9002f78980dd"/>
+							<textFieldExpression><![CDATA[$V{EMAIL_MEASURE1}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement x="0" y="15" width="60" height="5" uuid="a5dac49f-021a-4803-a5de-532a0aea1923"/>
+							<textFieldExpression><![CDATA[$V{Langue maternelle_MEASURE1}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="60" height="20" columnTotalGroup="PGC_NAME1">
+					<cellContents mode="Opaque">
+						<textField>
+							<reportElement x="0" y="0" width="60" height="5" uuid="019d2e5f-c5d0-4f1a-ac1a-48257117cfbd"/>
+							<textFieldExpression><![CDATA[$V{ADDRESS_MEASURE1}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement x="0" y="5" width="60" height="5" uuid="ee40d261-8c41-4a62-81fb-e377ec8322d1"/>
+							<textFieldExpression><![CDATA[$V{PHONE_MEASURE1}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement x="0" y="10" width="60" height="5" uuid="af31df83-ebb4-441b-9a66-f01411b34924"/>
+							<textFieldExpression><![CDATA[$V{EMAIL_MEASURE1}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement x="0" y="15" width="60" height="5" uuid="65ed4fac-4b3f-43c5-81c4-95e9c8742e8f"/>
+							<textFieldExpression><![CDATA[$V{Langue maternelle_MEASURE1}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="60" height="20" rowTotalGroup="EMAIL1">
+					<cellContents mode="Opaque">
+						<textField>
+							<reportElement x="0" y="0" width="60" height="5" uuid="449cc1b1-af9d-4b7c-b9a1-82ec8e4bc9cd"/>
+							<textFieldExpression><![CDATA[$V{ADDRESS_MEASURE1}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement x="0" y="5" width="60" height="5" uuid="64c65202-a1e7-41c1-8386-00cb3c1a2720"/>
+							<textFieldExpression><![CDATA[$V{PHONE_MEASURE1}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement x="0" y="10" width="60" height="5" uuid="d0c66b51-6cfe-48b4-ad2a-fee94a00bf02"/>
+							<textFieldExpression><![CDATA[$V{EMAIL_MEASURE1}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement x="0" y="15" width="60" height="5" uuid="b72cd6d9-bf36-4284-85ee-feb020c038ee"/>
+							<textFieldExpression><![CDATA[$V{Langue maternelle_MEASURE1}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="60" height="20" rowTotalGroup="EMAIL1" columnTotalGroup="RELATIONSHIP_TYPE_NAME_F1">
+					<cellContents mode="Opaque">
+						<textField>
+							<reportElement x="0" y="0" width="60" height="5" uuid="514a8fe2-d405-4ebd-b288-584579b8cbb4"/>
+							<textFieldExpression><![CDATA[$V{ADDRESS_MEASURE1}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement x="0" y="5" width="60" height="5" uuid="642b16b7-80c4-47bd-9966-60e3397236f2"/>
+							<textFieldExpression><![CDATA[$V{PHONE_MEASURE1}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement x="0" y="10" width="60" height="5" uuid="9880cc25-dac4-4d54-80b4-90aec101e967"/>
+							<textFieldExpression><![CDATA[$V{EMAIL_MEASURE1}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement x="0" y="15" width="60" height="5" uuid="ab52768c-5f17-4021-89c9-9fdf8d3d45d8"/>
+							<textFieldExpression><![CDATA[$V{Langue maternelle_MEASURE1}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="60" height="20" rowTotalGroup="EMAIL1" columnTotalGroup="PGC_NAME1">
+					<cellContents mode="Opaque">
+						<textField>
+							<reportElement x="0" y="0" width="60" height="5" uuid="46aac59b-fed0-43f7-9e41-e38cd129094c"/>
+							<textFieldExpression><![CDATA[$V{ADDRESS_MEASURE1}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement x="0" y="5" width="60" height="5" uuid="8fdcdfc3-1cf3-44b0-81b1-77daba3b0e63"/>
+							<textFieldExpression><![CDATA[$V{PHONE_MEASURE1}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement x="0" y="10" width="60" height="5" uuid="b27c08dc-a9ab-4843-b44a-5b10a3f8557b"/>
+							<textFieldExpression><![CDATA[$V{EMAIL_MEASURE1}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement x="0" y="15" width="60" height="5" uuid="a9eb039b-a0c7-48b8-8a88-e882357b85eb"/>
+							<textFieldExpression><![CDATA[$V{Langue maternelle_MEASURE1}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+			</crosstab>
+		</band>
+	</summary>
+</jasperReport>

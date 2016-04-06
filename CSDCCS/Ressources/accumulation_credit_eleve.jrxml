@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.1.0.final using JasperReports Library version 6.1.0  -->
+<!-- 2015-12-07T10:38:39 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="accumulation_credit" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="68f2455a-e20d-4b05-b651-612dc4892b02">
+	<property name="ireport.jasperserver.url" value="https://rapports.franco-nord.ca/trilliumReports/"/>
+	<property name="ireport.jasperserver.user" value="superuser|CSCFN"/>
+	<property name="ireport.jasperserver.report.resource" value="/organizations/organization_1/CSCFN/Rox/Accumulation_des_credits_secondaire_indiv_files/main_jrxml"/>
+	<property name="ireport.jasperserver.reportUnit" value="/organizations/organization_1/CSCFN/Rox/Accumulation_des_credits_secondaire_indiv"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="CSCFN TRIL"/>
+	<style name="4_CREDIT">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{CREDIT_MEASURE1}<$V{SUM(ATTEMPTED_CREDIT_VALUE)_MEASURE1}]]></conditionExpression>
+			<style forecolor="#D11C19"/>
+		</conditionalStyle>
+	</style>
+	<style name="Crosstab_CH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Crosstab_CG" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Crosstab_CT" mode="Opaque" backcolor="#005FB3">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Crosstab_CD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="PERSON_ID" class="java.lang.String">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+	</parameter>
+	<queryString>
+		<![CDATA[select person_id, name, school_year, school_code, grade, semester, 
+sum(earned_credit_value) as credit, sum(attempted_credit_value), ALF, ANOM, PEI, PNMI
+
+from( 
+select distinct 
+scc.person_id, preferred_surname || ', ' || preferred_first_name as name, 
+scc.school_year, scc.school_code, grade, 
+PKG_PROFILE_ÉLÈVE.GET_ALF(SCC.PERSON_ID) AS ALF, 
+PKG_PROFILE_ÉLÈVE.GET_ANOMALIE(SCC.PERSON_ID) AS ANOM,
+PKG_PROFILE_ÉLÈVE.GET_PEI(SCC.PERSON_ID) AS PEI, 
+PKG_PROFILE_ÉLÈVE.GET_PNMI(SCC.PERSON_ID) AS PNMI,
+semester, scc.course_code, scc.earned_credit_value, scc.attempted_credit_value
+
+from fs_secondary_course_credit scc, class_meetings cm, student_program_class_tracks spct, persons, student_registrations sr
+where scc.person_id =  persons.person_id
+and grade IN ('09', '10')
+and sr.person_id =  $P{PERSON_ID} 
+
+and scc.person_id = sr.person_id
+and scc.school_code = sr.school_code
+and scc.school_year = sr.school_year
+
+and scc.person_id = spct.person_id
+and scc.school_code = spct.school_code
+and scc.school_year = spct.school_year
+and scc.course_code = spct.course_code
+and scc.course_section = spct.course_section
+
+and spct.school_code = cm.school_code
+and spct.school_year = cm.school_year
+and spct.school_year_track = cm.school_year_track
+and spct.class_code = cm.class_code
+
+order by semester
+) 
+group by person_id, name, school_year, school_code, grade, semester, attempted_credit_value, ALF, ANOM, PEI, PNMI
+order by name, school_year, grade, semester]]>
+	</queryString>
+	<field name="PERSON_ID" class="java.lang.String"/>
+	<field name="NAME" class="java.lang.String"/>
+	<field name="SCHOOL_YEAR" class="java.lang.String"/>
+	<field name="SCHOOL_CODE" class="java.lang.String"/>
+	<field name="GRADE" class="java.lang.String"/>
+	<field name="SEMESTER" class="java.lang.String"/>
+	<field name="CREDIT" class="java.math.BigDecimal"/>
+	<field name="SUM(ATTEMPTED_CREDIT_VALUE)" class="java.math.BigDecimal"/>
+	<field name="ALF" class="java.lang.String"/>
+	<field name="ANOM" class="java.lang.String"/>
+	<field name="PEI" class="java.lang.String"/>
+	<field name="PNMI" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="410" height="61" uuid="613194d7-aae2-401b-9f93-a1aed2566a4a">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="22"/>
+				</textElement>
+				<text><![CDATA[Accumulation des crédits 9e - 10e]]></text>
+			</staticText>
+		</band>
+	</title>
+	<summary>
+		<band height="119" splitType="Stretch">
+			<crosstab horizontalPosition="Left">
+				<reportElement x="0" y="9" width="555" height="100" uuid="c0ec1fa2-224e-4eff-873d-d7992da53a68">
+					<property name="net.sf.jasperreports.export.headertoolbar.table.name" value=""/>
+				</reportElement>
+				<crosstabHeaderCell>
+					<cellContents>
+						<staticText>
+							<reportElement x="125" y="60" width="40" height="20" uuid="210b689c-8bd7-4073-8653-abec2b04d65d">
+								<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+								<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+							</reportElement>
+							<box>
+								<topPen lineWidth="0.3"/>
+								<leftPen lineWidth="0.3"/>
+								<bottomPen lineWidth="0.3"/>
+								<rightPen lineWidth="0.3"/>
+							</box>
+							<textElement textAlignment="Center" verticalAlignment="Middle">
+								<font fontName="Tahoma"/>
+							</textElement>
+							<text><![CDATA[ALF]]></text>
+						</staticText>
+						<staticText>
+							<reportElement x="165" y="60" width="100" height="20" uuid="0dfe171c-7f78-4809-bed8-d7ce1cd697ab">
+								<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+								<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+							</reportElement>
+							<box>
+								<topPen lineWidth="0.3"/>
+								<leftPen lineWidth="0.3"/>
+								<bottomPen lineWidth="0.3"/>
+								<rightPen lineWidth="0.3"/>
+							</box>
+							<textElement textAlignment="Center" verticalAlignment="Middle">
+								<font fontName="Tahoma"/>
+							</textElement>
+							<text><![CDATA[Anomalie]]></text>
+						</staticText>
+						<staticText>
+							<reportElement x="265" y="60" width="40" height="20" uuid="c6449d35-557a-4a8f-8479-a869c73c6b17">
+								<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+							</reportElement>
+							<box>
+								<topPen lineWidth="0.3"/>
+								<leftPen lineWidth="0.3"/>
+								<bottomPen lineWidth="0.3"/>
+								<rightPen lineWidth="0.3"/>
+							</box>
+							<textElement textAlignment="Center" verticalAlignment="Middle">
+								<font fontName="Tahoma"/>
+							</textElement>
+							<text><![CDATA[PEI]]></text>
+						</staticText>
+						<staticText>
+							<reportElement x="305" y="60" width="40" height="20" uuid="f31c67f4-410b-4cc4-be00-721a631b7da7">
+								<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+								<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+							</reportElement>
+							<box>
+								<topPen lineWidth="0.3"/>
+								<leftPen lineWidth="0.3"/>
+								<bottomPen lineWidth="0.3"/>
+								<rightPen lineWidth="0.3"/>
+							</box>
+							<textElement textAlignment="Center" verticalAlignment="Middle">
+								<font fontName="Tahoma"/>
+							</textElement>
+							<text><![CDATA[PNMI]]></text>
+						</staticText>
+						<staticText>
+							<reportElement x="0" y="60" width="125" height="20" uuid="70048685-7808-4d2a-9ee6-0a1b06b20616">
+								<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+								<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+							</reportElement>
+							<box>
+								<topPen lineWidth="0.3"/>
+								<leftPen lineWidth="0.3"/>
+								<bottomPen lineWidth="0.3"/>
+								<rightPen lineWidth="0.3"/>
+							</box>
+							<textElement textAlignment="Center" verticalAlignment="Middle">
+								<font fontName="Tahoma"/>
+							</textElement>
+							<text><![CDATA[Nom]]></text>
+						</staticText>
+					</cellContents>
+				</crosstabHeaderCell>
+				<rowGroup name="NAME1" width="125">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{NAME}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents mode="Opaque" style="Crosstab_CH">
+							<textField>
+								<reportElement mode="Opaque" x="0" y="0" width="125" height="20" uuid="26c2c9d9-1c6c-4dae-be00-4e55457c020c">
+									<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+								</reportElement>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Tahoma"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{NAME1}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents>
+							<staticText>
+								<reportElement x="0" y="0" width="-2147483648" height="-2147483648" uuid="3f9d24d9-7b35-4b8c-9382-309367697d00"/>
+								<text><![CDATA[Total NAME1]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<rowGroup name="PERSON_ID1" width="0">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{PERSON_ID}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents mode="Opaque" style="Crosstab_CH">
+							<textField>
+								<reportElement x="0" y="0" width="0" height="0" uuid="09704a9d-f8b7-4ed9-a9e6-da2bdd905e0c">
+									<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+									<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+								</reportElement>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Tahoma"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{PERSON_ID1}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents>
+							<staticText>
+								<reportElement x="0" y="0" width="-2147483648" height="-2147483648" uuid="4fea45ef-a35b-440a-8914-6bd26de7cd2d"/>
+								<text><![CDATA[Total PERSON_ID1]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<rowGroup name="ALF1" width="40">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{ALF}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents mode="Opaque" style="Crosstab_CH">
+							<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+							<textField isBlankWhenNull="true" hyperlinkType="ReportExecution" hyperlinkTarget="Blank">
+								<reportElement mode="Opaque" x="0" y="0" width="40" height="20" uuid="61e4ad0c-ec03-4721-b224-81d8d2d6e919">
+									<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+								</reportElement>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Tahoma"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{ALF1}]]></textFieldExpression>
+								<hyperlinkParameter name="ACCOUNT_ID">
+									<hyperlinkParameterExpression><![CDATA[$V{PERSON_ID1}]]></hyperlinkParameterExpression>
+								</hyperlinkParameter>
+								<hyperlinkParameter name="_report">
+									<hyperlinkParameterExpression><![CDATA["repo:/Ressources_CSCFN/Drilldowns/Drilldowns_partages/details_alf"]]></hyperlinkParameterExpression>
+								</hyperlinkParameter>
+							</textField>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents>
+							<staticText>
+								<reportElement x="0" y="0" width="-2147483648" height="-2147483648" uuid="9deeed78-5c49-46e0-90b1-972d83f71f52"/>
+								<text><![CDATA[Total ALF1]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<rowGroup name="ANOM1" width="100">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{ANOM}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents mode="Opaque" style="Crosstab_CH">
+							<textField isBlankWhenNull="true">
+								<reportElement mode="Opaque" x="0" y="0" width="100" height="20" uuid="1785a8b7-0c01-4b67-8ab0-a621dfca75f2"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Tahoma"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{ANOM1}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents>
+							<staticText>
+								<reportElement x="0" y="0" width="-2147483648" height="-2147483648" uuid="f0d35e9b-6497-4ddc-b5b8-a4c307689af3"/>
+								<text><![CDATA[Total ANOM1]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<rowGroup name="PEI1" width="40">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{PEI}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents mode="Opaque" style="Crosstab_CH">
+							<textField isBlankWhenNull="true">
+								<reportElement mode="Opaque" x="0" y="0" width="40" height="20" uuid="a12f7415-0885-438f-9d4b-a50349165f66"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Tahoma"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{PEI1}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents>
+							<staticText>
+								<reportElement x="0" y="0" width="-2147483648" height="-2147483648" uuid="b3c01c9b-1c1b-4fe0-8382-22d750ee5bc5"/>
+								<text><![CDATA[Total PEI1]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<rowGroup name="PNMI1" width="40">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{PNMI}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents mode="Opaque" style="Crosstab_CH">
+							<textField isBlankWhenNull="true">
+								<reportElement mode="Opaque" x="0" y="0" width="40" height="20" uuid="369fbbf7-f16d-491d-b3a3-f10e66ba2886"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Tahoma"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{PNMI1}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents>
+							<staticText>
+								<reportElement x="0" y="0" width="-2147483648" height="-2147483648" uuid="e6685b24-d78b-483e-92aa-0c0fff129f33"/>
+								<text><![CDATA[Total PNMI1]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<columnGroup name="SCHOOL_YEAR1" height="20" headerPosition="Stretch">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{SCHOOL_YEAR}]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents mode="Opaque" style="Crosstab_CH">
+							<textField>
+								<reportElement mode="Opaque" x="0" y="0" width="50" height="20" uuid="40ac2b83-9f21-47a6-935c-363ef2ba6cf7"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Tahoma"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{SCHOOL_YEAR1}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents>
+							<staticText>
+								<reportElement x="0" y="0" width="-2147483648" height="-2147483648" uuid="698d13d8-cc45-4120-b5b7-959cc9199ed4"/>
+								<text><![CDATA[Total SCHOOL_YEAR1]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<columnGroup name="SCHOOL_CODE1" height="20" headerPosition="Stretch">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{SCHOOL_CODE}]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents mode="Opaque" style="Crosstab_CH">
+							<textField>
+								<reportElement mode="Opaque" x="0" y="0" width="50" height="20" uuid="68e4279e-f3c7-466c-b7eb-b71064f589f5"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Tahoma"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{SCHOOL_CODE1}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents>
+							<staticText>
+								<reportElement x="0" y="0" width="-2147483648" height="-2147483648" uuid="e7ce7029-8765-46bb-93a4-22d34fde0cc0"/>
+								<text><![CDATA[Total SCHOOL_CODE1]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<columnGroup name="GRADE1" height="20" headerPosition="Stretch">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{GRADE}]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents mode="Opaque" style="Crosstab_CH">
+							<textField>
+								<reportElement mode="Opaque" x="0" y="0" width="50" height="20" uuid="1dbbccac-cb5c-4b46-a2ec-2f3eefcd6125"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Tahoma"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{GRADE1}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents>
+							<staticText>
+								<reportElement x="0" y="0" width="-2147483648" height="-2147483648" uuid="42a695a0-062a-4373-a336-677ddcd71bf9"/>
+								<text><![CDATA[Total GRADE1]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<columnGroup name="SEMESTER1" height="20" headerPosition="Stretch">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{SEMESTER}]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents mode="Opaque" style="Crosstab_CH">
+							<textField>
+								<reportElement mode="Opaque" x="0" y="0" width="50" height="20" forecolor="#FFFFFF" backcolor="#149966" uuid="3826691c-ac90-4ecd-b764-623255268d28"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Tahoma"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{SEMESTER1}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents>
+							<staticText>
+								<reportElement x="0" y="0" width="-2147483648" height="-2147483648" uuid="b13aa505-c0da-45c2-8c44-7e1c2f461b1e"/>
+								<text><![CDATA[Total SEMESTER1]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<measure name="CREDIT_MEASURE1" class="java.lang.Double" calculation="Sum">
+					<measureExpression><![CDATA[$F{CREDIT}]]></measureExpression>
+				</measure>
+				<measure name="SUM(ATTEMPTED_CREDIT_VALUE)_MEASURE1" class="java.lang.Double" calculation="Sum">
+					<measureExpression><![CDATA[$F{SUM(ATTEMPTED_CREDIT_VALUE)}]]></measureExpression>
+				</measure>
+				<crosstabCell width="50" height="20">
+					<cellContents mode="Opaque" style="Crosstab_CD">
+						<textField isBlankWhenNull="true" hyperlinkType="ReportExecution" hyperlinkTarget="Blank">
+							<reportElement style="4_CREDIT" x="25" y="0" width="25" height="20" uuid="b9a7d795-3489-4b33-8f10-66fa7d231894">
+								<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+								<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+							</reportElement>
+							<textElement textAlignment="Left" verticalAlignment="Middle">
+								<font fontName="Tahoma"/>
+							</textElement>
+							<textFieldExpression><![CDATA[" " + $V{CREDIT_MEASURE1}]]></textFieldExpression>
+							<hyperlinkParameter name="STUDENT">
+								<hyperlinkParameterExpression><![CDATA[$V{PERSON_ID1}]]></hyperlinkParameterExpression>
+							</hyperlinkParameter>
+							<hyperlinkParameter name="SCHOOL_YEAR">
+								<hyperlinkParameterExpression><![CDATA[$V{SCHOOL_YEAR1}]]></hyperlinkParameterExpression>
+							</hyperlinkParameter>
+							<hyperlinkParameter name="SEMESTER">
+								<hyperlinkParameterExpression><![CDATA[$V{SEMESTER1}]]></hyperlinkParameterExpression>
+							</hyperlinkParameter>
+							<hyperlinkParameter name="_report">
+								<hyperlinkParameterExpression><![CDATA["repo:/Ressources_CSCFN/Drilldowns/Rox/Accumulation_des_credits_secondaire_drilldown"]]></hyperlinkParameterExpression>
+							</hyperlinkParameter>
+						</textField>
+						<textField isBlankWhenNull="true">
+							<reportElement x="0" y="0" width="25" height="20" uuid="228a5bf6-4418-49a0-82b9-0011d2892cf9">
+								<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+							</reportElement>
+							<textElement textAlignment="Right" verticalAlignment="Middle">
+								<font fontName="Tahoma"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{SUM(ATTEMPTED_CREDIT_VALUE)_MEASURE1} + " /"]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+			</crosstab>
+		</band>
+	</summary>
+</jasperReport>

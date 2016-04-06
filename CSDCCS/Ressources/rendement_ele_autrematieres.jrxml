@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.1.0.final using JasperReports Library version 6.1.0  -->
+<!-- 2015-12-01T14:29:29 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rendement_ele_autrematieres" pageWidth="572" pageHeight="752" columnWidth="572" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="3292d631-58fe-4c51-b0fd-3e2aba5b0c83">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="CSCFN TRIL"/>
+	<style name="Notes" scaleImage="FillFrame">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[AND(OR(OR( EXACT($V{MARK_MEASURE1}, "59"), EXACT($V{MARK_MEASURE1}, "60"), EXACT($V{MARK_MEASURE1}, "61"), EXACT($V{MARK_MEASURE1}, "62"), EXACT($V{MARK_MEASURE1}, "63"), EXACT($V{MARK_MEASURE1}, "64"), EXACT($V{MARK_MEASURE1}, "65"), EXACT($V{MARK_MEASURE1}, "66"), EXACT($V{MARK_MEASURE1}, "67"), EXACT($V{MARK_MEASURE1}, "68"), EXACT($V{MARK_MEASURE1}, "69")),OR(EXACT($V{MARK_MEASURE1}, "C"),EXACT($V{MARK_MEASURE1}, "C+"),EXACT($V{MARK_MEASURE1}, "C-"))), NOT(EXACT($V{REPORT_PERIOD1}, "P")))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FFFF99" scaleImage="FillFrame"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[OR(OR( EXACT($V{MARK_MEASURE1}, "49"), EXACT($V{MARK_MEASURE1}, "50"), EXACT($V{MARK_MEASURE1}, "51"), EXACT($V{MARK_MEASURE1}, "52"), EXACT($V{MARK_MEASURE1}, "53"), EXACT($V{MARK_MEASURE1}, "54"), EXACT($V{MARK_MEASURE1}, "55"), EXACT($V{MARK_MEASURE1}, "56"), EXACT($V{MARK_MEASURE1}, "57"), EXACT($V{MARK_MEASURE1}, "58"), EXACT($V{MARK_MEASURE1}, "59")),OR(EXACT($V{MARK_MEASURE1}, "D"),EXACT($V{MARK_MEASURE1}, "D+"),EXACT($V{MARK_MEASURE1}, "D-")))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#EDA979" scaleImage="FillFrame"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[OR(EXACT($V{MARK_MEASURE1}, "R3"),EXACT($V{MARK_MEASURE1}, "R1"),EXACT($V{MARK_MEASURE1}, "R2"),EXACT($V{MARK_MEASURE1}, "R"), AND(EXACT($V{MARK_MEASURE1}, "1"), EXACT($V{REPORT_PERIOD1}, "P")))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E05A58" scaleImage="FillFrame"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[OR(OR( EXACT($V{MARK_MEASURE1}, "48"), EXACT($V{MARK_MEASURE1}, "47"), EXACT($V{MARK_MEASURE1}, "46"), EXACT($V{MARK_MEASURE1}, "45"), EXACT($V{MARK_MEASURE1}, "44"), EXACT($V{MARK_MEASURE1}, "40"), EXACT($V{MARK_MEASURE1}, "39"), EXACT($V{MARK_MEASURE1}, "38"), EXACT($V{MARK_MEASURE1}, "37"), EXACT($V{MARK_MEASURE1}, "36"), EXACT($V{MARK_MEASURE1}, "35")),OR( EXACT($V{MARK_MEASURE1}, "34"), EXACT($V{MARK_MEASURE1}, "33"), EXACT($V{MARK_MEASURE1}, "32"), EXACT($V{MARK_MEASURE1}, "31"), EXACT($V{MARK_MEASURE1}, "30"), EXACT($V{MARK_MEASURE1}, "29"), EXACT($V{MARK_MEASURE1}, "28"), EXACT($V{MARK_MEASURE1}, "27"), EXACT($V{MARK_MEASURE1}, "26"), EXACT($V{MARK_MEASURE1}, "25"), EXACT($V{MARK_MEASURE1}, "24")),OR( EXACT($V{MARK_MEASURE1}, "23"), EXACT($V{MARK_MEASURE1}, "22"), EXACT($V{MARK_MEASURE1}, "21"), EXACT($V{MARK_MEASURE1}, "20"), EXACT($V{MARK_MEASURE1}, "19"), EXACT($V{MARK_MEASURE1}, "18"), EXACT($V{MARK_MEASURE1}, "17"), EXACT($V{MARK_MEASURE1}, "16"), EXACT($V{MARK_MEASURE1}, "15"), EXACT($V{MARK_MEASURE1}, "14"), EXACT($V{MARK_MEASURE1}, "13")),OR( EXACT($V{MARK_MEASURE1}, "12"), EXACT($V{MARK_MEASURE1}, "11"), EXACT($V{MARK_MEASURE1}, "10"), EXACT($V{MARK_MEASURE1}, "09"), EXACT($V{MARK_MEASURE1}, "08"), EXACT($V{MARK_MEASURE1}, "07"), EXACT($V{MARK_MEASURE1}, "06"), EXACT($V{MARK_MEASURE1}, "05"), EXACT($V{MARK_MEASURE1}, "04"), EXACT($V{MARK_MEASURE1}, "03"), EXACT($V{MARK_MEASURE1}, "02")),OR(EXACT($V{MARK_MEASURE1}, "01"),EXACT($V{MARK_MEASURE1}, "00"),EXACT($V{MARK_MEASURE1}, "0"),EXACT($V{MARK_MEASURE1}, "PD")))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#E05A58" scaleImage="FillFrame"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[EXACT($V{MARK_MEASURE1}, "I")]]></conditionExpression>
+			<style mode="Opaque" forecolor="#E34540" backcolor="#363636" scaleImage="FillFrame"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="ACCOUNT_ID" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select SCHOOL_CODE, school_year, REPORT_PERIOD, SUBJECT_DESCRIPTION_F, 
+
+	case when report_period = 'P' then 
+		case when MARK = '1' then 'PD'
+				when MARK = '2' then 'PB'
+				when MARK = '3' then 'PTB'
+		else MARK end
+	else MARK end as MARK,
+
+       case when SUBJECT_DESCRIPTION_F = 'Anglais' then 1
+            when SUBJECT_DESCRIPTION_F in ('Sciences et technologie', 'Études Technologiques') then 2
+            when SUBJECT_DESCRIPTION_F in ('Art dramatique', 'Art dramatique et danse', 'Arts visuels', 'Danse', 'Musique') then 4
+            when SUBJECT_DESCRIPTION_F in ('Géographie', 'Histoire', 'Enseignement religieux ', 'Études sociales') then 3
+            when SUBJECT_DESCRIPTION_F in ('Éducation physique', 'Santé', 'Éducation physique et santé') then 5
+            when SUBJECT_DESCRIPTION_F = 'Informatique' then 6
+            else 9
+            end as rowOrder
+       
+from 
+(
+ SELECT SCSA.SCHOOL_CODE,  regexp_replace(scsa.school_year, '(\w{4})(\w{4})', '\1-\2') school_year, SCSA.GRADE,  
+ SCSA.REPORT_PERIOD, S.SUBJECT_DESCRIPTION_F, SCSA.MARK, S.SUBJECT_CODE
+       
+ FROM STUDENT_COURSE_STRAND_ACHIEVE SCSA, COURSE_CODES CC, SUBJECTS S
+
+ WHERE SCSA.PERSON_ID = $P{ACCOUNT_ID} 
+ AND SCSA.SCHOOL_CODE = CC.SCHOOL_CODE
+ AND SCSA.SCHOOL_YEAR = CC.SCHOOL_YEAR
+ AND SCSA.STRAND_CODE = '999'
+ AND SCSA.COURSE_CODE = CC.COURSE_CODE 
+ AND S.SUBJECT_CODE NOT IN ('009', '9999000000030')
+ AND SCSA.GRADE = CC.GRADE
+ AND CC.SUBJECT_CODE = S.SUBJECT_CODE
+)
+order by roworder, subject_description_f]]>
+	</queryString>
+	<field name="SCHOOL_CODE" class="java.lang.String"/>
+	<field name="SCHOOL_YEAR" class="java.lang.String"/>
+	<field name="REPORT_PERIOD" class="java.lang.String"/>
+	<field name="SUBJECT_DESCRIPTION_F" class="java.lang.String"/>
+	<field name="MARK" class="java.lang.String"/>
+	<field name="ROWORDER" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="40" splitType="Stretch">
+			<staticText>
+				<reportElement x="10" y="25" width="450" height="15" uuid="48143083-5f0c-40e7-95bb-5658883fab23">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Légende pour le rapport de progrès: [PD]-Progresse avec difficulté [PB]-Progresse bien [PTB]-Progresse très bien]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="5" width="380" height="20" uuid="efa116c3-6405-49a6-9572-281e74dbc784"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rendement à l'élémentaire - Autres matières]]></text>
+			</staticText>
+		</band>
+	</title>
+	<summary>
+		<band height="90" splitType="Stretch">
+			<crosstab horizontalPosition="Center">
+				<reportElement x="0" y="8" width="570" height="82" uuid="4be24a93-0d00-4ff8-b4be-524d18c96da0"/>
+				<rowGroup name="ROWORDER1" width="1">
+					<bucket class="java.math.BigDecimal">
+						<bucketExpression><![CDATA[$F{ROWORDER}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents mode="Opaque">
+							<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+							<box>
+								<topPen lineWidth="0.0"/>
+								<leftPen lineWidth="0.0"/>
+								<bottomPen lineWidth="0.0"/>
+								<rightPen lineWidth="0.0"/>
+							</box>
+							<textField>
+								<reportElement mode="Transparent" x="0" y="0" width="0" height="0" uuid="e4ed2337-6d3b-4b51-9c78-bddfd1027c73">
+									<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+								</reportElement>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$V{ROWORDER1}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents>
+							<staticText>
+								<reportElement x="0" y="0" width="-2147483648" height="-2147483648" uuid="3e3fa3df-5cbf-4fec-984c-d0d8f1f777cc"/>
+								<text><![CDATA[Total ROWORDER1]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<rowGroup name="SUBJECT_DESCRIPTION_F1" width="60">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{SUBJECT_DESCRIPTION_F}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents mode="Opaque">
+							<textField isStretchWithOverflow="true">
+								<reportElement x="0" y="0" width="60" height="20" uuid="3cd40f36-22c2-4f19-8427-6695cbfa179f"/>
+								<box padding="5">
+									<topPen lineWidth="0.2"/>
+									<leftPen lineWidth="0.2"/>
+									<bottomPen lineWidth="0.2"/>
+									<rightPen lineWidth="0.2"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Tahoma" size="7"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{SUBJECT_DESCRIPTION_F1}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents>
+							<staticText>
+								<reportElement x="0" y="0" width="-2147483648" height="-2147483648" uuid="ab01ddfe-0ced-4b91-b5aa-3c6066b68da4"/>
+								<text><![CDATA[Total SUBJECT_DESCRIPTION_F1]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<columnGroup name="SCHOOL_YEAR1" height="20" headerPosition="Stretch">
+					<bucket order="Descending" class="java.lang.String">
+						<bucketExpression><![CDATA[$F{SCHOOL_YEAR}]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents mode="Opaque">
+							<textField isStretchWithOverflow="true">
+								<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="20" height="20" uuid="7a999892-93b4-423a-8c44-b8aa82368ffb"/>
+								<box>
+									<topPen lineWidth="0.2"/>
+									<leftPen lineWidth="0.2"/>
+									<bottomPen lineWidth="0.2"/>
+									<rightPen lineWidth="0.2"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Tahoma" size="9"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{SCHOOL_YEAR1}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents>
+							<staticText>
+								<reportElement x="0" y="0" width="-2147483648" height="-2147483648" uuid="64c8b56d-aa57-4678-97bd-dfb0299638c6"/>
+								<text><![CDATA[Total SCHOOL_YEAR1]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<columnGroup name="SCHOOL_CODE1" height="20" headerPosition="Stretch">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{SCHOOL_CODE}]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents mode="Opaque">
+							<textField>
+								<reportElement x="0" y="0" width="20" height="20" uuid="8a1ab152-1cc1-4508-a622-b173a7a96707"/>
+								<box>
+									<topPen lineWidth="0.2"/>
+									<leftPen lineWidth="0.2"/>
+									<bottomPen lineWidth="0.2"/>
+									<rightPen lineWidth="0.2"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Tahoma" size="9"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{SCHOOL_CODE1}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents>
+							<staticText>
+								<reportElement x="0" y="0" width="-2147483648" height="-2147483648" uuid="653fc102-9d4d-49f0-845a-18e90d22ab2d"/>
+								<text><![CDATA[Total SCHOOL_CODE1]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<columnGroup name="REPORT_PERIOD1" height="20">
+					<bucket order="Descending" class="java.lang.String">
+						<bucketExpression><![CDATA[$F{REPORT_PERIOD}]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents mode="Opaque">
+							<textField>
+								<reportElement mode="Opaque" x="0" y="0" width="20" height="20" forecolor="#FFFFFF" backcolor="#149966" uuid="97364303-dbdd-4eeb-9377-e4283c2174bf">
+									<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+								</reportElement>
+								<box>
+									<topPen lineWidth="0.2"/>
+									<leftPen lineWidth="0.2"/>
+									<bottomPen lineWidth="0.2"/>
+									<rightPen lineWidth="0.2"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Tahoma" size="9"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{REPORT_PERIOD1}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents>
+							<staticText>
+								<reportElement x="0" y="0" width="-2147483648" height="-2147483648" uuid="642f0783-4a2d-4471-b9aa-2f547a8d9d58"/>
+								<text><![CDATA[Total REPORT_PERIOD1]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<measure name="MARK_MEASURE1" class="java.lang.String">
+					<measureExpression><![CDATA[$F{MARK}]]></measureExpression>
+				</measure>
+				<crosstabCell width="20" height="20">
+					<cellContents mode="Opaque">
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+						<textField isBlankWhenNull="true">
+							<reportElement style="Notes" stretchType="RelativeToBandHeight" x="0" y="0" width="20" height="20" uuid="85f6358a-2856-46b8-a81a-e2620f24c2e5">
+								<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+							</reportElement>
+							<box>
+								<topPen lineWidth="0.2"/>
+								<leftPen lineWidth="0.2"/>
+								<bottomPen lineWidth="0.2"/>
+								<rightPen lineWidth="0.2"/>
+							</box>
+							<textElement textAlignment="Center" verticalAlignment="Middle">
+								<font fontName="Tahoma" size="9"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{MARK_MEASURE1}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="60" height="20" columnTotalGroup="SCHOOL_YEAR1">
+					<cellContents mode="Opaque">
+						<textField>
+							<reportElement x="0" y="0" width="60" height="20" forecolor="#FFFFFF" uuid="649d6586-87a7-4dab-ae3f-5a73eea0787b"/>
+							<textFieldExpression><![CDATA[$V{MARK_MEASURE1}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="60" height="20" columnTotalGroup="SCHOOL_CODE1">
+					<cellContents mode="Opaque">
+						<textField>
+							<reportElement x="0" y="0" width="60" height="20" uuid="d8c9416d-80d1-4e3a-88b5-c84e3de5cf06"/>
+							<textFieldExpression><![CDATA[$V{MARK_MEASURE1}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="60" height="20" columnTotalGroup="REPORT_PERIOD1">
+					<cellContents mode="Opaque">
+						<textField>
+							<reportElement x="0" y="0" width="60" height="20" uuid="47e13541-80c6-47bb-846e-d3f7909a6e56"/>
+							<textFieldExpression><![CDATA[$V{MARK_MEASURE1}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="60" height="20" rowTotalGroup="ROWORDER1">
+					<cellContents mode="Opaque">
+						<textField>
+							<reportElement x="0" y="0" width="60" height="20" forecolor="#FFFFFF" uuid="5b29ccb5-4414-4da1-af3f-36c16b97afae"/>
+							<textFieldExpression><![CDATA[$V{MARK_MEASURE1}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="60" height="20" rowTotalGroup="ROWORDER1" columnTotalGroup="SCHOOL_YEAR1">
+					<cellContents mode="Opaque">
+						<textField>
+							<reportElement x="0" y="0" width="60" height="20" forecolor="#FFFFFF" uuid="7235bcc2-81d6-4e0c-b119-428d65106aa6"/>
+							<textFieldExpression><![CDATA[$V{MARK_MEASURE1}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="60" height="20" rowTotalGroup="ROWORDER1" columnTotalGroup="SCHOOL_CODE1">
+					<cellContents mode="Opaque">
+						<textField>
+							<reportElement x="0" y="0" width="60" height="20" forecolor="#FFFFFF" uuid="c74a8a67-d448-4045-a640-4179867cd695"/>
+							<textFieldExpression><![CDATA[$V{MARK_MEASURE1}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="60" height="20" rowTotalGroup="ROWORDER1" columnTotalGroup="REPORT_PERIOD1">
+					<cellContents mode="Opaque">
+						<textField>
+							<reportElement x="0" y="0" width="60" height="20" forecolor="#FFFFFF" uuid="a69ea069-a964-4672-bad1-576a645a5748"/>
+							<textFieldExpression><![CDATA[$V{MARK_MEASURE1}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="60" height="20" rowTotalGroup="SUBJECT_DESCRIPTION_F1">
+					<cellContents mode="Opaque">
+						<textField>
+							<reportElement x="0" y="0" width="60" height="20" uuid="30e8b90e-f1f2-4b5f-85dd-5be61c41d45e"/>
+							<textFieldExpression><![CDATA[$V{MARK_MEASURE1}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="60" height="20" rowTotalGroup="SUBJECT_DESCRIPTION_F1" columnTotalGroup="SCHOOL_YEAR1">
+					<cellContents mode="Opaque">
+						<textField>
+							<reportElement x="0" y="0" width="60" height="20" forecolor="#FFFFFF" uuid="69c256ef-ddaf-46b6-aa10-54efbb0225df"/>
+							<textFieldExpression><![CDATA[$V{MARK_MEASURE1}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="60" height="20" rowTotalGroup="SUBJECT_DESCRIPTION_F1" columnTotalGroup="SCHOOL_CODE1">
+					<cellContents mode="Opaque">
+						<textField>
+							<reportElement x="0" y="0" width="60" height="20" uuid="e02a7de0-401a-4b9a-ae03-63800538bbf8"/>
+							<textFieldExpression><![CDATA[$V{MARK_MEASURE1}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="60" height="20" rowTotalGroup="SUBJECT_DESCRIPTION_F1" columnTotalGroup="REPORT_PERIOD1">
+					<cellContents mode="Opaque">
+						<textField>
+							<reportElement x="0" y="0" width="60" height="20" uuid="10b326ae-e0b4-45b2-8121-2aaa817bcbf8"/>
+							<textFieldExpression><![CDATA[$V{MARK_MEASURE1}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+			</crosstab>
+		</band>
+	</summary>
+</jasperReport>

@@ -1,0 +1,1156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.1.0.final using JasperReports Library version 6.1.0  -->
+<!-- 2016-01-12T08:51:30 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="GBP_meprises" pageWidth="572" pageHeight="752" columnWidth="572" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="8860ecfd-5dad-475e-aecb-cc7f76b4f7f8">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="CSCFN TRIL"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" forecolor="#FFFFFF" backcolor="#149966">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="PRECISION">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[NOT($F{TAUX_DE_PRÉCISION}.equals("s.o.")) ? DOUBLE_VALUE($F{TAUX_DE_PRÉCISION}) < 95 && DOUBLE_VALUE($F{TAUX_DE_PRÉCISION}) >= 90 : false]]></conditionExpression>
+			<style mode="Opaque" forecolor="#000000" backcolor="#F2C041"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[NOT($F{TAUX_DE_PRÉCISION}.equals("s.o.")) ? DOUBLE_VALUE($F{TAUX_DE_PRÉCISION}) < 90 : false]]></conditionExpression>
+			<style mode="Opaque" forecolor="#000000" backcolor="#D13330"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#C0C0C0"/>
+		</conditionalStyle>
+	</style>
+	<style name="err_s">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[INTEGER_VALUE($F{ERR_SUM}) > 5 ? ((DOUBLE_VALUE($F{ERR_S})/DOUBLE_VALUE($F{ERR_SUM}))*100) < 50 ? true : false : false]]></conditionExpression>
+			<style mode="Opaque" backcolor="#D13330"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#C0C0C0"/>
+		</conditionalStyle>
+	</style>
+	<style name="err_st">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[INTEGER_VALUE($F{ERR_SUM}) > 5 ? ((DOUBLE_VALUE($F{ERR_ST})/DOUBLE_VALUE($F{ERR_SUM}))*100) < 50 ? true : false : false]]></conditionExpression>
+			<style mode="Opaque" backcolor="#D13330"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#C0C0C0"/>
+		</conditionalStyle>
+	</style>
+	<style name="err_v">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[INTEGER_VALUE($F{ERR_SUM}) > 5 ? ((DOUBLE_VALUE($F{ERR_V})/DOUBLE_VALUE($F{ERR_SUM}))*100) < 50 ? true : false : false]]></conditionExpression>
+			<style mode="Opaque" backcolor="#D13330"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#C0C0C0"/>
+		</conditionalStyle>
+	</style>
+	<style name="AC">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[NOT($F{AC}.contains("s.o")) || $F{AC}.length() < 5 ? false : (((Character.getNumericValue($F{AC}.charAt(4))) >= 3) || $F{AC}.length() > 5 ? true : false)]]></conditionExpression>
+			<style mode="Opaque" backcolor="#D13330"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#C0C0C0"/>
+		</conditionalStyle>
+	</style>
+	<style name="AC_s">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[NOT($F{AC_SUM}.contains("s.o")) && INTEGER_VALUE($F{AC_SUM}) > 5 ? ((DOUBLE_VALUE($F{AC_S})/DOUBLE_VALUE($F{AC_SUM}))*100) < 50 ? true : false : false]]></conditionExpression>
+			<style mode="Opaque" backcolor="#D13330"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#C0C0C0"/>
+		</conditionalStyle>
+	</style>
+	<style name="AC_st">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[NOT($F{AC_SUM}.contains("s.o")) && INTEGER_VALUE($F{AC_SUM}) > 5 ? ((DOUBLE_VALUE($F{AC_ST})/DOUBLE_VALUE($F{AC_SUM}))*100) < 50 ? true : false : false]]></conditionExpression>
+			<style mode="Opaque" backcolor="#D13330"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#C0C0C0"/>
+		</conditionalStyle>
+	</style>
+	<style name="AC_v">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[NOT($F{AC_SUM}.contains("s.o")) && INTEGER_VALUE($F{AC_SUM}) > 5 ? ((DOUBLE_VALUE($F{AC_V})/DOUBLE_VALUE($F{AC_SUM}))*100) < 50 ? true : false : false]]></conditionExpression>
+			<style mode="Opaque" backcolor="#D13330"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#C0C0C0"/>
+		</conditionalStyle>
+	</style>
+	<style name="CompLit">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{QUECOMLIT} != 0 ? ( ($F{REPCOMLIT}/$F{QUECOMLIT}) >= 0.50 && ($F{REPCOMLIT}/$F{QUECOMLIT}) <= 0.69 ? true : false) : false]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F2C041"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{QUECOMLIT} != 0 ? ( ($F{REPCOMLIT}/$F{QUECOMLIT}) < 0.50 ? true : false) : false]]></conditionExpression>
+			<style mode="Opaque" backcolor="#D13330"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#C0C0C0"/>
+		</conditionalStyle>
+	</style>
+	<style name="CompDed">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{QUECOMDED} != 0 ? ( ($F{REPCOMDED}/$F{QUECOMDED}) >= 0.50 && ($F{REPCOMDED}/$F{QUECOMDED}) <= 0.69 ? true : false) : false]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F2C041"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{QUECOMDED} != 0 ? ( ($F{REPCOMDED}/$F{QUECOMDED}) < 0.50 ? true : false) : false]]></conditionExpression>
+			<style mode="Opaque" backcolor="#D13330"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#C0C0C0"/>
+		</conditionalStyle>
+	</style>
+	<style name="ConApp">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{QUECONAPP} != 0 ? ( ($F{REPCONAPP}/$F{QUECONAPP}) >= 0.50 && ($F{REPCONAPP}/$F{QUECONAPP}) <= 0.69 ? true : false) : false]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F2C041"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{QUECONAPP} != 0 ? ( ($F{REPCONAPP}/$F{QUECONAPP}) < 0.50 ? true : false) : false]]></conditionExpression>
+			<style mode="Opaque" backcolor="#D13330"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#C0C0C0"/>
+		</conditionalStyle>
+	</style>
+	<style name="Vocab">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{QUEVOCAB} != 0 ? ( ($F{REPVOCAB}/$F{QUEVOCAB}) >= 0.50 && ($F{REPVOCAB}/$F{QUEVOCAB}) <= 0.69 ? true : false) : false]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F2C041"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{QUEVOCAB} != 0 ? ( ($F{REPVOCAB}/$F{QUEVOCAB}) < 0.50 ? true : false) : false]]></conditionExpression>
+			<style mode="Opaque" backcolor="#D13330"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#C0C0C0"/>
+		</conditionalStyle>
+	</style>
+	<style name="Lignes Grises">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[(new Boolean( $V{REPORT_COUNT}.intValue() % 2 == 0 ))]]></conditionExpression>
+			<style mode="Opaque" backcolor="#C0C0C0"/>
+		</conditionalStyle>
+	</style>
+	<subDataset name="Dataset1" uuid="6154729a-a50e-45f0-a6ee-15425c652561">
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="CSCFN TRIL"/>
+		<parameter name="PERSON_ID" class="java.lang.String"/>
+		<queryString>
+			<![CDATA[SELECT 
+        sr.school_code,
+       res.niveau as Niveau,
+       res.evaluation_date,		
+       
+        nvl(PKG_PROFILE_ÉLÈVE.GBP_ATTENTE_GROUPE_SIGNIFIANT(RES.RESULTAT_ID), 's.o.') GROUPE_SIGNIFIANT,
+		nvl(PKG_PROFILE_ÉLÈVE.GBP_ATTENTE_PONCTUATION(RES.RESULTAT_ID), 's.o.') RESPECT_PONCTUATION,
+		nvl(PKG_PROFILE_ÉLÈVE.GBP_ATTENTE_LEC_COURANTE(RES.RESULTAT_ID), 's.o.') LECTURE_COURANTE,
+		nvl(PKG_PROFILE_ÉLÈVE.GBP_ATTENTE_EXPRESSIVE(RES.RESULTAT_ID), 's.o.') LECTURE_EXPRESSIVE,
+		
+       case when res.tech_is_used = 1 then 'Oui'
+       			when res.tech_is_used = 0 then 'Non'
+       			else 'S.O.'
+       			end as tech_is_used,
+       			 
+        CSCFN.PKG_PROFILE_ÉLÈVE.GBP_ERREURS(res.resultat_id) as ERR_SUM,
+        case when  commentaire = 'Données Historique' then 's.o.'       else
+        REPLACE(TO_CHAR(nvl(CSCFN.PKG_PROFILE_ÉLÈVE.GBP_TAUX_PRECISION(res.resultat_id), 0) ), ',', '.')
+        end as Taux_de_précision, --Fonction qui calcule le pourcentage des erreurs
+        case when  commentaire = 'Données Historique' then 's.o.'       else
+		CSCFN.PKG_PROFILE_ÉLÈVE.GBP_ERREURS_S(res.resultat_id) 
+		end as ERR_S, --Fonction qui fait la somme des erreurs sémantiques
+        case when  commentaire = 'Données Historique' then 's.o.'       else
+		CSCFN.PKG_PROFILE_ÉLÈVE.GBP_ERREURS_ST(res.resultat_id) 
+		end as ERR_ST, --Fontion qui fait la somme des erreurs syntactiques
+        case when  commentaire = 'Données Historique' then 's.o.'       else
+		CSCFN.PKG_PROFILE_ÉLÈVE.GBP_ERREURS_V(res.resultat_id) 
+		end as ERR_V, --Fonction qui fait la somme des erreurs visuelles
+
+
+case when  commentaire = 'Données Historique' then 's.o.'       else 
+CSCFN.PKG_PROFILE_ÉLÈVE.GBP_AC_SUM(res.resultat_id) end 
+as AC_SUM,
+
+case when  commentaire = 'Données Historique' then 's.o.'       else 
+'1 : ' || case when CSCFN.PKG_PROFILE_ÉLÈVE.GBP_AC(res.resultat_id) = 0 then 's.o' else to_char(TRUNC(CSCFN.PKG_PROFILE_ÉLÈVE.GBP_AC(res.resultat_id))) end 
+end as AC,
+case when  commentaire = 'Données Historique' then 's.o.'       else 
+CSCFN.PKG_PROFILE_ÉLÈVE.GBP_AC_S(res.resultat_id) 
+end as AC_S, --Fonction qui fait la somme des erreurs sémantiques
+case when  commentaire = 'Données Historique' then 's.o.'       else 
+CSCFN.PKG_PROFILE_ÉLÈVE.GBP_AC_ST(res.resultat_id) 
+end as AC_ST, --Fontion qui fait la somme des erreurs syntactiques
+case when  commentaire = 'Données Historique' then 's.o.'       else 
+CSCFN.PKG_PROFILE_ÉLÈVE.GBP_AC_V(res.resultat_id) 
+end as AC_V, --Fonction qui fait la somme des erreurs visuelles
+
+case when  commentaire = 'Données Historique' then 's.o.'       else 
+TO_CHAR(PKG_PROFILE_ÉLÈVE.GBP_GET_RAPPEL(RES.RESULTAT_ID)) end as Rappel_du_texte,
+
+--Nombre de bonnes réponses dans la catégorie "Compréhension litérale"
+case when  commentaire = 'Données Historique' then 's.o.'       else 
+PKG_PROFILE_ÉLÈVE.GBP_GET_NUM_BONNES_REPONSES(RES.RESULTAT_ID, 1)|| '/'||PKG_PROFILE_ÉLÈVE.GBP_GET_NUM_QUE(RES.RESULTAT_ID, 1) end as Comp_Litérale, 
+PKG_PROFILE_ÉLÈVE.GBP_GET_NUM_BONNES_REPONSES(RES.RESULTAT_ID, 1) as repComLit,
+PKG_PROFILE_ÉLÈVE.GBP_GET_NUM_QUE(RES.RESULTAT_ID, 1) as queComLit,
+
+--Nombre de bonnes réponses dans la catégorie "Compréhension déductive"
+case when  commentaire = 'Données Historique' then 's.o.'       else 
+PKG_PROFILE_ÉLÈVE.GBP_GET_NUM_BONNES_REPONSES(RES.RESULTAT_ID, 2)|| '/'||PKG_PROFILE_ÉLÈVE.GBP_GET_NUM_QUE(RES.RESULTAT_ID, 2) end as Comp_Déductive,
+PKG_PROFILE_ÉLÈVE.GBP_GET_NUM_BONNES_REPONSES(RES.RESULTAT_ID, 2) as repComDed,
+PKG_PROFILE_ÉLÈVE.GBP_GET_NUM_QUE(RES.RESULTAT_ID, 2) as queComDed,
+
+--Nombre de bonnes réponses dans la catégorie "Connaissances appliquées"
+case when  commentaire = 'Données Historique' then 's.o.'       else 
+PKG_PROFILE_ÉLÈVE.GBP_GET_NUM_BONNES_REPONSES(RES.RESULTAT_ID, 3)|| '/'||PKG_PROFILE_ÉLÈVE.GBP_GET_NUM_QUE(RES.RESULTAT_ID, 3) end as Connai_app,
+PKG_PROFILE_ÉLÈVE.GBP_GET_NUM_BONNES_REPONSES(RES.RESULTAT_ID, 3) as repConApp,
+PKG_PROFILE_ÉLÈVE.GBP_GET_NUM_QUE(RES.RESULTAT_ID, 3) as queConApp,
+
+--Nombre de bonnes réponses dans la catégorie "Vocabulaire"
+case when  commentaire = 'Données Historique' then 's.o.'       else 
+PKG_PROFILE_ÉLÈVE.GBP_GET_NUM_BONNES_REPONSES(RES.RESULTAT_ID, 4)|| '/'||PKG_PROFILE_ÉLÈVE.GBP_GET_NUM_QUE(RES.RESULTAT_ID, 4) end as Vocab,
+PKG_PROFILE_ÉLÈVE.GBP_GET_NUM_BONNES_REPONSES(RES.RESULTAT_ID, 4) as repVocab,
+PKG_PROFILE_ÉLÈVE.GBP_GET_NUM_QUE(RES.RESULTAT_ID, 4) as queVocab
+  FROM persons p,
+       student_registrations sr
+       LEFT JOIN ATELIER.GBP_RESULTATS res
+          ON     sr.person_id = res.person_id 
+ 
+ WHERE p.person_id = sr.person_id
+       and p.person_id = $P{PERSON_ID}   
+       and sr.school_year = res.school_year
+     
+    and res.evaluation_date is not null
+	and res.evaluation_date = CSCFN.PKG_PROFILE_ÉLÈVE.GBP_GET_EVAL_DATE(SR.PERSON_ID)
+	    and res.resultat_id in (
+                select max(resultat_id) 
+                from ATELIER.GBP_resultats r
+                where r.person_id = sr.person_id)
+
+order by evaluation_date, school_code]]>
+		</queryString>
+		<field name="SCHOOL_CODE" class="java.lang.String"/>
+		<field name="NIVEAU" class="java.math.BigDecimal"/>
+		<field name="EVALUATION_DATE" class="java.sql.Date"/>
+		<field name="GROUPE_SIGNIFIANT" class="java.lang.String"/>
+		<field name="RESPECT_PONCTUATION" class="java.lang.String"/>
+		<field name="LECTURE_COURANTE" class="java.lang.String"/>
+		<field name="LECTURE_EXPRESSIVE" class="java.lang.String"/>
+		<field name="TECH_IS_USED" class="java.lang.String"/>
+		<field name="ERR_SUM" class="java.lang.String"/>
+		<field name="TAUX_DE_PRÉCISION" class="java.lang.String"/>
+		<field name="ERR_S" class="java.lang.String"/>
+		<field name="ERR_ST" class="java.lang.String"/>
+		<field name="ERR_V" class="java.lang.String"/>
+		<field name="AC_SUM" class="java.lang.String"/>
+		<field name="AC" class="java.lang.String"/>
+		<field name="AC_S" class="java.lang.String"/>
+		<field name="AC_ST" class="java.lang.String"/>
+		<field name="AC_V" class="java.lang.String"/>
+		<field name="RAPPEL_DU_TEXTE" class="java.lang.String"/>
+		<field name="COMP_LITÉRALE" class="java.lang.String"/>
+		<field name="REPCOMLIT" class="java.lang.Double"/>
+		<field name="QUECOMLIT" class="java.lang.Double"/>
+		<field name="COMP_DÉDUCTIVE" class="java.lang.String"/>
+		<field name="REPCOMDED" class="java.lang.Double"/>
+		<field name="QUECOMDED" class="java.lang.Double"/>
+		<field name="CONNAI_APP" class="java.lang.String"/>
+		<field name="REPCONAPP" class="java.lang.Double"/>
+		<field name="QUECONAPP" class="java.lang.Double"/>
+		<field name="VOCAB" class="java.lang.String"/>
+		<field name="REPVOCAB" class="java.lang.Double"/>
+		<field name="QUEVOCAB" class="java.lang.Double"/>
+	</subDataset>
+	<parameter name="SCHOOL_YEAR" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="PERSON_ID" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT P.PERSON_ID
+FROM PERSONS P
+WHERE ROWNUM = 1]]>
+	</queryString>
+	<field name="PERSON_ID" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="40" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="309" height="40" uuid="b4aa4add-2a4e-4fc7-8fd8-c51a90ebce86">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Tableau des méprises GB+"]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="80">
+			<rectangle>
+				<reportElement x="0" y="0" width="572" height="80" uuid="f4b0f099-0e4c-433c-b583-022b5474808f"/>
+			</rectangle>
+			<staticText>
+				<reportElement mode="Opaque" x="311" y="40" width="130" height="40" backcolor="#D13330" uuid="b99ee2e1-70e4-4815-aa4c-d48c196bafa1"/>
+				<box topPadding="5" bottomPadding="5">
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[1 : x <= 1 : 3]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="441" y="20" width="130" height="20" uuid="f6814a2c-0383-4a1f-a6f4-87dd82810ec8">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				</reportElement>
+				<box topPadding="5" bottomPadding="5">
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[Compréhension:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="572" height="20" uuid="94cae8e6-a78c-457d-8f6b-011cf8a89722">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma"/>
+				</textElement>
+				<text><![CDATA[Légende]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="40" width="181" height="40" backcolor="#D13330" uuid="92ac654d-8007-47f5-b185-d157336868c7">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box topPadding="5" leftPadding="10" bottomPadding="5" rightPadding="10">
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[l'élève se sert de l'indice moins que 50% du temps]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="20" width="181" height="20" uuid="ae018e11-b17b-4e31-9cfb-b68e2b602327">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<box topPadding="5" leftPadding="10" bottomPadding="5" rightPadding="10">
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[Les indices (lorsqu'il y a plus de 5 erreurs) : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="181" y="40" width="130" height="20" backcolor="#F2C041" uuid="bf07a263-41ce-452e-bb2d-1f709fa3832e">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box topPadding="5" bottomPadding="5">
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[95% < x <= 90%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="181" y="20" width="130" height="20" uuid="1cf5aded-b0ea-4d86-9ff7-99b17cec631f"/>
+				<box topPadding="5" bottomPadding="5">
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[Le taux de précision: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="441" y="60" width="130" height="20" backcolor="#D13330" uuid="3a667c04-84c1-46b1-90dd-fdbdf150344e">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<box topPadding="5" bottomPadding="5">
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[50% > x]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="311" y="20" width="130" height="20" uuid="af502b06-f41f-459e-9997-e113be806ced">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				</reportElement>
+				<box topPadding="5" bottomPadding="5">
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[Le taux d'autocorrections: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="181" y="60" width="130" height="20" backcolor="#D13330" uuid="ea6b6a6c-f7d2-4bc5-8852-090d970c1f34">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box topPadding="5" bottomPadding="5">
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[90% > x]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="441" y="40" width="130" height="20" backcolor="#F2C041" uuid="6ac3c20d-83a1-428b-ae40-469f0c775677">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<box topPadding="5" bottomPadding="5">
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[50% <= x <= 69%]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<summary>
+		<band height="200" splitType="Stretch">
+			<componentElement>
+				<reportElement x="0" y="10" width="572" height="190" uuid="2347ca87-fff5-4411-ba4e-1e487d9f8c7b">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Dataset1" uuid="16c87e01-6812-473a-a2e9-e6ea2bf90fd6">
+						<datasetParameter name="PERSON_ID">
+							<datasetParameterExpression><![CDATA[$P{PERSON_ID}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:columnGroup width="107" uuid="4aa3d222-8171-4140-97f6-cce121d3a44d">
+						<jr:columnHeader height="30"/>
+						<jr:columnGroup width="107" uuid="da895315-50de-4583-8d16-7350e98d459e">
+							<jr:columnHeader height="30"/>
+							<jr:column width="30" uuid="3d91fcc2-20f7-40d6-90a2-275d15f6c782">
+								<jr:columnHeader style="Table_CH" height="100">
+									<staticText>
+										<reportElement x="0" y="0" width="30" height="100" forecolor="#FFFFFF" backcolor="#149966" uuid="fe55f4d0-adfe-4673-b141-2f794a74db52"/>
+										<box padding="5"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+											<font fontName="Tahoma" size="8"/>
+										</textElement>
+										<text><![CDATA[École]]></text>
+									</staticText>
+								</jr:columnHeader>
+								<jr:detailCell style="Table_TD" height="30">
+									<property name="com.jaspersoft.studio.unit.width" value="px"/>
+									<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+										<reportElement style="Lignes Grises" stretchType="RelativeToBandHeight" x="0" y="0" width="30" height="30" uuid="16421246-115b-41f3-8668-da68f24aa2c4">
+											<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+										</reportElement>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="Tahoma" size="8"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{SCHOOL_CODE}]]></textFieldExpression>
+									</textField>
+								</jr:detailCell>
+							</jr:column>
+							<jr:column width="20" uuid="848f291d-3c50-4e72-a6e5-01130167173c">
+								<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+								<jr:columnHeader style="Table_CH" height="100">
+									<staticText>
+										<reportElement x="0" y="0" width="20" height="100" forecolor="#FFFFFF" backcolor="#149966" uuid="0bd346af-6afb-4ecb-ad0c-286e3448a21b">
+											<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+										</reportElement>
+										<box padding="5"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+											<font fontName="Tahoma" size="8"/>
+										</textElement>
+										<text><![CDATA[Niveau]]></text>
+									</staticText>
+								</jr:columnHeader>
+								<jr:detailCell style="Table_TD" height="30">
+									<property name="com.jaspersoft.studio.unit.width" value="px"/>
+									<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+										<reportElement style="Lignes Grises" stretchType="RelativeToBandHeight" x="0" y="0" width="20" height="30" uuid="fb5447b1-b44c-460e-a15b-3e203c80f45b">
+											<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+										</reportElement>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="Tahoma" size="8"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{NIVEAU}]]></textFieldExpression>
+									</textField>
+								</jr:detailCell>
+							</jr:column>
+							<jr:column width="57" uuid="f1c084ac-1821-4b68-a60d-7d828a6b1c7b">
+								<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+								<jr:columnHeader style="Table_CH" height="100">
+									<staticText>
+										<reportElement x="0" y="0" width="57" height="100" forecolor="#FFFFFF" backcolor="#149966" uuid="496e9cda-eacf-4f5e-af35-d1e67cc120e3">
+											<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+										</reportElement>
+										<box padding="5"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+											<font fontName="Tahoma" size="8"/>
+										</textElement>
+										<text><![CDATA[Date d'évaluation]]></text>
+									</staticText>
+								</jr:columnHeader>
+								<jr:detailCell style="Table_TD" height="30">
+									<property name="com.jaspersoft.studio.unit.width" value="px"/>
+									<textField isStretchWithOverflow="true" pattern="MMM d, yyyy" isBlankWhenNull="true">
+										<reportElement style="Lignes Grises" stretchType="RelativeToBandHeight" x="0" y="0" width="57" height="30" uuid="688a5537-9ec7-464e-b746-dbc0222c6f3e"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="Tahoma" size="8"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{EVALUATION_DATE}]]></textFieldExpression>
+									</textField>
+								</jr:detailCell>
+							</jr:column>
+						</jr:columnGroup>
+					</jr:columnGroup>
+					<jr:columnGroup width="340" uuid="01665b08-87df-4e40-a0d7-77b873e5f1fc">
+						<jr:columnHeader height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="340" height="30" uuid="8e8475d9-99c0-45e7-8ffd-e744f635a06c">
+									<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+									<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+								</reportElement>
+								<box padding="0">
+									<topPen lineWidth="1.0"/>
+									<leftPen lineWidth="1.0"/>
+									<bottomPen lineWidth="1.0"/>
+									<rightPen lineWidth="1.0"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Tahoma" size="10"/>
+								</textElement>
+								<text><![CDATA[Fluidité]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnGroup width="105" uuid="f2d07a91-f8d0-48b1-b76e-d51d64e53403">
+							<jr:columnHeader height="30">
+								<staticText>
+									<reportElement mode="Opaque" x="0" y="0" width="105" height="30" forecolor="#FFFFFF" backcolor="#9BCCB8" uuid="4f62cc78-06c4-4bac-aff5-492acf39527a">
+										<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+										<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+									</reportElement>
+									<box padding="0">
+										<topPen lineWidth="1.0" lineColor="#000000"/>
+										<leftPen lineWidth="1.0" lineColor="#000000"/>
+										<bottomPen lineWidth="1.0" lineColor="#000000"/>
+										<rightPen lineWidth="1.0" lineColor="#000000"/>
+									</box>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Tahoma" size="10"/>
+									</textElement>
+									<text><![CDATA[Précision]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:column width="30" uuid="7e029fb4-6610-4e68-93a8-09e3fa77fec4">
+								<jr:columnHeader style="Table_CH" height="100">
+									<staticText>
+										<reportElement x="0" y="0" width="30" height="100" forecolor="#FFFFFF" backcolor="#149966" uuid="ffd7b4e9-126a-417a-a622-7068d4fb6084"/>
+										<box padding="5"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+											<font fontName="Tahoma" size="8"/>
+										</textElement>
+										<text><![CDATA[Taux de précision]]></text>
+									</staticText>
+								</jr:columnHeader>
+								<jr:detailCell style="Table_TD" height="30">
+									<property name="com.jaspersoft.studio.unit.width" value="px"/>
+									<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+										<reportElement key="" style="PRECISION" stretchType="RelativeToBandHeight" x="0" y="0" width="30" height="30" uuid="f0a276d8-9fab-482c-a04e-3744ebae6495">
+											<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+										</reportElement>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="Tahoma" size="8"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{TAUX_DE_PRÉCISION}]]></textFieldExpression>
+									</textField>
+								</jr:detailCell>
+							</jr:column>
+							<jr:column width="25" uuid="9b616a06-29cc-436d-b267-44b7dff2515e">
+								<jr:columnHeader style="Table_CH" height="100">
+									<staticText>
+										<reportElement x="0" y="0" width="25" height="100" forecolor="#FFFFFF" backcolor="#149966" uuid="f64c2f06-310e-4581-918d-95aa46ed79bc"/>
+										<box padding="5"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+											<font fontName="Tahoma" size="6"/>
+										</textElement>
+										<text><![CDATA[L'utilisation de l'indice sémantique]]></text>
+									</staticText>
+								</jr:columnHeader>
+								<jr:detailCell style="Table_TD" height="30">
+									<property name="com.jaspersoft.studio.unit.width" value="px"/>
+									<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+										<reportElement style="err_s" stretchType="RelativeToBandHeight" x="0" y="0" width="25" height="30" uuid="4630ddbc-b154-4131-8a05-9d326aa671cf">
+											<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+										</reportElement>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="Tahoma" size="8"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{ERR_S}]]></textFieldExpression>
+									</textField>
+								</jr:detailCell>
+							</jr:column>
+							<jr:column width="25" uuid="d2104657-3a2b-43fb-90b8-ea942bc1f62c">
+								<jr:columnHeader style="Table_CH" height="100">
+									<staticText>
+										<reportElement x="0" y="0" width="25" height="100" forecolor="#FFFFFF" backcolor="#149966" uuid="28c44509-b504-4a5d-bd26-56439a54cfa7"/>
+										<box padding="5"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+											<font fontName="Tahoma" size="6"/>
+										</textElement>
+										<text><![CDATA[L'utilisation de l'indice syntaxique]]></text>
+									</staticText>
+								</jr:columnHeader>
+								<jr:detailCell style="Table_TD" height="30">
+									<property name="com.jaspersoft.studio.unit.width" value="px"/>
+									<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+										<reportElement style="err_st" stretchType="RelativeToBandHeight" x="0" y="0" width="25" height="30" uuid="5e2978ed-1d66-4ece-9089-cfa007926c3e">
+											<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+										</reportElement>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="Tahoma" size="8"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{ERR_ST}]]></textFieldExpression>
+									</textField>
+								</jr:detailCell>
+							</jr:column>
+							<jr:column width="25" uuid="c2b69935-f5b3-4b3f-8368-87807ff5684a">
+								<jr:columnHeader style="Table_CH" height="100">
+									<staticText>
+										<reportElement x="0" y="0" width="25" height="100" forecolor="#FFFFFF" backcolor="#149966" uuid="3b2c072d-eb5a-4ab5-a475-f5eeb11128ec"/>
+										<box padding="5"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+											<font fontName="Tahoma" size="6"/>
+										</textElement>
+										<text><![CDATA[L'utilisation de l'indice visuel]]></text>
+									</staticText>
+								</jr:columnHeader>
+								<jr:detailCell style="Table_TD" height="30">
+									<property name="com.jaspersoft.studio.unit.width" value="px"/>
+									<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+										<reportElement style="err_v" stretchType="RelativeToBandHeight" x="0" y="0" width="25" height="30" uuid="623f9bd2-cb54-4cc4-9658-c963f6d0d314">
+											<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+										</reportElement>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="Tahoma" size="8"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{ERR_V}]]></textFieldExpression>
+									</textField>
+								</jr:detailCell>
+							</jr:column>
+						</jr:columnGroup>
+						<jr:columnGroup width="110" uuid="a40219c4-1965-4fff-9f0b-0d8b2431e308">
+							<jr:columnHeader height="30">
+								<staticText>
+									<reportElement mode="Opaque" x="0" y="0" width="110" height="30" forecolor="#FFFFFF" backcolor="#9BCCB8" uuid="6cce18d7-002d-4d48-bca8-0213e749456c">
+										<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+										<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+									</reportElement>
+									<box padding="0">
+										<topPen lineWidth="1.0" lineColor="#000000"/>
+										<leftPen lineWidth="1.0" lineColor="#000000"/>
+										<bottomPen lineWidth="1.0" lineColor="#000000"/>
+										<rightPen lineWidth="1.0" lineColor="#000000"/>
+									</box>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Tahoma" size="10"/>
+									</textElement>
+									<text><![CDATA[Autocorrection]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:column width="35" uuid="3f0f9e5a-661f-401a-bcb3-61fcf82f3f62">
+								<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+								<jr:columnHeader style="Table_CH" height="100">
+									<staticText>
+										<reportElement x="0" y="0" width="35" height="100" forecolor="#FFFFFF" backcolor="#149966" uuid="6ab23066-2fb4-4d45-a9e1-22da45a2fd1f"/>
+										<box padding="5"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+											<font fontName="Tahoma" size="8"/>
+										</textElement>
+										<text><![CDATA[Taux d'auto-correction]]></text>
+									</staticText>
+								</jr:columnHeader>
+								<jr:detailCell style="Table_TD" height="30">
+									<property name="com.jaspersoft.studio.unit.width" value="px"/>
+									<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+										<reportElement style="AC" stretchType="RelativeToBandHeight" x="0" y="0" width="35" height="30" uuid="7788179e-e784-4e18-b07f-e6b27d943ff5">
+											<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+										</reportElement>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="Tahoma" size="8"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{AC}]]></textFieldExpression>
+									</textField>
+								</jr:detailCell>
+							</jr:column>
+							<jr:column width="25" uuid="d9558342-38e0-4f2d-ad43-18970ea8908f">
+								<jr:columnHeader style="Table_CH" height="100">
+									<staticText>
+										<reportElement x="0" y="0" width="25" height="100" forecolor="#FFFFFF" backcolor="#149966" uuid="32f2bb09-ed3b-413d-a45d-ba186598180b"/>
+										<box padding="5"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+											<font fontName="Tahoma" size="6"/>
+										</textElement>
+										<text><![CDATA[L'utilisation de l'indice sémantique pour auto-correction]]></text>
+									</staticText>
+								</jr:columnHeader>
+								<jr:detailCell style="Table_TD" height="30">
+									<property name="com.jaspersoft.studio.unit.width" value="px"/>
+									<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+										<reportElement style="AC_s" stretchType="RelativeToBandHeight" x="0" y="0" width="25" height="30" uuid="64130e2c-8d92-45f4-bc97-c6a3909a4c47">
+											<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+										</reportElement>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="Tahoma" size="8"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{AC_S}]]></textFieldExpression>
+									</textField>
+								</jr:detailCell>
+							</jr:column>
+							<jr:column width="25" uuid="7c94ce07-8837-4a29-a3ab-c8543f39d486">
+								<jr:columnHeader style="Table_CH" height="100">
+									<staticText>
+										<reportElement x="0" y="0" width="25" height="100" forecolor="#FFFFFF" backcolor="#149966" uuid="6edbb1cf-747f-4ef0-98d2-dd42778bd15d"/>
+										<box padding="5"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+											<font fontName="Tahoma" size="6"/>
+										</textElement>
+										<text><![CDATA[L'utilisation de l'indice syntaxique pour auto-correction]]></text>
+									</staticText>
+								</jr:columnHeader>
+								<jr:detailCell style="Table_TD" height="30">
+									<property name="com.jaspersoft.studio.unit.width" value="px"/>
+									<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+										<reportElement style="AC_st" stretchType="RelativeToBandHeight" x="0" y="0" width="25" height="30" uuid="e53f6d71-7c06-497a-8776-069f142c3d49"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="Tahoma" size="8"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{AC_ST}]]></textFieldExpression>
+									</textField>
+								</jr:detailCell>
+							</jr:column>
+							<jr:column width="25" uuid="a1d338b9-579d-4b81-b393-dd34809e4c2a">
+								<jr:columnHeader style="Table_CH" height="100">
+									<staticText>
+										<reportElement x="0" y="0" width="25" height="100" forecolor="#FFFFFF" backcolor="#149966" uuid="b4489ee8-06cb-48b9-ac79-69bf95a7091b"/>
+										<box padding="5"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+											<font fontName="Tahoma" size="6"/>
+										</textElement>
+										<text><![CDATA[L'utilisation de l'indice visuel pour autocorrection]]></text>
+									</staticText>
+								</jr:columnHeader>
+								<jr:detailCell style="Table_TD" height="30">
+									<property name="com.jaspersoft.studio.unit.width" value="px"/>
+									<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+										<reportElement key="" style="AC_v" stretchType="RelativeToBandHeight" x="0" y="0" width="25" height="30" uuid="389f47b5-cc78-4152-b146-89de365d18a3"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="Tahoma" size="8"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{AC_V}]]></textFieldExpression>
+									</textField>
+								</jr:detailCell>
+							</jr:column>
+						</jr:columnGroup>
+						<jr:columnGroup width="125" uuid="abd84f4a-c22b-4af0-968c-7f18b2a27c69">
+							<jr:columnHeader height="30">
+								<staticText>
+									<reportElement mode="Opaque" x="0" y="0" width="125" height="30" forecolor="#FFFFFF" backcolor="#9BCCB8" uuid="f03d78a7-d1a0-4902-8a75-6f9a07e12db0">
+										<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+										<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+									</reportElement>
+									<box padding="0">
+										<topPen lineWidth="1.0" lineColor="#000000"/>
+										<leftPen lineWidth="1.0" lineColor="#000000"/>
+										<bottomPen lineWidth="1.0" lineColor="#000000"/>
+										<rightPen lineWidth="1.0" lineColor="#000000"/>
+									</box>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Tahoma" size="10"/>
+									</textElement>
+									<text><![CDATA[Aisance]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:column width="25" uuid="e42537c6-d244-4f75-ac79-d1d16c6b8e27">
+								<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+								<jr:columnHeader style="Table_CH" height="100">
+									<staticText>
+										<reportElement x="0" y="0" width="25" height="100" forecolor="#FFFFFF" backcolor="#149966" uuid="768fd332-9e98-41e3-93ba-534d718b1339"/>
+										<box padding="5"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+											<font fontName="Tahoma" size="6"/>
+										</textElement>
+										<text><![CDATA[Lit par groupe de mot signifiants]]></text>
+									</staticText>
+								</jr:columnHeader>
+								<jr:detailCell style="Table_TD" height="30">
+									<property name="com.jaspersoft.studio.unit.width" value="px"/>
+									<textField isBlankWhenNull="true">
+										<reportElement style="Lignes Grises" x="0" y="0" width="25" height="30" uuid="58fc02b1-0ea9-40fe-8c1b-21471c7a1c10">
+											<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+										</reportElement>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="Tahoma" size="8"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{GROUPE_SIGNIFIANT}]]></textFieldExpression>
+									</textField>
+								</jr:detailCell>
+							</jr:column>
+							<jr:column width="25" uuid="736d9dad-5e0f-442c-9330-ad738660ad1f">
+								<jr:columnHeader style="Table_CH" height="100">
+									<staticText>
+										<reportElement x="0" y="0" width="25" height="100" forecolor="#FFFFFF" backcolor="#149966" uuid="25251972-83af-4084-8114-4446b374a330"/>
+										<box padding="5"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+											<font fontName="Tahoma" size="8"/>
+										</textElement>
+										<text><![CDATA[Respecte la ponctuation]]></text>
+									</staticText>
+								</jr:columnHeader>
+								<jr:detailCell style="Table_TD" height="30">
+									<property name="com.jaspersoft.studio.unit.width" value="px"/>
+									<textField isBlankWhenNull="true">
+										<reportElement style="Lignes Grises" x="0" y="0" width="25" height="30" uuid="7a70b3a6-bc4f-41f1-9d07-529b1fb588d7">
+											<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+											<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+											<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+										</reportElement>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="Tahoma" size="8"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{RESPECT_PONCTUATION}]]></textFieldExpression>
+									</textField>
+								</jr:detailCell>
+							</jr:column>
+							<jr:column width="25" uuid="6a92af2b-4bcf-4e62-b514-ed79de628028">
+								<jr:columnHeader style="Table_CH" height="100">
+									<staticText>
+										<reportElement x="0" y="0" width="25" height="100" forecolor="#FFFFFF" backcolor="#149966" uuid="00e4aea0-8a82-4bdd-b0eb-0aca61dfd7ff"/>
+										<box padding="5"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+											<font fontName="Tahoma" size="8"/>
+										</textElement>
+										<text><![CDATA[Lecture courante]]></text>
+									</staticText>
+								</jr:columnHeader>
+								<jr:detailCell style="Table_TD" height="30">
+									<property name="com.jaspersoft.studio.unit.width" value="px"/>
+									<textField isBlankWhenNull="true">
+										<reportElement style="Lignes Grises" x="0" y="0" width="25" height="30" uuid="df1f1aef-296c-424b-bd1a-a43cebcf8548">
+											<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+											<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+											<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+										</reportElement>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="Tahoma" size="8"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{LECTURE_COURANTE}]]></textFieldExpression>
+									</textField>
+								</jr:detailCell>
+							</jr:column>
+							<jr:column width="25" uuid="68e893da-a963-4972-a217-6b2f96b497f4">
+								<jr:columnHeader style="Table_CH" height="100">
+									<staticText>
+										<reportElement x="0" y="0" width="25" height="100" forecolor="#FFFFFF" backcolor="#149966" uuid="44dcec06-30a7-497a-b313-4364dd74b7bd"/>
+										<box padding="5"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+											<font fontName="Tahoma" size="8"/>
+										</textElement>
+										<text><![CDATA[Lecture expressive]]></text>
+									</staticText>
+								</jr:columnHeader>
+								<jr:detailCell style="Table_TD" height="30">
+									<property name="com.jaspersoft.studio.unit.width" value="px"/>
+									<textField isBlankWhenNull="true">
+										<reportElement style="Lignes Grises" x="0" y="0" width="25" height="30" uuid="db66d295-665f-4ac0-8c11-8af21d669a53">
+											<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+											<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+											<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+										</reportElement>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="Tahoma" size="8"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{LECTURE_EXPRESSIVE}]]></textFieldExpression>
+									</textField>
+								</jr:detailCell>
+							</jr:column>
+							<jr:column width="25" uuid="97c59857-e3c3-4b80-a45f-71e4fb995a08">
+								<jr:columnHeader style="Table_CH" height="100">
+									<staticText>
+										<reportElement x="0" y="0" width="25" height="100" forecolor="#FFFFFF" backcolor="#149966" uuid="58618bc3-5be3-4abe-adad-f588d959955e"/>
+										<box padding="5"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+											<font fontName="Tahoma" size="10"/>
+										</textElement>
+										<text><![CDATA[Lecture courante]]></text>
+									</staticText>
+								</jr:columnHeader>
+								<jr:detailCell style="Table_TD" height="30">
+									<property name="com.jaspersoft.studio.unit.width" value="px"/>
+									<textField>
+										<reportElement style="Lignes Grises" x="0" y="0" width="25" height="30" uuid="7235ae98-bccd-40eb-821d-a7e481dbad07">
+											<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+											<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+											<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+										</reportElement>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="Tahoma" size="8"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{LECTURE_COURANTE}]]></textFieldExpression>
+									</textField>
+								</jr:detailCell>
+							</jr:column>
+						</jr:columnGroup>
+					</jr:columnGroup>
+					<jr:columnGroup width="125" uuid="9ef18a96-d22f-4edb-9d22-11d80b80584c">
+						<jr:columnHeader height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="125" height="30" uuid="4b2363dd-7680-4ec1-92f5-0d8259ff9ce9">
+									<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+									<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+								</reportElement>
+								<box padding="0">
+									<topPen lineWidth="1.0"/>
+									<leftPen lineWidth="1.0"/>
+									<bottomPen lineWidth="1.0"/>
+									<rightPen lineWidth="1.0"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Tahoma" size="10"/>
+								</textElement>
+								<text><![CDATA[Compréhension]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnGroup width="125" uuid="eabc07a5-8812-4749-9be5-b9b6e3441a61">
+							<jr:columnHeader height="30">
+								<staticText>
+									<reportElement mode="Opaque" x="0" y="0" width="125" height="30" forecolor="#FFFFFF" backcolor="#9BCCB8" uuid="9b9a13a2-718b-4dce-9de8-17e61892dc67">
+										<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+										<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+									</reportElement>
+									<box padding="0">
+										<topPen lineWidth="1.0" lineColor="#000000"/>
+										<leftPen lineWidth="1.0" lineColor="#000000"/>
+										<bottomPen lineWidth="1.0" lineColor="#000000"/>
+										<rightPen lineWidth="1.0" lineColor="#000000"/>
+									</box>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Tahoma" size="10"/>
+									</textElement>
+									<text><![CDATA[Compréhension]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:column width="25" uuid="08a78042-a1a8-4ea2-aa6d-3db7cf1a476d">
+								<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+								<jr:columnHeader style="Table_CH" height="100">
+									<property name="com.jaspersoft.studio.unit.height" value="px"/>
+									<staticText>
+										<reportElement x="0" y="0" width="25" height="100" forecolor="#FFFFFF" backcolor="#149966" uuid="fa0c3d74-f8f9-4983-a792-3dd94c77af63"/>
+										<box padding="5"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+											<font fontName="Tahoma" size="8"/>
+										</textElement>
+										<text><![CDATA[Rappel du texte]]></text>
+									</staticText>
+								</jr:columnHeader>
+								<jr:detailCell style="Table_TD" height="30">
+									<property name="com.jaspersoft.studio.unit.width" value="px"/>
+									<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+										<reportElement style="Lignes Grises" stretchType="RelativeToBandHeight" x="0" y="0" width="25" height="30" uuid="0058b6ca-06ce-4033-a2ec-7624af695b32">
+											<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+										</reportElement>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="Tahoma" size="8"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{RAPPEL_DU_TEXTE}]]></textFieldExpression>
+									</textField>
+								</jr:detailCell>
+							</jr:column>
+							<jr:column width="25" uuid="03aed4fb-f197-4251-9772-bae255ee524b">
+								<jr:columnHeader style="Table_CH" height="100">
+									<staticText>
+										<reportElement x="0" y="0" width="25" height="100" forecolor="#FFFFFF" backcolor="#149966" uuid="4298bfdc-88ae-4769-b8c2-8bc30e636fb2"/>
+										<box padding="5"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+											<font fontName="Tahoma" size="8"/>
+										</textElement>
+										<text><![CDATA[Comp. Litérale]]></text>
+									</staticText>
+								</jr:columnHeader>
+								<jr:detailCell style="Table_TD" height="30">
+									<property name="com.jaspersoft.studio.unit.width" value="px"/>
+									<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+										<reportElement style="CompLit" stretchType="RelativeToBandHeight" x="0" y="0" width="25" height="30" uuid="bcb1d03a-5cba-4f78-a0b7-19e33f9f12fe"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="Tahoma" size="8"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{COMP_LITÉRALE}]]></textFieldExpression>
+									</textField>
+								</jr:detailCell>
+							</jr:column>
+							<jr:column width="25" uuid="785c2312-8316-4405-88b9-0c4d3bf84731">
+								<jr:columnHeader style="Table_CH" height="100">
+									<staticText>
+										<reportElement x="0" y="0" width="25" height="100" forecolor="#FFFFFF" backcolor="#149966" uuid="2de2322d-ea56-4faa-becc-a6670eaf1ab6"/>
+										<box padding="5"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+											<font fontName="Tahoma" size="8"/>
+										</textElement>
+										<text><![CDATA[Comp. Déductive]]></text>
+									</staticText>
+								</jr:columnHeader>
+								<jr:detailCell style="Table_TD" height="30">
+									<property name="com.jaspersoft.studio.unit.width" value="px"/>
+									<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+										<reportElement style="CompDed" stretchType="RelativeToBandHeight" x="0" y="0" width="25" height="30" uuid="34526c32-63d7-4d3b-ba40-f6071e1c02c2"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="Tahoma" size="8"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{COMP_DÉDUCTIVE}]]></textFieldExpression>
+									</textField>
+								</jr:detailCell>
+							</jr:column>
+							<jr:column width="25" uuid="1647c5b5-9908-4ead-99c9-be43166bfcf5">
+								<jr:columnHeader style="Table_CH" height="100">
+									<staticText>
+										<reportElement x="0" y="0" width="25" height="100" forecolor="#FFFFFF" backcolor="#149966" uuid="8a360e53-869f-4827-b0f3-d6c0a37d7506"/>
+										<box padding="5"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+											<font fontName="Tahoma" size="8"/>
+										</textElement>
+										<text><![CDATA[Connai. app.]]></text>
+									</staticText>
+								</jr:columnHeader>
+								<jr:detailCell style="Table_TD" height="30">
+									<property name="com.jaspersoft.studio.unit.width" value="px"/>
+									<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+										<reportElement style="ConApp" stretchType="RelativeToBandHeight" x="0" y="0" width="25" height="30" uuid="ece76a05-236e-4e47-8813-7d7dfc9bce8a"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="Tahoma" size="8"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{CONNAI_APP}]]></textFieldExpression>
+									</textField>
+								</jr:detailCell>
+							</jr:column>
+							<jr:column width="25" uuid="e7568e51-2ce9-4e64-b2fe-fd46bafdd27f">
+								<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+								<jr:columnHeader style="Table_CH" height="100">
+									<staticText>
+										<reportElement x="0" y="0" width="25" height="100" forecolor="#FFFFFF" backcolor="#149966" uuid="db6ed484-2321-4f1b-b4e2-5c512a64df6a"/>
+										<box padding="5"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+											<font fontName="Tahoma" size="8"/>
+										</textElement>
+										<text><![CDATA[Vocab.]]></text>
+									</staticText>
+								</jr:columnHeader>
+								<jr:detailCell style="Table_TD" height="30">
+									<property name="com.jaspersoft.studio.unit.width" value="px"/>
+									<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+										<reportElement style="Vocab" stretchType="RelativeToBandHeight" x="0" y="0" width="25" height="30" uuid="354f8c11-81bd-4a40-afb6-d90bb5472272"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="Tahoma" size="8"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{VOCAB}]]></textFieldExpression>
+									</textField>
+								</jr:detailCell>
+							</jr:column>
+						</jr:columnGroup>
+					</jr:columnGroup>
+				</jr:table>
+			</componentElement>
+		</band>
+	</summary>
+</jasperReport>
